@@ -53,11 +53,11 @@ class HttpHandler(Handler):
         """Implement the setup."""
         self.context.logger.info("setting up HttpHandler")
         package = {
-            "name": "AGENT_NAME",
+            "name": self.context.agent_name,
             "address": self.context.agent_address,
             "state": "startup",
         }
-        self.context.shared_state["state"] = package
+        self.context.shared_state = package
 
     def handle(self, message: Message) -> None:
         """

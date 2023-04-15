@@ -1,8 +1,8 @@
 {
     "dev": {
         "skill/eightballer/liquidation_station/0.1.0": "bafybeihu4k7ou7moeqdeofygmys5ocbtxuk7cctop34kuevf5k47mvi6cu",
-        "skill/eightballer/metrics/0.1.0": "bafybeidechpuvxwjaxp2kske5vbhuim4xhrlvrftwfiwsi5ipmnjvvm5de",
-        "agent/eightballer/liquidation_station/0.1.0": "bafybeic5vrlg3whdxqoe3t5546x4uik6hnp3if6rshtoctnqpw7ld5bjaq"
+        "skill/eightballer/metrics/0.1.0": "bafybeihowg36deng3q2llgsmgxl23nw3piabo53enb4n5rm6onfctll55y",
+        "agent/eightballer/liquidation_station/0.1.0": "bafybeihc2mvy66zlnyyfh2fx5hdk4j4msmwgkyffs5jofvhlyyevp3ffyq"
     },
     "third_party": {
         "protocol/valory/abci/0.1.0": "bafybeig3dj5jhsowlvg3t73kgobf6xn4nka7rkttakdb2gwsg5bp7rt7q4",
