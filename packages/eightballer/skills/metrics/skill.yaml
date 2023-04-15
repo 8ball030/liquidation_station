@@ -1,0 +1,32 @@
+name: metrics
+author: eightballer
+version: 0.1.0
+type: skill
+description: The scaffold skill is a scaffold for your own skill implementation.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  __init__.py: bafybeifzcdrejv3mz2wwy5rsjtxt3kvtstzvqnlqolims4mp6qd3u6mmsu
+  dialogues.py: bafybeicjfbptulxolij5gvjqxi5ovocwhy42efnnoy63mzdmgixdb554mi
+  handlers.py: bafybeiduvhemdjyunkqv7o3ylgvjarkpzfyzsokgkb6jnadzfomub3oq7i
+fingerprint_ignore_patterns: []
+connections: []
+contracts: []
+protocols:
+- fetchai/default:1.0.0:bafybeig3w57l7laofhuyl7nco2lfzgtbqf4cto75edfccymugtixjqnm6y
+- valory/http:1.0.0:bafybeifyoio7nlh5zzyn5yz7krkou56l22to3cwg7gw5v5o3vxwklibhty
+skills: []
+behaviours: {}
+handlers:
+  metrics_handler:
+    args: {}
+    class_name: HttpHandler
+models:
+  default_dialogues:
+    args: {}
+    class_name: DefaultDialogues
+  http_dialogues:
+    args: {}
+    class_name: HttpDialogues
+dependencies: {}
+is_abstract: false
