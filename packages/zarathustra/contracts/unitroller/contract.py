@@ -19,7 +19,9 @@
 
 """This module contains the scaffold contract definition."""
 
-from typing import Any
+from typing import Any, NamedTuple
+from enum import IntEnum, auto
+from collections import namedtuple
 
 from aea.common import JSONLike
 from aea.configurations.base import PublicId
@@ -27,14 +29,60 @@ from aea.contracts.base import Contract
 from aea.crypto.base import LedgerApi
 
 
-class MyScaffoldContract(Contract):
-    """The scaffold contract class for a smart contract."""
+class Error(IntEnum):
 
-    contract_id = PublicId.from_str("open_aea/scaffold:0.1.0")
+    def _generate_next_value_(name, start, count, last_values):
+        """Generate consecutive automatic numbers starting from zero"""
+        return count
+
+    NO_ERROR = auto()
+    UNAUTHORIZED = auto()
+    COMPTROLLER_MISMATCH = auto()
+    INSUFFICIENT_SHORTFALL = auto()
+    INSUFFICIENT_LIQUIDITY = auto()
+    INVALID_CLOSE_FACTOR = auto()
+    INVALID_COLLATERAL_FACTOR = auto()
+    INVALID_LIQUIDATION_INCENTIVE = auto()
+    MARKET_NOT_ENTERED  = auto() # no longer possible
+    MARKET_NOT_LISTED = auto()
+    MARKET_ALREADY_LISTED = auto()
+    MATH_ERROR = auto()
+    NONZERO_BORROW_BALANCE = auto()
+    PRICE_ERROR = auto()
+    REJECTION = auto()
+    SNAPSHOT_ERROR = auto()
+    TOO_MANY_ASSETS = auto()
+    TOO_MUCH_REPAY = auto()
+
+
+Address = str
+Wei = int
+
+PUBLIC_ID = PublicId.from_str("zarathustra/unitroller:0.1.0")
+
+_logger = logging.getLogger(
+    f"aea.packages.{PUBLIC_ID.author}.contracts.{PUBLIC_ID.name}.contract"
+)
+
+
+def to_named_tuple(error: int, **kwargs) -> NamedTuple:
+    kwargs = {"error": Error(error), **kwargs}
+    keys, values = zip(*kwargs.items())
+    return namedtuple('contract_response', keys)(*values)
+
+
+class Unitroller(Contract):
+    """Unitroller.
+
+    Storage for the comptroller is at this address,
+    while execution is delegated to the comptrollerImplementation.
+    """
+
+    contract_id = PUBLIC_ID
 
     @classmethod
     def get_raw_transaction(
-        cls, ledger_api: LedgerApi, contract_address: str, **kwargs: Any
+        cls, ledger_api: LedgerApi, contract: Address, **kwargs: Any
     ) -> JSONLike:
         """
         Handler method for the 'GET_RAW_TRANSACTION' requests.
@@ -51,7 +99,7 @@ class MyScaffoldContract(Contract):
 
     @classmethod
     def get_raw_message(
-        cls, ledger_api: LedgerApi, contract_address: str, **kwargs: Any
+        cls, ledger_api: LedgerApi, contract: Address, **kwargs: Any
     ) -> bytes:
         """
         Handler method for the 'GET_RAW_MESSAGE' requests.
@@ -68,7 +116,7 @@ class MyScaffoldContract(Contract):
 
     @classmethod
     def get_state(
-        cls, ledger_api: LedgerApi, contract_address: str, **kwargs: Any
+        cls, ledger_api: LedgerApi, contract: Address, **kwargs: Any
     ) -> JSONLike:
         """
         Handler method for the 'GET_STATE' requests.
