@@ -80,14 +80,15 @@ const TransactionStatus = () => {
         withColumnBorders
         verticalSpacing="md"
         withBorder
-        className="bg-neutral-100"
+        className="bg-neutral-800"
+
         //    highlightOnHover
       >
         <thead className="text-lg">
-          <tr className="bg-neutral-300">
+          <tr className="bg-neutral-700">
             {transactions.map((transaction) => (
-              <th key={transaction.id} className="mr-2">
-                {transaction.title}
+              <th key={transaction.id}>
+                <span className="text-white">{transaction.title}</span>
               </th>
             ))}
           </tr>
@@ -96,7 +97,10 @@ const TransactionStatus = () => {
           {transactions.map((transaction) => (
             <tr className="cursor-pointer ">
               {transaction.data.map((data) => (
-                <td key={transaction.id} className="hover:bg-neutral-200">
+                <td
+                  key={transaction.id}
+                  className="hover:bg-neutral-700 text-white"
+                >
                   <div
                     key={data.id}
                     className="flex flex-col justify-between"
