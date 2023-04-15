@@ -1,3 +1,29 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+frontend/node_modules
+frontend/.pnp
+frontend/.pnp.js
+
+frontend/coverage
+
+frontend/.next/
+frontend/out/
+
+frontend/.DS_Store
+frontend/*.pem
+
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+frontend/# local env files
+frontend/.env*.local
+
+frontend/.vercel
+
+frontend/*.tsbuildinfo
+frontend/next-env.d.ts
 .*
 !/.gitignore
 
