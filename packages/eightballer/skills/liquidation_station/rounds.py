@@ -46,10 +46,10 @@ class Event(Enum):
     """LiquidationStationAbciApp Events"""
 
     NOT_TRIGGERED = "not_triggered"
-    NO_MAJORITY = "no_majority"
-    RESET_TIMEOUT = "reset_timeout"
     ROUND_TIMEOUT = "round_timeout"
     DONE = "done"
+    NO_MAJORITY = "no_majority"
+    RESET_TIMEOUT = "reset_timeout"
 
 
 class SynchronizedData(BaseSynchronizedData):
@@ -75,15 +75,14 @@ class CalculatePositionHealthRound(AbstractRound):
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
-        raise NotImplementedError
+        synchronized_data = self.synchronized_data
+        return synchronized_data, Event.DONE
 
     def check_payload(self, payload: CalculatePositionHealthPayload) -> None:
         """Check payload."""
-        raise NotImplementedError
 
     def process_payload(self, payload: CalculatePositionHealthPayload) -> None:
         """Process payload."""
-        raise NotImplementedError
 
 
 class CollectPositionsRound(AbstractRound):
@@ -101,15 +100,14 @@ class CollectPositionsRound(AbstractRound):
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
-        raise NotImplementedError
+        synchronized_data = self.synchronized_data
+        return synchronized_data, Event.DONE
 
     def check_payload(self, payload: CollectPositionsPayload) -> None:
         """Check payload."""
-        raise NotImplementedError
 
     def process_payload(self, payload: CollectPositionsPayload) -> None:
         """Process payload."""
-        raise NotImplementedError
 
 
 class PrepareLiquidationTransactionsRound(AbstractRound):
@@ -127,15 +125,14 @@ class PrepareLiquidationTransactionsRound(AbstractRound):
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
-        raise NotImplementedError
+        synchronized_data = self.synchronized_data
+        return synchronized_data, Event.DONE
 
     def check_payload(self, payload: PrepareLiquidationTransactionsPayload) -> None:
         """Check payload."""
-        raise NotImplementedError
 
     def process_payload(self, payload: PrepareLiquidationTransactionsPayload) -> None:
         """Process payload."""
-        raise NotImplementedError
 
 
 class RegistrationRound(AbstractRound):
@@ -153,15 +150,14 @@ class RegistrationRound(AbstractRound):
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
-        raise NotImplementedError
+        synchronized_data = self.synchronized_data
+        return synchronized_data, Event.DONE
 
     def check_payload(self, payload: RegistrationPayload) -> None:
         """Check payload."""
-        raise NotImplementedError
 
     def process_payload(self, payload: RegistrationPayload) -> None:
         """Process payload."""
-        raise NotImplementedError
 
 
 class ResetAndPauseRound(AbstractRound):
@@ -179,15 +175,14 @@ class ResetAndPauseRound(AbstractRound):
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
-        raise NotImplementedError
+        synchronized_data = self.synchronized_data
+        return synchronized_data, Event.DONE
 
     def check_payload(self, payload: ResetAndPausePayload) -> None:
         """Check payload."""
-        raise NotImplementedError
 
     def process_payload(self, payload: ResetAndPausePayload) -> None:
         """Process payload."""
-        raise NotImplementedError
 
 
 class SubmitPositionLiquidationTransactionsRound(AbstractRound):
@@ -205,15 +200,14 @@ class SubmitPositionLiquidationTransactionsRound(AbstractRound):
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
-        raise NotImplementedError
+        synchronized_data = self.synchronized_data
+        return synchronized_data, Event.DONE
 
     def check_payload(self, payload: SubmitPositionLiquidationTransactionsPayload) -> None:
         """Check payload."""
-        raise NotImplementedError
 
     def process_payload(self, payload: SubmitPositionLiquidationTransactionsPayload) -> None:
         """Process payload."""
-        raise NotImplementedError
 
 
 class LiquidationStationAbciApp(AbciApp[Event]):

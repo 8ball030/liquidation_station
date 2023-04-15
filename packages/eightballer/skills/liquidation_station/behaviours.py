@@ -71,10 +71,11 @@ class CalculatePositionHealthBehaviour(LiquidationStationBaseBehaviour):
     # TODO: implement logic required to set payload content for synchronization
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
+        self.context.logger.info("CalculatePositionHealthBehaviour: In the behaviour")
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = CalculatePositionHealthPayload(sender=sender, content=...)
+            payload = CalculatePositionHealthPayload(sender=sender, )
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -91,10 +92,11 @@ class CollectPositionsBehaviour(LiquidationStationBaseBehaviour):
     # TODO: implement logic required to set payload content for synchronization
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
+        self.context.logger.info("CollectPositionsBehaviour: In the behaviour")
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = CollectPositionsPayload(sender=sender, content=...)
+            payload = CollectPositionsPayload(sender=sender, )
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -111,10 +113,11 @@ class PrepareLiquidationTransactionsBehaviour(LiquidationStationBaseBehaviour):
     # TODO: implement logic required to set payload content for synchronization
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
+        self.context.logger.info("PrepareLiquidationTransactionsBehaviour: In the behaviour")
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = PrepareLiquidationTransactionsPayload(sender=sender, content=...)
+            payload = PrepareLiquidationTransactionsPayload(sender=sender, )
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -131,10 +134,11 @@ class RegistrationBehaviour(LiquidationStationBaseBehaviour):
     # TODO: implement logic required to set payload content for synchronization
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
+        self.context.logger.info("RegistrationBehaviour: In the behaviour")
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = RegistrationPayload(sender=sender, content=...)
+            payload = RegistrationPayload(sender=sender, )
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -151,10 +155,11 @@ class ResetAndPauseBehaviour(LiquidationStationBaseBehaviour):
     # TODO: implement logic required to set payload content for synchronization
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
+        self.context.logger.info("ResetAndPauseBehaviour: In the behaviour")
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = ResetAndPausePayload(sender=sender, content=...)
+            payload = ResetAndPausePayload(sender=sender, )
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -171,10 +176,11 @@ class SubmitPositionLiquidationTransactionsBehaviour(LiquidationStationBaseBehav
     # TODO: implement logic required to set payload content for synchronization
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
+        self.context.logger.info("SubmitPositionLiquidationTransactionsBehaviour: In the behaviour")
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = SubmitPositionLiquidationTransactionsPayload(sender=sender, content=...)
+            payload = SubmitPositionLiquidationTransactionsPayload(sender=sender, )
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
