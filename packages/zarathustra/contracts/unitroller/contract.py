@@ -169,3 +169,35 @@ class Unitroller(Contract):
         ).call()
 
         return to_named_tuple(error_code)
+
+    def liquidate_calculate_seize_tokens(
+        self,
+        o_token_borrowed: Address,
+        o_token_collateral: Address,
+        actual_borrow_amount: Wei,
+    ):
+        """Calculate number of tokens of collateral asset to seize given an underlying amount.
+
+        1. Read oracle prices for borrowed and collateral markets
+        2. Get the exchange rate and calculate the number of collateral tokens to seize:
+           seizeAmount = actualRepayAmount * liquidationIncentive * priceBorrowed / priceCollateral
+           seizeTokens = seizeAmount / exchangeRate
+
+        returns: number of oTokenCollateral tokens to be seized in a liquidation.
+        """
+
+        result = contract_interface.functions.liquidateCalculateSeizeTokens(
+            o_token_borrowed,
+            o_token_collateral,
+            actual_borrow_amount,
+        ).call()
+
+        error_code, seize_tokens = result
+        return to_named_tuple(
+            error_code,
+            seize_tokens=seize_tokens
+        )
+
+        ### Likely not relevant to us now:
+        # seizeAllowed: Checks if the seizing of assets should be allowed to occur
+        # seizeVerify: Validates seize and reverts on rejection.
