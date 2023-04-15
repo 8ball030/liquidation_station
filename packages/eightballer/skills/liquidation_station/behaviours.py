@@ -62,6 +62,10 @@ class LiquidationStationBaseBehaviour(BaseBehaviour, ABC):
         """Return the params."""
         return cast(Params, super().params)
 
+    def update_shared_state(self):
+        """function to update the internal shared state with the current round, allowing this data to be displayed."""
+        self.context.shared_state["state"]['round'] = self.behaviour_id
+
 
 class CalculatePositionHealthBehaviour(LiquidationStationBaseBehaviour):
     """CalculatePositionHealthBehaviour"""
@@ -71,6 +75,7 @@ class CalculatePositionHealthBehaviour(LiquidationStationBaseBehaviour):
     # TODO: implement logic required to set payload content for synchronization
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
+        self.update_shared_state()
         self.context.logger.info("CalculatePositionHealthBehaviour: In the behaviour")
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
@@ -93,6 +98,7 @@ class CollectPositionsBehaviour(LiquidationStationBaseBehaviour):
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
         self.context.logger.info("CollectPositionsBehaviour: In the behaviour")
+        self.update_shared_state()
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
@@ -114,6 +120,7 @@ class PrepareLiquidationTransactionsBehaviour(LiquidationStationBaseBehaviour):
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
         self.context.logger.info("PrepareLiquidationTransactionsBehaviour: In the behaviour")
+        self.update_shared_state()
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
@@ -135,6 +142,7 @@ class RegistrationBehaviour(LiquidationStationBaseBehaviour):
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
         self.context.logger.info("RegistrationBehaviour: In the behaviour")
+        self.update_shared_state()
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
@@ -156,6 +164,7 @@ class ResetAndPauseBehaviour(LiquidationStationBaseBehaviour):
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
         self.context.logger.info("ResetAndPauseBehaviour: In the behaviour")
+        self.update_shared_state()
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
@@ -177,6 +186,7 @@ class SubmitPositionLiquidationTransactionsBehaviour(LiquidationStationBaseBehav
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
         self.context.logger.info("SubmitPositionLiquidationTransactionsBehaviour: In the behaviour")
+        self.update_shared_state()
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
