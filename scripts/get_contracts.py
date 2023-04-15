@@ -1,7 +1,6 @@
 
 import os
 import json
-from web3 import Web3
 from brownie import Contract, network
 import subprocess
 from pathlib import Path
@@ -11,8 +10,10 @@ EXPECTED_ENV_VARS = [
     "WEB3_INFURA_PROJECT_ID",
     "POLYGONSCAN_TOKEN",
 ]
+CMD_TEMPLATE = "autonomy scaffold -tlr contract {name}"
+DESTINATION = "packages {author} contracts {name}"
 
-# mainnet addresses
+# polygon mainnet addresses
 
 ADDRESSES = dict(
     comptroller="0xf29d0ae1A29C453df338C5eEE4f010CFe08bb3FF",
@@ -39,11 +40,6 @@ ADDRESSES = dict(
 )
 
 
-network.connect("polygon-main")
-cmd_template = "autonomy scaffold -tlr contract {name}"
-destination = "packages {author} contracts {name}"
-
-
 def check_env_for_keys() -> None:
     for env_var in EXPECTED_ENV_VARS:
         if not os.environ.get(env_var):
@@ -51,12 +47,12 @@ def check_env_for_keys() -> None:
 
 
 def define_contract_path(name: str) -> Path:
-    parts = destination.format(author=AUTHOR, name=name).split()
+    parts = DESTINATION.format(author=AUTHOR, name=name).split()
     return Path(*parts).absolute()
 
 
 def scaffold_contract(name: str) -> None:
-    cmd = cmd_template.format(name=name)
+    cmd = CMD_TEMPLATE.format(name=name)
     result = subprocess.run(
         cmd.split(),
         capture_output=True,
@@ -90,5 +86,6 @@ def setup_contract(name: str, address: str) -> None:
 
 if __name__ == "__main__":
     check_env_for_keys()
+    network.connect("polygon-main")
     for name, address in ADDRESSES.items():
         setup_contract(name, address)
