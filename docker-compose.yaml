@@ -1,0 +1,5 @@
+services:
+  webapp:
+    ports:
+      - "3000:3000"
+    build: ./frontend
