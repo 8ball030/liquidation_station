@@ -144,3 +144,28 @@ class Unitroller(Contract):
             liquidity=liquidity,
             shortfall=shortfall,
         )
+
+    def liquidate_borrow_allowed(
+        self,
+        o_token_borrowed: Address,
+        o_token_collateral: Address,
+        liquidator: Address,
+        borrower: Address,
+        repay_amount: Wei,
+    ) -> NamedTuple:
+        """Checks if the liquidation should be allowed to occur."""
+
+        contract_interface = cls.get_instance(
+            ledger_api=ledger_api,
+            contract_address=contract_address,
+        )
+
+        error_code = contract_interface.functions.liquidateBorrowAllowed(
+            o_token_borrowed,
+            o_token_collateral,
+            liquidator,
+            borrower,
+            repay_amount,
+        ).call()
+
+        return to_named_tuple(error_code)
