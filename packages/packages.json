@@ -1,7 +1,25 @@
 {
     "dev": {
-        "skill/eightballer/liquidation_station/0.1.0": "bafybeigk7l5gsergh5kcajncmcl6nhmeczvqtovccygkcutjbc37bwwjfu",
-        "agent/eightballer/liquidation_station/0.1.0": "bafybeiaeo3sug4zc27cvquqtwg4u6fc6khpgnq6hdhalwvbn4ghqh2djpa"
+        "skill/eightballer/liquidation_station/0.1.0": "bafybeihu4k7ou7moeqdeofygmys5ocbtxuk7cctop34kuevf5k47mvi6cu",
+        "skill/eightballer/metrics/0.1.0": "bafybeidechpuvxwjaxp2kske5vbhuim4xhrlvrftwfiwsi5ipmnjvvm5de",
+        "agent/eightballer/liquidation_station/0.1.0": "bafybeigyz3wq6qdzdislizmb62pyrikbvkawzdguryk3gqorovzflyd3oq",
+        "contract/zarathustra/comptroller/0.1.0": "bafybeif7llyor55q7qcxbmywxiw6fdwjrek3uh33cqhgy5xqfs7ijh7t5u",
+        "contract/zarathustra/jump_interest_model/0.1.0": "bafybeidxamew73xaldmyxshkuwf22tytugjovgp3army6pml67caidlmhu",
+        "contract/zarathustra/o_dai/0.1.0": "bafybeicf6sadq3dbrqtd3i5tsd2nzz7jhcueaxiskobznoczz43n4rkchq",
+        "contract/zarathustra/o_gdai/0.1.0": "bafybeig2y4opadch7azf3epnjtiikq7sw3su7ksiyoqvl4jg545f45goia",
+        "contract/zarathustra/o_mai/0.1.0": "bafybeifb3b3cik363whoxm75e35kqtlkzxihev2465zewv2kq3mv7sjk2y",
+        "contract/zarathustra/o_matic/0.1.0": "bafybeif2d43yviemwlw3nshkzgrlovp54ys2xhwqiehmzo6wsla5pjrcg4",
+        "contract/zarathustra/o_matic_logic/0.1.0": "bafybeiah72eaw7ewrv76q64brnzg6l7hgi46gzian5oorpwznsjpbacl74",
+        "contract/zarathustra/o_maticx/0.1.0": "bafybeictok62ozccq5hnw56eugn763lrbuv74wrhl6a7lmhv3m7bxwi3dy",
+        "contract/zarathustra/oracle/0.1.0": "bafybeihqalbz4ixvkaigmblppfzfav2pofnqeexa5wdczbuqby2o5tk7p4",
+        "contract/zarathustra/o_token_logic/0.1.0": "bafybeiabuydqz5blvypitqg3cffognqooaowrbextw3p26hxjfzzki2fwa",
+        "contract/zarathustra/o_usdc/0.1.0": "bafybeibe26zrttvm6qvwmztujfsow2qyrx3a24vg5no5bbb6oaa7dum76e",
+        "contract/zarathustra/o_usdt/0.1.0": "bafybeigpkassk2p4bkeyelyfu3xmmivt32jonni2qn5o6gkwzlycgn335m",
+        "contract/zarathustra/ov_ghst/0.1.0": "bafybeiadytu7dn7kb4kxjwvn4443pobkwgq3rcjdtk32iwo7fbwobmombe",
+        "contract/zarathustra/o_wbtc/0.1.0": "bafybeid36vr6waa7mmzb7b73n4kj7qkfkr6mzxluxxjrcuzgx4jh274nsi",
+        "contract/zarathustra/o_weth/0.1.0": "bafybeidda3nacec4xetnptyqauassynx2n3lzjcx4px6q7vva2czzqcjqm",
+        "contract/zarathustra/owst_eth/0.1.0": "bafybeibb3wsgr54nuerckxlbuintbacbqgryg6lql7vs6zokthijpmgxti",
+        "contract/zarathustra/unitroller/0.1.0": "bafybeibgibmowd4facyv2elz6tsiwrg7x2kohoqwbwf3eyaa6vou335zlu"
     },
     "third_party": {
         "protocol/valory/abci/0.1.0": "bafybeig3dj5jhsowlvg3t73kgobf6xn4nka7rkttakdb2gwsg5bp7rt7q4",
@@ -10,7 +28,9 @@
         "connection/valory/abci/0.1.0": "bafybeihkjtzuv3oaq5olerjwnhf5qg5gsmgdsvg27aaeqeg46ch7mjvggi",
         "protocol/valory/contract_api/1.0.0": "bafybeidv6wxpjyb2sdyibnmmum45et4zcla6tl63bnol6ztyoqvpl4spmy",
         "protocol/valory/http/1.0.0": "bafybeifyoio7nlh5zzyn5yz7krkou56l22to3cwg7gw5v5o3vxwklibhty",
+        "protocol/fetchai/default/1.0.0": "bafybeig3w57l7laofhuyl7nco2lfzgtbqf4cto75edfccymugtixjqnm6y",
         "connection/valory/http_client/0.23.0": "bafybeidykl4elwbcjkqn32wt5h4h7tlpeqovrcq3c5bcplt6nhpznhgczi",
+        "connection/fetchai/http_server/0.22.0": "bafybeihaax5od5zo5jk2l62hv4jwuwtxloh5mijozudpsjombqc4ncmi6i",
         "contract/valory/gnosis_safe_proxy_factory/0.1.0": "bafybeifbgcgjd2gbwmsm42o3yc4253apxjadcwdljh7x73hgf5w653lvym",
         "contract/valory/service_registry/0.1.0": "bafybeiauproyi7qle35u777xnlajrz5samm7h2cdjdqxlsfkxbtwbqilzm",
         "protocol/open_aea/signing/1.0.0": "bafybeibqlfmikg5hk4phzak6gqzhpkt6akckx7xppbp53mvwt6r73h7tk4",
