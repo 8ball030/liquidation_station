@@ -55,9 +55,9 @@ class HttpHandler(Handler):
         package = {
             "name": self.context.agent_name,
             "address": self.context.agent_address,
-            "state": "startup",
+            "round": "startup",
         }
-        self.context.shared_state = package
+        self.context.shared_state["state"] = package
 
     def handle(self, message: Message) -> None:
         """
