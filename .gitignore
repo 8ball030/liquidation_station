@@ -1,3 +1,6 @@
-.idea
+.*
+!/.gitignore
+
 packages/valory
 packages/open_aea
+**/__pycache__/
