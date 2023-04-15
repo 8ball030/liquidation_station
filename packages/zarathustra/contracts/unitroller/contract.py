@@ -130,3 +130,17 @@ class Unitroller(Contract):
         :return: the tx  # noqa: DAR202
         """
         raise NotImplementedError
+
+    def get_account_liquidity(self, account: Address) -> NamedTuple:
+        """Determine the current account liquidity wrt collateral requirements."""
+
+        result = contract_interface.functions.getAccountLiquidity(
+            account
+        ).call()
+
+        error_code, liquidity, shortfall = result
+        return to_named_tuple(
+            error_code,
+            liquidity=liquidity,
+            shortfall=shortfall,
+        )
