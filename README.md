@@ -37,6 +37,7 @@ wget https://github.com/tendermint/tendermint/releases/download/v0.34.11/tenderm
 First you must create a local tendermint node to run the agent, (Do this in a seperate tab)
 ```bash
 sudo rm -r ~/.tendermint/data/ && sudo tendermint init validator && sudo cp -r /root/.tendermint ~/  && sudo chown -R (whoami):(whoami) ~/.tendermint
+tendermint start
 ```
 Then, you can fetch the agent;
 

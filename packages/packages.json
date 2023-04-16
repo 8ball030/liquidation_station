@@ -1,5 +1,6 @@
 {
     "dev": {
+        "service/eightballer/liquidation_station/0.1.0": "bafybeihe3c3nvlmyfwibgvv73jfw36c4vgygot3nqbqnnmxwjzt5sxwwhu",
         "skill/eightballer/liquidation_station/0.1.0": "bafybeibgmfk66xv6s6fp4ve4oipezh4e7fw4e5o4l2hbze3rjhz2ro2vva",
         "skill/eightballer/metrics/0.1.0": "bafybeifsnluscoi7u7czwgvpwg6qxqtehw63ilevgalboqducta47x3ymy",
         "agent/eightballer/liquidation_station/0.1.0": "bafybeiehzkflk5u7fmhbwxsbirmhmy2hek3pfr6yflluhncwz4hdkgjvri",
