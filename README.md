@@ -13,7 +13,7 @@ app.propel.valory.xyz
 
 Live endpoints are available for the frontend;
 
-[frontend](165.22.80.193:3000)
+(frontend)[165.22.80.193:3000]
 
 And for the 4 agents;
 
