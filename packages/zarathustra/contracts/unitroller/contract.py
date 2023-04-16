@@ -18,6 +18,7 @@
 # ------------------------------------------------------------------------------
 
 """This module contains the scaffold contract definition."""
+import logging
 
 from typing import Any, NamedTuple
 from enum import IntEnum, auto

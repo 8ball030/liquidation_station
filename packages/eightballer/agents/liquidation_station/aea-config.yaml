@@ -15,6 +15,7 @@ connections:
 - valory/p2p_libp2p_client:0.1.0:bafybeidwcobzb7ut3efegoedad7jfckvt2n6prcmd4g7xnkm6hp6aafrva
 contracts:
 - valory/service_registry:0.1.0:bafybeiauproyi7qle35u777xnlajrz5samm7h2cdjdqxlsfkxbtwbqilzm
+- zarathustra/unitroller:0.1.0:bafybeiep5cexticlaav7nubrawpmyzyrn3uqzqcosjowevjp2qmhe27srq
 protocols:
 - fetchai/default:1.0.0:bafybeig3w57l7laofhuyl7nco2lfzgtbqf4cto75edfccymugtixjqnm6y
 - open_aea/signing:1.0.0:bafybeibqlfmikg5hk4phzak6gqzhpkt6akckx7xppbp53mvwt6r73h7tk4
@@ -26,7 +27,7 @@ protocols:
 - valory/ledger_api:1.0.0:bafybeibo4bdtcrxi2suyzldwoetjar6pqfzm6vt5xal22ravkkcvdmtksi
 - valory/tendermint:0.1.0:bafybeicusvezoqlmyt6iqomcbwaz3xkhk2qf3d56q5zprmj3xdxfy64k54
 skills:
-- eightballer/liquidation_station:0.1.0:bafybeif4e3xau6grutjawg7tgpa7d4gz53ldmpqacnwzp7a5wwbrapjrf4
+- eightballer/liquidation_station:0.1.0:bafybeibas6432uanawqfysqhmyw2us6b4dzsbuymdu2p2cyqnl33btw5iq
 - eightballer/metrics:0.1.0:bafybeifsnluscoi7u7czwgvpwg6qxqtehw63ilevgalboqducta47x3ymy
 - valory/abstract_abci:0.1.0:bafybeicujajnqzbndtndrndj53znohemihludifuyc5dazfbz6fltyj5ci
 - valory/abstract_round_abci:0.1.0:bafybeiar4gy4brpuxekiwjq7osh3fm254jgdoxlgkvqcp5lytu4uzrmbsm
@@ -79,8 +80,8 @@ type: skill
 models:
   params:
     args:
-      infura_api_key: ${str}
-      polygonscan_api_key: ${str}
+      infura_api_key: ${INFURA_API_KEY:str}
+      polygonscan_api_key: ${POLYGONSCAN_API_KEY:str}
       sleep_time: 1
       tendermint_check_sleep_delay: 3
       tendermint_p2p_url: ${str:localhost:26656}
@@ -88,3 +89,13 @@ models:
       tendermint_max_retries: 5
       tendermint_url: ${str:http://localhost:26657}
       use_termination: ${bool:false}
+---
+public_id: valory/ledger:0.19.0
+type: connection
+config:
+  ledger_apis:
+    ethereum:
+      address: https://polygon-mainnet.infura.io/v3/f16fca6cfce14d28a08b25c524c76f16
+      chain_id: 137
+      poa_chain: true
+      default_gas_price_strategy: eip1559
