@@ -19,6 +19,7 @@
 
 """This package contains round behaviours of LiquidationStationAbciApp."""
 
+from typing import List
 from abc import ABC
 from typing import Generator, Set, Type, cast
 from web3 import Web3
@@ -53,6 +54,7 @@ from packages.eightballer.skills.liquidation_station.rounds import (
     SubmitPositionLiquidationTransactionsPayload,
 )
 
+from packages.valory.protocols.ledger_api.message import LedgerApiMessage
 
 class LiquidationStationBaseBehaviour(BaseBehaviour, ABC):
     """Base behaviour for the liquidation_station skill."""
@@ -79,11 +81,11 @@ class LiquidationStationBaseBehaviour(BaseBehaviour, ABC):
 
     @cached_property
     def unitroller_contract(self):  # TODO:
-        INFURA_API_LEY = self.context.params.args.infura_api_key
-        provider = f"https://polygon-mainnet.infura.io/v3/{INFURA_API_LEY}"
+        INFURA_API_KEY = self.context.params.config['infura_api_key']
+        provider = f"https://polygon-mainnet.infura.io/v3/{INFURA_API_KEY}"
         unitroller_address = "0x8849f1a0cB6b5D6076aB150546EddEe193754F1C"
-        path = Path.cwd() / "packages" / "zarathustra" / "contracts" / "unitroller" / "build" / "unitroller.json"
-        abi = json.loads(path.read_text())
+        path = Path.cwd() / "vendor" / "zarathustra" / "contracts" / "unitroller" / "build" / "unitroller.json"
+        abi = json.loads(path.read_text())['abi']
         w3 = Web3(Web3.HTTPProvider(provider))
         contract = w3.eth.contract(address=unitroller_address, abi=abi)
         return contract
@@ -125,13 +127,14 @@ class CollectPositionsBehaviour(LiquidationStationBaseBehaviour):
         ledger_api_response = yield from self.get_ledger_api_response(
             performative=LedgerApiMessage.Performative.GET_STATE,
             ledger_callable="get_block",
+            block_identifier="latest"
         )
         correct_performative = ledger_api_response.performative == LedgerApiMessage.Performative.STATE
-        if not correct_performative or "number" not in ledger_api_response:
+        if not correct_performative or "number" not in ledger_api_response.state.body:
             self.context.logger.error(f"Could not extract block: {ledger_api_response}")
             return
 
-        latest_block = ledger_api_response["number"]  # 41584895
+        latest_block = ledger_api_response.state.body["number"]  # 41584895
 
         # TODO: Now simply getting accounts that opened positions
         ## and overwrite the accounts list with the latest
@@ -148,11 +151,16 @@ class CollectPositionsBehaviour(LiquidationStationBaseBehaviour):
 
         self.set_done()
 
-    def get_open_positions(latest_block: int) -> List[Address]:
+    def get_open_positions(self, latest_block: int) -> List[str]:
 
         contract = self.unitroller_contract
         event_template = contract.events.MarketEntered
         start_block = latest_block - 10_000  # TODO
+        INFURA_API_KEY = self.context.params.config['infura_api_key']
+        provider = f"https://polygon-mainnet.infura.io/v3/{INFURA_API_KEY}"
+        unitroller_address = "0x8849f1a0cB6b5D6076aB150546EddEe193754F1C"
+
+        w3 = Web3(Web3.HTTPProvider(provider))
         events = w3.eth.get_logs({
             'fromBlock': start_block,
             'toBlock': latest_block,
@@ -169,6 +177,7 @@ class CollectPositionsBehaviour(LiquidationStationBaseBehaviour):
                 result = handle_event(event=event, event_template=event_template)
                 accounts.append(result["account"])
             except:
+                # note this fails due to time contraints with streaming events
                 self.context.logger.error(f"could not parse event data for {event}")
 
         return accounts
