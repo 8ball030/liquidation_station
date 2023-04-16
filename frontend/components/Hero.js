@@ -9,6 +9,11 @@ const endpoints = [
   'http://165.22.80.193:8003',
 ];
 
+function truncate(str, n){
+  return (str.length > n) ? str.slice(0, n-1) + '&hellip;' : str;
+};
+
+
 async function fetchCardData() {
   const cardData = [];
 
@@ -19,8 +24,9 @@ async function fetchCardData() {
       const card = {
         id: i + 1,
         name: `Agent ${i + 1}`,
-        address: data.state.address,
+        address: truncate(data.state.address, 20),
         status: data.state.round,
+        link: "https://polygonscan.com/address/" + data.state.address
       };
       cardData.push(card);
     } catch (error) {
@@ -40,9 +46,11 @@ const Hero = () => {
   const [cardData, setCardData] = useState([]);
 
   useEffect(() => {
+  const intervalId = setInterval(() => {
     fetchCardData().then((data) => {
       setCardData(data);
     });
+    }, 1000);
   }, []);
 
   return (
@@ -51,7 +59,9 @@ const Hero = () => {
         {cardData.map((card) => (
           <div key={card.id} className="border border-gray-300 rounded-md p-4">
             <h1 className="text-xl font-semibold">{card.name}</h1>
-            <p>{card.address}</p>
+            <a href={card.link}>
+                <p>{card.address}</p>
+            </a>
             <p>{card.status}</p>
           </div>
         ))}
