@@ -4,9 +4,9 @@ import React, { useState, useEffect } from 'react';
 
 const endpoints = [
   'http://165.22.80.193:8000',
-  // 'http://165.22.80.193:8001',
-  // 'http://165.22.80.193:8002',
-  // 'http://165.22.80.193:8003',
+  'http://165.22.80.193:8001',
+  'http://165.22.80.193:8002',
+  'http://165.22.80.193:8003',
 ];
 
 async function fetchCardData() {
