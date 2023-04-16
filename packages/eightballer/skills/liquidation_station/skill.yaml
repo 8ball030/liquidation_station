@@ -24,8 +24,7 @@ fingerprint:
 fingerprint_ignore_patterns: []
 connections: []
 contracts: []
-protocols:
-- valory/ledger_api:1.0.0:bafybeibo4bdtcrxi2suyzldwoetjar6pqfzm6vt5xal22ravkkcvdmtksi
+protocols: []
 skills:
 - valory/abstract_round_abci:0.1.0:bafybeiar4gy4brpuxekiwjq7osh3fm254jgdoxlgkvqcp5lytu4uzrmbsm
 behaviours:
