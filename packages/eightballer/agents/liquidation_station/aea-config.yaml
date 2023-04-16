@@ -81,3 +81,10 @@ models:
     args:
       infura_api_key: ${str}
       polygonscan_api_key: ${str}
+      sleep_time: 1
+      tendermint_check_sleep_delay: 3
+      tendermint_p2p_url: ${str:localhost:26656}
+      tendermint_com_url: ${str:http://localhost:8080}
+      tendermint_max_retries: 5
+      tendermint_url: ${str:http://localhost:26657}
+      use_termination: ${bool:false}
