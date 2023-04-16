@@ -34,6 +34,7 @@ export POLYGONSCAN_API_KEY=secrets
 autonomy generate-key ethereum -n 4
 # set your author
 aea init --remote --reset --author eightballer --ipfs
+autonomy packages sync
 ```
 bash scripts/start_multi_agent.sh
 
