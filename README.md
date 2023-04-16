@@ -10,22 +10,31 @@ This allows us to define a multi-agent system secured on chain, using the autono
 
 ### Dependencies
 - Tendermint
+
 ```bash
 wget https://github.com/tendermint/tendermint/releases/download/v0.34.11/tendermint_0.34.11_linux_amd64.tar.gz
+
+tar -xf tendermint.tar.gz
+sudo mv tendermint /usr/local/bin/tendermint
 ```
 
 
-
-First you must create a local tendermint node to run the agent
+First you must create a local tendermint node to run the agent. If you have old data stored, remove that first.
 ```bash
-sudo rm -r ~/.tendermint/data/ && sudo tendermint init validator && sudo cp -r /root/.tendermint ~/  && sudo chown -R (whoami):(whoami) ~/.tendermint
+sudo rm -r ~/.tendermint/data/ &&
 ```
-Then, you can fetch the agent;
+
+Then start a local Tendermint node for the agent to connect to 
+```bash
+sudo tendermint init validator && sudo cp -r /root/.tendermint ~/
+```
+
+Finally, the agent can be fetched and ran using the script provided
 
 ```bash
-Todo
+bash scripts/start_agent.sh
 ```
 
-And finally, you can run it;
+In case you already have an existing folder from a previous deployment you have simply remove it.
 
 
