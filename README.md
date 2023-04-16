@@ -23,6 +23,22 @@ curl @165.22.80.193:8000
 ```
 
 
+## Running as a multi agent service
+
+First setup the env;
+
+```
+export INFURA_API_KEY=secret
+export POLYGONSCAN_API_KEY=secrets
+# make some keys
+autonomy generate-key ethereum -n 4
+```
+bash scripts/start_multi_agent.sh
+
+```
+
+
+
 ## Running a single agent locally
 
 
