@@ -9,6 +9,11 @@ cd liquidation_station/
 # create and add a new ethereum key
 aea generate-key ethereum && aea add-key ethereum
 
+# install any agent deps
+aea install
+
+
+
 # issue certificates for agent 2 agent communications
 aea issue-certificates
 

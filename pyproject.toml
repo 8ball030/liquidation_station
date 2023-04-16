@@ -8,6 +8,8 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.10"
 open-autonomy = "^0.10.1"
+docker-compose = "^1.29.2"
+
 
 
 [build-system]
