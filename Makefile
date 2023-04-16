@@ -66,3 +66,6 @@ lock:
 
 run-single-agent:
 	bash scripts/start_agent.sh
+
+run-mas:
+	bash scripts/start_multi_agent.sh
