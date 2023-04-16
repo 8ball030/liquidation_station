@@ -1,0 +1,21 @@
+name: liquidation_station
+author: eightballer
+version: 0.1.0
+description: A liquidation service designed to liquidate positions on Defi Money Markets
+aea_version: '>=1.0.0, <2.0.0'
+license: Apache-2.0
+fingerprint: {}
+fingerprint_ignore_patterns: []
+agent: eightballer/liquidation_station:0.1.0:bafybeiehzkflk5u7fmhbwxsbirmhmy2hek3pfr6yflluhncwz4hdkgjvri
+number_of_agents: 4
+deployment:
+  agent:
+    ports:
+      0:
+        8000: 8000
+      1:
+        8001: 8000
+      2:
+        8002: 8000
+      3:
+        8003: 8000

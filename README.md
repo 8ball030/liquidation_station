@@ -44,7 +44,8 @@ sudo rm -r ~/.tendermint/data/ &&
 
 Then start a local Tendermint node for the agent to connect to 
 ```bash
-sudo tendermint init validator && sudo cp -r /root/.tendermint ~/
+sudo tendermint init validator && sudo cp -r /root/.tendermint ~/  && sudo chown -R (whoami):(whoami) ~/.tendermint
+tendermint start
 ```
 
 Finally, the agent can be fetched and ran using the script provided

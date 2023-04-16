@@ -109,7 +109,7 @@ export function Navbar({ links }) {
           {items}
         </Group>
 
-        <h1>Liquadation State</h1>
+        <h1>Liquidation State</h1>
         <ConnectWallet />
       </Container>
     </Header>
