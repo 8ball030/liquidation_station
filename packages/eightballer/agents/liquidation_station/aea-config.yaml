@@ -26,7 +26,7 @@ protocols:
 - valory/ledger_api:1.0.0:bafybeibo4bdtcrxi2suyzldwoetjar6pqfzm6vt5xal22ravkkcvdmtksi
 - valory/tendermint:0.1.0:bafybeicusvezoqlmyt6iqomcbwaz3xkhk2qf3d56q5zprmj3xdxfy64k54
 skills:
-- eightballer/liquidation_station:0.1.0:bafybeibgmfk66xv6s6fp4ve4oipezh4e7fw4e5o4l2hbze3rjhz2ro2vva
+- eightballer/liquidation_station:0.1.0:bafybeid3shm2cf6ce4lkgaodv54x3da6pkx3fwxe5mwmg4cxzyejjmumoa
 - eightballer/metrics:0.1.0:bafybeifsnluscoi7u7czwgvpwg6qxqtehw63ilevgalboqducta47x3ymy
 - valory/abstract_abci:0.1.0:bafybeicujajnqzbndtndrndj53znohemihludifuyc5dazfbz6fltyj5ci
 - valory/abstract_round_abci:0.1.0:bafybeiar4gy4brpuxekiwjq7osh3fm254jgdoxlgkvqcp5lytu4uzrmbsm
@@ -43,14 +43,14 @@ dependencies:
   open-aea-ledger-ethereum: {}
 default_connection: null
 ---
-public_id: fetchai/http_server:0.22.0:bafybeihaax5od5zo5jk2l62hv4jwuwtxloh5mijozudpsjombqc4ncmi6i
+public_id: fetchai/http_server:0.22.0
 type: connection
 config:
   host: 0.0.0.0
   target_skill_id: eightballer/metrics:0.1.0
   port: 8000
 ---
-public_id: valory/abci:0.1.0:bafybeihkjtzuv3oaq5olerjwnhf5qg5gsmgdsvg27aaeqeg46ch7mjvggi
+public_id: valory/abci:0.1.0
 type: connection
 config:
   target_skill_id: eightballer/liquidation_station:0.1.0
@@ -58,7 +58,7 @@ config:
   port: ${int:26658}
   use_tendermint: ${bool:false}
 ---
-public_id: valory/p2p_libp2p_client:0.1.0:bafybeidwcobzb7ut3efegoedad7jfckvt2n6prcmd4g7xnkm6hp6aafrva
+public_id: valory/p2p_libp2p_client:0.1.0
 type: connection
 config:
   nodes:
@@ -73,3 +73,11 @@ cert_requests:
   public_key: ${str:02d3a830c9d6ea1ae91936951430dee11f4662f33118b02190693be835359a9d77}
   save_path: .certs/acn_cosmos_9005.txt
 is_abstract: false
+---
+public_id: eightballer/liquidation_station:0.1.0
+type: skill
+models:
+  params:
+    args:
+      infura_api_key: ${str}
+      polygonscan_api_key: ${str}
