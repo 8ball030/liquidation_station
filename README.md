@@ -28,18 +28,27 @@ curl @165.22.80.193:8000
 
 ### Dependencies
 - Tendermint
+
 ```bash
 wget https://github.com/tendermint/tendermint/releases/download/v0.34.11/tendermint_0.34.11_linux_amd64.tar.gz
+
+tar -xf tendermint.tar.gz
+sudo mv tendermint /usr/local/bin/tendermint
 ```
 
+First you must create a local tendermint node to run the agent, (Do this in a seperate tab). If you have old data stored, remove that first.
 
-
-First you must create a local tendermint node to run the agent, (Do this in a seperate tab)
 ```bash
-sudo rm -r ~/.tendermint/data/ && sudo tendermint init validator && sudo cp -r /root/.tendermint ~/  && sudo chown -R (whoami):(whoami) ~/.tendermint
+sudo rm -r ~/.tendermint/data/ &&
+```
+
+Then start a local Tendermint node for the agent to connect to 
+```bash
+sudo tendermint init validator && sudo cp -r /root/.tendermint ~/  && sudo chown -R (whoami):(whoami) ~/.tendermint
 tendermint start
 ```
-Then, you can fetch the agent;
+
+Finally, the agent can be fetched and ran using the script provided
 
 ```bash
 poetry install && poetry shell
@@ -50,5 +59,6 @@ autonomy packages sync
 make run-single-agent
 ```
 
+In case you already have an existing folder from a previous deployment you may have to remove it first.
 
 

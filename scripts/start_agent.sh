@@ -6,6 +6,9 @@ aea fetch eightballer/liquidation_station --local
 # go to the new agent
 cd liquidation_station/
 
+# install the agent
+aea install
+
 # create and add a new ethereum key
 aea generate-key ethereum && aea add-key ethereum
 
