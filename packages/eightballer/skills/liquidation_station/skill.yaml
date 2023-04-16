@@ -6,8 +6,9 @@ description: The scaffold skill is a scaffold for your own skill implementation.
 license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
+  .behaviours.py.swp: bafybeicmywcieydsm53nzardoqo3ytpmplrj2opbadrey4sd24bgxwvsvi
   __init__.py: bafybeifjeluqyh7ck3rrs2jfqbe5blt6sc3ti4c6bj4j6dt6smtfngu7qy
-  behaviours.py: bafybeifrnm2fel6rb6selj47jup42hj3o4xprm2cyxdemyzuholq7rvksm
+  behaviours.py: bafybeic36k3uvezptq3ubzqhvyeui5mhwnfkkjwwp6dh7wsenrrbf44foy
   dialogues.py: bafybeid7jjpfscvapjsg7hv44voxd4pdy2i3ozcmckwk4phkft7zrpshmm
   fsm_specification.yaml: bafybeifdm4hgew2jr4y2yrko7ej6yh6ozsspurzmji4urontqckdycbc7m
   handlers.py: bafybeictjhl52fkhcraiijatscswo2m62kk47fdcuwwfc7jwjyjkbgvary
@@ -24,7 +25,8 @@ fingerprint:
 fingerprint_ignore_patterns: []
 connections: []
 contracts: []
-protocols: []
+protocols:
+- valory/ledger_api:1.0.0:bafybeibo4bdtcrxi2suyzldwoetjar6pqfzm6vt5xal22ravkkcvdmtksi
 skills:
 - valory/abstract_round_abci:0.1.0:bafybeiar4gy4brpuxekiwjq7osh3fm254jgdoxlgkvqcp5lytu4uzrmbsm
 behaviours:

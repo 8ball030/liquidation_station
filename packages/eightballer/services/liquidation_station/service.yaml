@@ -6,7 +6,7 @@ aea_version: '>=1.0.0, <2.0.0'
 license: Apache-2.0
 fingerprint: {}
 fingerprint_ignore_patterns: []
-agent: eightballer/liquidation_station:0.1.0:bafybeiefo2z4ylnpbxbj4mej7fswwkv46reiokvkvlkwrem3wtgstbyyay
+agent: eightballer/liquidation_station:0.1.0:bafybeidyjc2zsbhns5ewnuypbmnubzpsykdbih2ognahbcgjyjjl3qu7q4
 number_of_agents: 4
 deployment:
   agent:
@@ -27,3 +27,13 @@ models:
     args:
       infura_api_key: ${INFURA_API_KEY:str}
       polygonscan_api_key: ${POLYGONSCAN_API_KEY:str}
+---
+public_id: valory/ledger:0.19.0
+type: connection
+config:
+  ledger_apis:
+    ethereum:
+      address: https://polygon-mainnet.infura.io/v3/f16fca6cfce14d28a08b25c524c76f16
+      chain_id: 137
+      poa_chain: false
+      default_gas_price_strategy: eip1559
