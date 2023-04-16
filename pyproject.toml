@@ -4,7 +4,6 @@ version = "0.1.0"
 description = ""
 authors = ["8baller <8ball030@gmail.com>"]
 readme = "README.md"
-packages = [{include = "eth_zurich"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"

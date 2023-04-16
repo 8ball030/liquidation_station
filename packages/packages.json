@@ -2,7 +2,24 @@
     "dev": {
         "skill/eightballer/liquidation_station/0.1.0": "bafybeibgmfk66xv6s6fp4ve4oipezh4e7fw4e5o4l2hbze3rjhz2ro2vva",
         "skill/eightballer/metrics/0.1.0": "bafybeifsnluscoi7u7czwgvpwg6qxqtehw63ilevgalboqducta47x3ymy",
-        "agent/eightballer/liquidation_station/0.1.0": "bafybeiehzkflk5u7fmhbwxsbirmhmy2hek3pfr6yflluhncwz4hdkgjvri"
+        "agent/eightballer/liquidation_station/0.1.0": "bafybeiehzkflk5u7fmhbwxsbirmhmy2hek3pfr6yflluhncwz4hdkgjvri",
+        "contract/zarathustra/comptroller/0.1.0": "bafybeif7llyor55q7qcxbmywxiw6fdwjrek3uh33cqhgy5xqfs7ijh7t5u",
+        "contract/zarathustra/jump_interest_model/0.1.0": "bafybeidxamew73xaldmyxshkuwf22tytugjovgp3army6pml67caidlmhu",
+        "contract/zarathustra/o_dai/0.1.0": "bafybeicf6sadq3dbrqtd3i5tsd2nzz7jhcueaxiskobznoczz43n4rkchq",
+        "contract/zarathustra/o_gdai/0.1.0": "bafybeig2y4opadch7azf3epnjtiikq7sw3su7ksiyoqvl4jg545f45goia",
+        "contract/zarathustra/o_mai/0.1.0": "bafybeifb3b3cik363whoxm75e35kqtlkzxihev2465zewv2kq3mv7sjk2y",
+        "contract/zarathustra/o_matic/0.1.0": "bafybeif2d43yviemwlw3nshkzgrlovp54ys2xhwqiehmzo6wsla5pjrcg4",
+        "contract/zarathustra/o_matic_logic/0.1.0": "bafybeiah72eaw7ewrv76q64brnzg6l7hgi46gzian5oorpwznsjpbacl74",
+        "contract/zarathustra/o_maticx/0.1.0": "bafybeictok62ozccq5hnw56eugn763lrbuv74wrhl6a7lmhv3m7bxwi3dy",
+        "contract/zarathustra/oracle/0.1.0": "bafybeihqalbz4ixvkaigmblppfzfav2pofnqeexa5wdczbuqby2o5tk7p4",
+        "contract/zarathustra/o_token_logic/0.1.0": "bafybeiabuydqz5blvypitqg3cffognqooaowrbextw3p26hxjfzzki2fwa",
+        "contract/zarathustra/o_usdc/0.1.0": "bafybeibe26zrttvm6qvwmztujfsow2qyrx3a24vg5no5bbb6oaa7dum76e",
+        "contract/zarathustra/o_usdt/0.1.0": "bafybeigpkassk2p4bkeyelyfu3xmmivt32jonni2qn5o6gkwzlycgn335m",
+        "contract/zarathustra/ov_ghst/0.1.0": "bafybeiadytu7dn7kb4kxjwvn4443pobkwgq3rcjdtk32iwo7fbwobmombe",
+        "contract/zarathustra/o_wbtc/0.1.0": "bafybeid36vr6waa7mmzb7b73n4kj7qkfkr6mzxluxxjrcuzgx4jh274nsi",
+        "contract/zarathustra/o_weth/0.1.0": "bafybeidda3nacec4xetnptyqauassynx2n3lzjcx4px6q7vva2czzqcjqm",
+        "contract/zarathustra/owst_eth/0.1.0": "bafybeibb3wsgr54nuerckxlbuintbacbqgryg6lql7vs6zokthijpmgxti",
+        "contract/zarathustra/unitroller/0.1.0": "bafybeibgibmowd4facyv2elz6tsiwrg7x2kohoqwbwf3eyaa6vou335zlu"
     },
     "third_party": {
         "protocol/valory/abci/0.1.0": "bafybeig3dj5jhsowlvg3t73kgobf6xn4nka7rkttakdb2gwsg5bp7rt7q4",
