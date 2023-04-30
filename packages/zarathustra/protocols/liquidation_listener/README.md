@@ -1,4 +1,14 @@
+# Liquidation Listener Protocol
+
+## Description
+
+This is a protocol for receiving information about liquidation events from a websocket stream.
+It is based on the liquidation model [as defined here](https://github.com/marlinprotocol/mev-inspect-py/blob/main/mev_inspect/models/liquidations.py).
+
+## Specification
+
 ---
+
 name: liquidation_listener
 author: zarathustra
 version: 0.1.0
@@ -29,6 +39,7 @@ speech_acts:
     error_data: pt:dict[pt:str, pt:str]
 ...
 ---
+
 ct:Protocol: |
   enum ProtocolEnum {
     UNISWAP_V2 = 0
@@ -50,7 +61,9 @@ ct:ErrorCode: |
   ErrorCodeEnum error_code = 1;
 ...
 ---
+
 initiation:
+
 - subscribe_to_liquidation_events
 - unsubscribe_from_liquidation_events
 reply:
