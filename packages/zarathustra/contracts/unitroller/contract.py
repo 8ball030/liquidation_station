@@ -29,30 +29,7 @@ from aea.configurations.base import PublicId
 from aea.contracts.base import Contract
 from aea.crypto.base import LedgerApi
 
-
-class Error(IntEnum):
-    def _generate_next_value_(name, start, count, last_values):
-        """Generate consecutive automatic numbers starting from zero"""
-        return count
-
-    NO_ERROR = auto()
-    UNAUTHORIZED = auto()
-    COMPTROLLER_MISMATCH = auto()
-    INSUFFICIENT_SHORTFALL = auto()
-    INSUFFICIENT_LIQUIDITY = auto()
-    INVALID_CLOSE_FACTOR = auto()
-    INVALID_COLLATERAL_FACTOR = auto()
-    INVALID_LIQUIDATION_INCENTIVE = auto()
-    MARKET_NOT_ENTERED = auto()  # no longer possible
-    MARKET_NOT_LISTED = auto()
-    MARKET_ALREADY_LISTED = auto()
-    MATH_ERROR = auto()
-    NONZERO_BORROW_BALANCE = auto()
-    PRICE_ERROR = auto()
-    REJECTION = auto()
-    SNAPSHOT_ERROR = auto()
-    TOO_MANY_ASSETS = auto()
-    TOO_MUCH_REPAY = auto()
+from packages.zarathustra.contracts import Error
 
 
 Address = str
@@ -69,6 +46,22 @@ def to_named_tuple(error: int, **kwargs) -> NamedTuple:
     kwargs = {"error": Error(error), **kwargs}
     keys, values = zip(*kwargs.items())
     return namedtuple("contract_response", keys)(*values)
+
+
+@dataclass
+class LiquidateBorrowAllowed:
+    o_token_borrowed: Address
+    o_token_collateral: Address
+    liquidator: Address
+    borrower: Address
+    repay_amount: Wei
+
+
+@dataclass
+class LiquidateCalculateSeizeTokens:
+    o_token_borrowed: Address
+    o_token_collateral: Address
+    actual_repay_amount: Wei
 
 
 class Unitroller(Contract):
@@ -156,7 +149,7 @@ class Unitroller(Contract):
         cls,
         ledger_api: LedgerApi,
         contract_address: str,
-    ) -> Address:
+    ) -> NamedTuple:
         """Get price oracle address."""
 
         contract = cls.get_instance(
@@ -164,18 +157,14 @@ class Unitroller(Contract):
             contract_address=contract_address,
         )
 
-        return contract.functions.oracle().call()
+        return to_named_tuple(contract.functions.oracle().call())
 
     @classmethod
     def liquidate_borrow_allowed(
         cls,
         ledger_api: LedgerApi,
         contract_address: str,
-        o_token_borrowed: Address,
-        o_token_collateral: Address,
-        liquidator: Address,
-        borrower: Address,
-        repay_amount: Wei,
+        data: LiquidateBorrowAllowed,
     ) -> NamedTuple:
         """Checks if the liquidation should be allowed to occur."""
 
@@ -184,13 +173,7 @@ class Unitroller(Contract):
             contract_address=contract_address,
         )
 
-        error_code = contract.functions.liquidateBorrowAllowed(
-            o_token_borrowed,
-            o_token_collateral,
-            liquidator,
-            borrower,
-            repay_amount,
-        ).call()
+        error_code = contract.functions.liquidateBorrowAllowed(**asdict(data)).call()
 
         return to_named_tuple(error_code)
 
@@ -199,9 +182,7 @@ class Unitroller(Contract):
         cls,
         ledger_api: LedgerApi,
         contract_address: str,
-        o_token_borrowed: Address,
-        o_token_collateral: Address,
-        actual_borrow_amount: Wei,
+        data: LiquidateCalculateSeizeTokens,
     ):
         """Calculate number of tokens of collateral asset to seize given an underlying amount.
 
@@ -210,7 +191,7 @@ class Unitroller(Contract):
            seizeAmount = actualRepayAmount * liquidationIncentive * priceBorrowed / priceCollateral
            seizeTokens = seizeAmount / exchangeRate
 
-        returns: number of oTokenCollateral tokens to be seized in a liquidation.
+        returns: error code and number of oTokenCollateral tokens to be seized in a liquidation.
         """
 
         contract = cls.get_instance(
@@ -218,11 +199,7 @@ class Unitroller(Contract):
             contract_address=contract_address,
         )
 
-        result = contract.functions.liquidateCalculateSeizeTokens(
-            o_token_borrowed,
-            o_token_collateral,
-            actual_borrow_amount,
-        ).call()
+        result = contract.functions.liquidateCalculateSeizeTokens(**asdict(data)).call()
 
         error_code, seize_tokens = result
         return to_named_tuple(error_code, seize_tokens=seize_tokens)
