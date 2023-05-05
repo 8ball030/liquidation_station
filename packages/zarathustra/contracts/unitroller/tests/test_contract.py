@@ -78,6 +78,16 @@ class TestUnitroller(BaseContractTest):
 
         assert isinstance(contract_response, int)
 
+    def test_seize_guardian_paused(self) -> None:
+        """Test get token URI method."""
+
+        contract_response = self.contract.seize_guardian_paused(
+            ledger_api=self.ledger_api,
+            contract_address=self.contract_address,
+        )
+
+        assert isinstance(contract_response, bool)
+
     @pytest.mark.parametrize(
         "test_case",
         [
