@@ -76,3 +76,24 @@ class TestUnitroller(BaseContractTest):
         )
 
         assert contract_response.error == expected
+
+    @pytest.mark.parametrize(
+        "test_case",
+        [
+            (LiquidateCalculateSeizeTokens(O_MATIC, O_MATIC, 0), to_named_tuple(0, 0)),
+        ],
+    )
+    def test_liquidate_calculate_seize_tokens(
+        self,
+        test_case: LiquidateCalculateSeizeTokens,
+        expected: NamedTuple,
+    ) -> None:
+        """Test get token URI method."""
+
+        contract_response = self.contract.liquidate_calculate_seize_tokens(
+            ledger_api=self.ledger_api,
+            contract_address=self.contract_address,
+            data=test_case,
+        )
+
+        assert contract_response == expected
