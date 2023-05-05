@@ -17,9 +17,9 @@
 #
 # ------------------------------------------------------------------------------
 
-"""This module contains the scaffold contract definition."""
-import logging
+"""This module contains the Unitroller contract definition."""
 
+import logging
 from typing import Any, NamedTuple
 from enum import IntEnum, auto
 from collections import namedtuple
@@ -31,7 +31,6 @@ from aea.crypto.base import LedgerApi
 
 
 class Error(IntEnum):
-
     def _generate_next_value_(name, start, count, last_values):
         """Generate consecutive automatic numbers starting from zero"""
         return count
@@ -44,7 +43,7 @@ class Error(IntEnum):
     INVALID_CLOSE_FACTOR = auto()
     INVALID_COLLATERAL_FACTOR = auto()
     INVALID_LIQUIDATION_INCENTIVE = auto()
-    MARKET_NOT_ENTERED  = auto() # no longer possible
+    MARKET_NOT_ENTERED = auto()  # no longer possible
     MARKET_NOT_LISTED = auto()
     MARKET_ALREADY_LISTED = auto()
     MATH_ERROR = auto()
@@ -69,7 +68,7 @@ _logger = logging.getLogger(
 def to_named_tuple(error: int, **kwargs) -> NamedTuple:
     kwargs = {"error": Error(error), **kwargs}
     keys, values = zip(*kwargs.items())
-    return namedtuple('contract_response', keys)(*values)
+    return namedtuple("contract_response", keys)(*values)
 
 
 class Unitroller(Contract):
@@ -132,22 +131,31 @@ class Unitroller(Contract):
         """
         raise NotImplementedError
 
-    def get_account_liquidity(self, account: Address) -> NamedTuple:
+    @classmethod
+    def get_account_liquidity(
+        cls, ledger_api: LedgerApi, contract_address: str, account: Address
+    ) -> NamedTuple:
         """Determine the current account liquidity wrt collateral requirements."""
 
-        result = contract_interface.functions.getAccountLiquidity(
-            account
-        ).call()
+        contract = cls.get_instance(
+            ledger_api=ledger_api,
+            contract_address=contract_address,
+        )
 
+        result = contract.functions.getAccountLiquidity(account).call()
         error_code, liquidity, shortfall = result
+
         return to_named_tuple(
             error_code,
             liquidity=liquidity,
             shortfall=shortfall,
         )
 
+    @classmethod
     def liquidate_borrow_allowed(
-        self,
+        cls,
+        ledger_api: LedgerApi,
+        contract_address: str,
         o_token_borrowed: Address,
         o_token_collateral: Address,
         liquidator: Address,
@@ -156,12 +164,12 @@ class Unitroller(Contract):
     ) -> NamedTuple:
         """Checks if the liquidation should be allowed to occur."""
 
-        contract_interface = cls.get_instance(
+        contract = cls.get_instance(
             ledger_api=ledger_api,
             contract_address=contract_address,
         )
 
-        error_code = contract_interface.functions.liquidateBorrowAllowed(
+        error_code = contract.functions.liquidateBorrowAllowed(
             o_token_borrowed,
             o_token_collateral,
             liquidator,
@@ -171,8 +179,11 @@ class Unitroller(Contract):
 
         return to_named_tuple(error_code)
 
+    @classmethod
     def liquidate_calculate_seize_tokens(
-        self,
+        cls,
+        ledger_api: LedgerApi,
+        contract_address: str,
         o_token_borrowed: Address,
         o_token_collateral: Address,
         actual_borrow_amount: Wei,
@@ -187,18 +198,20 @@ class Unitroller(Contract):
         returns: number of oTokenCollateral tokens to be seized in a liquidation.
         """
 
-        result = contract_interface.functions.liquidateCalculateSeizeTokens(
+        contract = cls.get_instance(
+            ledger_api=ledger_api,
+            contract_address=contract_address,
+        )
+
+        result = contract.functions.liquidateCalculateSeizeTokens(
             o_token_borrowed,
             o_token_collateral,
             actual_borrow_amount,
         ).call()
 
         error_code, seize_tokens = result
-        return to_named_tuple(
-            error_code,
-            seize_tokens=seize_tokens
-        )
+        return to_named_tuple(error_code, seize_tokens=seize_tokens)
 
-        ### Likely not relevant to us now:
+        # Likely not relevant to us now:
         # seizeAllowed: Checks if the seizing of assets should be allowed to occur
         # seizeVerify: Validates seize and reverts on rejection.
