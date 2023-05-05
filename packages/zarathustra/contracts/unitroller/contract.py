@@ -160,6 +160,21 @@ class Unitroller(Contract):
         return to_named_tuple(contract.functions.oracle().call())
 
     @classmethod
+    def get_all_markets(
+        cls,
+        ledger_api: LedgerApi,
+        contract_address: str,
+    ) -> list[Address]:
+        """Get all oToken market addresses."""
+
+        contract = cls.get_instance(
+            ledger_api=ledger_api,
+            contract_address=contract_address,
+        )
+
+        return contract.functions.getAllMarkets().call()
+
+    @classmethod
     def liquidate_borrow_allowed(
         cls,
         ledger_api: LedgerApi,
