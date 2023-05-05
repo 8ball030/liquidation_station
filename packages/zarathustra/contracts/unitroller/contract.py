@@ -175,6 +175,24 @@ class Unitroller(Contract):
         return contract.functions.getAllMarkets().call()
 
     @classmethod
+    def liquidation_incentive_mantissa(
+        cls,
+        ledger_api: LedgerApi,
+        contract_address: str,
+    ) -> int:
+        """Get liquidation incentive mantissa.
+
+        Represents the amount of discount a liquidator receives when they liquidate a borrower's collateral.
+        """
+
+        contract = cls.get_instance(
+            ledger_api=ledger_api,
+            contract_address=contract_address,
+        )
+
+        return contract.functions.liquidationIncentiveMantissa().call()
+
+    @classmethod
     def liquidate_borrow_allowed(
         cls,
         ledger_api: LedgerApi,
