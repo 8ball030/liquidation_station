@@ -46,3 +46,14 @@ class TestUnitroller(BaseContractTest):
         assert contract_response.error == Error.NO_ERROR
         assert contract_response.liquidity == 0
         assert contract_response.shortfall == 0
+
+    def test_get_price_oracle(self) -> None:
+        """Test get token URI method."""
+
+        contract_response = self.contract.get_price_oracle(
+            ledger_api=self.ledger_api,
+            contract_address=self.contract_address,
+        )
+
+        assert isinstance(contract_response.price_oracle, str)
+        assert int(contract_response.price_oracle, 16)
