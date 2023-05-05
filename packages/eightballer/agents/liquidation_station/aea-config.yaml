@@ -15,7 +15,7 @@ connections:
 - valory/p2p_libp2p_client:0.1.0:bafybeidwcobzb7ut3efegoedad7jfckvt2n6prcmd4g7xnkm6hp6aafrva
 contracts:
 - valory/service_registry:0.1.0:bafybeiauproyi7qle35u777xnlajrz5samm7h2cdjdqxlsfkxbtwbqilzm
-- zarathustra/unitroller:0.1.0:bafybeiep5cexticlaav7nubrawpmyzyrn3uqzqcosjowevjp2qmhe27srq
+- zarathustra/unitroller:0.1.0:bafybeidn57qegjuumayjfkcknlyud2gzirtpecxkzjlizpvsjfsm33myau
 protocols:
 - fetchai/default:1.0.0:bafybeig3w57l7laofhuyl7nco2lfzgtbqf4cto75edfccymugtixjqnm6y
 - open_aea/signing:1.0.0:bafybeibqlfmikg5hk4phzak6gqzhpkt6akckx7xppbp53mvwt6r73h7tk4
