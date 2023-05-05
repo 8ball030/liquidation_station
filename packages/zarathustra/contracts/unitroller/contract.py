@@ -152,6 +152,21 @@ class Unitroller(Contract):
         )
 
     @classmethod
+    def get_price_oracle(
+        cls,
+        ledger_api: LedgerApi,
+        contract_address: str,
+    ) -> Address:
+        """Get price oracle address."""
+
+        contract = cls.get_instance(
+            ledger_api=ledger_api,
+            contract_address=contract_address,
+        )
+
+        return contract.functions.oracle().call()
+
+    @classmethod
     def liquidate_borrow_allowed(
         cls,
         ledger_api: LedgerApi,
