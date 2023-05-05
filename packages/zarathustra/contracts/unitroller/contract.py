@@ -211,6 +211,24 @@ class Unitroller(Contract):
         return to_named_tuple(error_code)
 
     @classmethod
+    def seize_guardian_paused(
+        cls,
+        ledger_api: LedgerApi,
+        contract_address: str,
+    ) -> bool:
+        """Checks if the seizeGuardianPaused is set to prevent any further collateral seizures.
+
+        If 'True' then no more liquidations can occur, if `False` the seize function is enabled.
+        """
+
+        contract = cls.get_instance(
+            ledger_api=ledger_api,
+            contract_address=contract_address,
+        )
+
+        return contract.functions.sizeGuardianPaused().call()
+
+    @classmethod
     def liquidate_calculate_seize_tokens(
         cls,
         ledger_api: LedgerApi,
