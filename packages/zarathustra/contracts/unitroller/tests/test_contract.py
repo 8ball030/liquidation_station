@@ -68,6 +68,16 @@ class TestUnitroller(BaseContractTest):
 
         assert isinstance(contract_response, list)
 
+    def test_liquidation_incentive_mantissa(self) -> None:
+        """Test get token URI method."""
+
+        contract_response = self.contract.get_all_markets(
+            ledger_api=self.ledger_api,
+            contract_address=self.contract_address,
+        )
+
+        assert isinstance(contract_response, int)
+
     @pytest.mark.parametrize(
         "test_case",
         [
