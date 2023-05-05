@@ -34,7 +34,7 @@ class TestUnitroller(BaseContractTest):
     contract_directory = PACKAGE_DIR
 
     def test_get_account_liquidity(self) -> None:
-        """Test get token URI method."""
+        """Test get_account_liquidity."""
 
         contract_response = self.contract.get_account_liquidity(
             ledger_api=self.ledger_api,
@@ -48,7 +48,7 @@ class TestUnitroller(BaseContractTest):
         assert contract_response.shortfall == 0
 
     def test_get_price_oracle(self) -> None:
-        """Test get token URI method."""
+        """Test get_price_oracle."""
 
         contract_response = self.contract.get_price_oracle(
             ledger_api=self.ledger_api,
@@ -59,7 +59,7 @@ class TestUnitroller(BaseContractTest):
         assert int(contract_response.price_oracle, 16)
 
     def test_get_all_markets(self) -> None:
-        """Test get token URI method."""
+        """Test get_all_markets."""
 
         contract_response = self.contract.get_all_markets(
             ledger_api=self.ledger_api,
@@ -69,7 +69,7 @@ class TestUnitroller(BaseContractTest):
         assert isinstance(contract_response, list)
 
     def test_liquidation_incentive_mantissa(self) -> None:
-        """Test get token URI method."""
+        """Test liquidation_incentive_mantissa."""
 
         contract_response = self.contract.get_all_markets(
             ledger_api=self.ledger_api,
@@ -79,7 +79,7 @@ class TestUnitroller(BaseContractTest):
         assert isinstance(contract_response, int)
 
     def test_seize_guardian_paused(self) -> None:
-        """Test get token URI method."""
+        """Test seize_guardian_paused."""
 
         contract_response = self.contract.seize_guardian_paused(
             ledger_api=self.ledger_api,
@@ -97,7 +97,7 @@ class TestUnitroller(BaseContractTest):
     def test_liquidate_borrow_allowed(
         self, test_case: LiquidateBorrowAllowed, expected: Error
     ) -> None:
-        """Test get token URI method."""
+        """Test liquidate_borrow_allowed."""
 
         contract_response = self.contract.liquidate_borrow_allowed(
             ledger_api=self.ledger_api,
@@ -118,7 +118,7 @@ class TestUnitroller(BaseContractTest):
         test_case: LiquidateCalculateSeizeTokens,
         expected: NamedTuple,
     ) -> None:
-        """Test get token URI method."""
+        """Test liquidate_calculate_seize_tokens."""
 
         contract_response = self.contract.liquidate_calculate_seize_tokens(
             ledger_api=self.ledger_api,
