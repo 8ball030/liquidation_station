@@ -57,3 +57,22 @@ class TestUnitroller(BaseContractTest):
 
         assert isinstance(contract_response.price_oracle, str)
         assert int(contract_response.price_oracle, 16)
+
+    @pytest.mark.parametrize(
+        "test_case",
+        [
+            (LiquidateBorrowAllowed(*([NULL_ADDRESS] * 4), 0), Error.MARKET_NOT_LISTED),
+        ],
+    )
+    def test_liquidate_borrow_allowed(
+        self, test_case: LiquidateBorrowAllowed, expected: Error
+    ) -> None:
+        """Test get token URI method."""
+
+        contract_response = self.contract.liquidate_borrow_allowed(
+            ledger_api=self.ledger_api,
+            contract_address=self.contract_address,
+            data=test_case,
+        )
+
+        assert contract_response.error == expected
