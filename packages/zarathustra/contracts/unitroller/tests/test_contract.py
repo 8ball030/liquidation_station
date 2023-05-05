@@ -58,6 +58,16 @@ class TestUnitroller(BaseContractTest):
         assert isinstance(contract_response.price_oracle, str)
         assert int(contract_response.price_oracle, 16)
 
+    def test_get_all_markets(self) -> None:
+        """Test get token URI method."""
+
+        contract_response = self.contract.get_all_markets(
+            ledger_api=self.ledger_api,
+            contract_address=self.contract_address,
+        )
+
+        assert isinstance(contract_response, list)
+
     @pytest.mark.parametrize(
         "test_case",
         [
