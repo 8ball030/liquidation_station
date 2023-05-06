@@ -17,4 +17,4 @@
 #
 # ------------------------------------------------------------------------------
 
-"""This module contains the contract packages."""
+"""This module contains the support resources for the ContractRegistry."""

@@ -8,8 +8,7 @@ import pytest
 from aea_test_autonomy.base_test_classes.contracts import BaseContractTest
 from aea_test_autonomy.docker.base import skip_docker_tests
 
-from packages.zarathustra.contracts import (
-    OVIX_CONTRACT_ADDRESSES_POLYGON_POS,
+from packages.zarathustra.contracts.contract_registry.contract import (
     NULL_ADDRESS,
     Error,
 )
@@ -30,7 +29,7 @@ class TestUnitroller(BaseContractTest):
     """Test Unitroller contract."""
 
     contract: Unitroller
-    contract_address = OVIX_CONTRACT_ADDRESSES_POLYGON_POS.UNITROLLER
+    contract_address = Unitroller.address
     contract_directory = PACKAGE_DIR
 
     def test_get_account_liquidity(self) -> None:
