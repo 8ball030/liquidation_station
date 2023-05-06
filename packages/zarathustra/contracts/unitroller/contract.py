@@ -29,7 +29,10 @@ from aea.configurations.base import PublicId
 from aea.contracts.base import Contract
 from aea.crypto.base import LedgerApi
 
-from packages.zarathustra.contracts import Error
+from packages.zarathustra.contracts.contract_registry.contract import (
+    ContractRegistry,
+    Error,
+)
 
 
 Address = str
@@ -72,6 +75,8 @@ class Unitroller(Contract):
     """
 
     contract_id = PUBLIC_ID
+    contract_registry = ContractRegistry()
+    address = contract_registry.addresses.UNITROLLER
 
     @classmethod
     def get_raw_transaction(
