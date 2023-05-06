@@ -6,9 +6,10 @@ authors = ["8baller <8ball030@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.9"
 open-autonomy = "^0.10.1"
 docker-compose = "^1.29.2"
+rich-click = "^1.6.1"
 
 
 
