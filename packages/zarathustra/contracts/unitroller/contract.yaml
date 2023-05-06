@@ -8,7 +8,8 @@ aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   __init__.py: bafybeifzs22oiwtftrlgrf5ze74x4kk5has2i46x5tpk6o3ivcce6vz44y
   build/unitroller.json: bafybeicemvpfbbujup4egs2n4rk7dqhfdcgpw7uqylg5sopfv7u27ppifi
-  contract.py: bafybeietan7seplr6iidmetuxcw3zejjou3xqxnzj2hiuwznehsz5gixue
+  contract.py: bafybeiemyf7lwsk2vpv6w63kavzotjyl6it4cjhm6yaawxskfjmxrqrwou
+  tests/test_contract.py: bafybeigj6op54osjxvccubvjujyuqgbvk2zber7shzrdvdwjmoeucf2ypy
 fingerprint_ignore_patterns: []
 class_name: Unitroller
 contract_interface_paths:

@@ -17,9 +17,9 @@
 #
 # ------------------------------------------------------------------------------
 
-"""This module contains the scaffold contract definition."""
-import logging
+"""This module contains the Unitroller contract definition."""
 
+import logging
 from typing import Any, NamedTuple
 from enum import IntEnum, auto
 from collections import namedtuple
@@ -29,31 +29,7 @@ from aea.configurations.base import PublicId
 from aea.contracts.base import Contract
 from aea.crypto.base import LedgerApi
 
-
-class Error(IntEnum):
-
-    def _generate_next_value_(name, start, count, last_values):
-        """Generate consecutive automatic numbers starting from zero"""
-        return count
-
-    NO_ERROR = auto()
-    UNAUTHORIZED = auto()
-    COMPTROLLER_MISMATCH = auto()
-    INSUFFICIENT_SHORTFALL = auto()
-    INSUFFICIENT_LIQUIDITY = auto()
-    INVALID_CLOSE_FACTOR = auto()
-    INVALID_COLLATERAL_FACTOR = auto()
-    INVALID_LIQUIDATION_INCENTIVE = auto()
-    MARKET_NOT_ENTERED  = auto() # no longer possible
-    MARKET_NOT_LISTED = auto()
-    MARKET_ALREADY_LISTED = auto()
-    MATH_ERROR = auto()
-    NONZERO_BORROW_BALANCE = auto()
-    PRICE_ERROR = auto()
-    REJECTION = auto()
-    SNAPSHOT_ERROR = auto()
-    TOO_MANY_ASSETS = auto()
-    TOO_MUCH_REPAY = auto()
+from packages.zarathustra.contracts import Error
 
 
 Address = str
@@ -69,7 +45,23 @@ _logger = logging.getLogger(
 def to_named_tuple(error: int, **kwargs) -> NamedTuple:
     kwargs = {"error": Error(error), **kwargs}
     keys, values = zip(*kwargs.items())
-    return namedtuple('contract_response', keys)(*values)
+    return namedtuple("contract_response", keys)(*values)
+
+
+@dataclass
+class LiquidateBorrowAllowed:
+    o_token_borrowed: Address
+    o_token_collateral: Address
+    liquidator: Address
+    borrower: Address
+    repay_amount: Wei
+
+
+@dataclass
+class LiquidateCalculateSeizeTokens:
+    o_token_borrowed: Address
+    o_token_collateral: Address
+    actual_repay_amount: Wei
 
 
 class Unitroller(Contract):
@@ -132,50 +124,116 @@ class Unitroller(Contract):
         """
         raise NotImplementedError
 
-    def get_account_liquidity(self, account: Address) -> NamedTuple:
+    @classmethod
+    def get_account_liquidity(
+        cls, ledger_api: LedgerApi, contract_address: str, account: Address
+    ) -> NamedTuple:
         """Determine the current account liquidity wrt collateral requirements."""
 
-        result = contract_interface.functions.getAccountLiquidity(
-            account
-        ).call()
+        contract = cls.get_instance(
+            ledger_api=ledger_api,
+            contract_address=contract_address,
+        )
 
+        result = contract.functions.getAccountLiquidity(account).call()
         error_code, liquidity, shortfall = result
+
         return to_named_tuple(
             error_code,
             liquidity=liquidity,
             shortfall=shortfall,
         )
 
-    def liquidate_borrow_allowed(
-        self,
-        o_token_borrowed: Address,
-        o_token_collateral: Address,
-        liquidator: Address,
-        borrower: Address,
-        repay_amount: Wei,
+    @classmethod
+    def get_price_oracle(
+        cls,
+        ledger_api: LedgerApi,
+        contract_address: str,
     ) -> NamedTuple:
-        """Checks if the liquidation should be allowed to occur."""
+        """Get price oracle address."""
 
-        contract_interface = cls.get_instance(
+        contract = cls.get_instance(
             ledger_api=ledger_api,
             contract_address=contract_address,
         )
 
-        error_code = contract_interface.functions.liquidateBorrowAllowed(
-            o_token_borrowed,
-            o_token_collateral,
-            liquidator,
-            borrower,
-            repay_amount,
-        ).call()
+        return to_named_tuple(contract.functions.oracle().call())
+
+    @classmethod
+    def get_all_markets(
+        cls,
+        ledger_api: LedgerApi,
+        contract_address: str,
+    ) -> list[Address]:
+        """Get all oToken market addresses."""
+
+        contract = cls.get_instance(
+            ledger_api=ledger_api,
+            contract_address=contract_address,
+        )
+
+        return contract.functions.getAllMarkets().call()
+
+    @classmethod
+    def liquidation_incentive_mantissa(
+        cls,
+        ledger_api: LedgerApi,
+        contract_address: str,
+    ) -> int:
+        """Get liquidation incentive mantissa.
+
+        Represents the amount of discount a liquidator receives when they liquidate a borrower's collateral.
+        """
+
+        contract = cls.get_instance(
+            ledger_api=ledger_api,
+            contract_address=contract_address,
+        )
+
+        return contract.functions.liquidationIncentiveMantissa().call()
+
+    @classmethod
+    def liquidate_borrow_allowed(
+        cls,
+        ledger_api: LedgerApi,
+        contract_address: str,
+        data: LiquidateBorrowAllowed,
+    ) -> NamedTuple:
+        """Checks if the liquidation should be allowed to occur."""
+
+        contract = cls.get_instance(
+            ledger_api=ledger_api,
+            contract_address=contract_address,
+        )
+
+        error_code = contract.functions.liquidateBorrowAllowed(**asdict(data)).call()
 
         return to_named_tuple(error_code)
 
+    @classmethod
+    def seize_guardian_paused(
+        cls,
+        ledger_api: LedgerApi,
+        contract_address: str,
+    ) -> bool:
+        """Checks if the seizeGuardianPaused is set to prevent any further collateral seizures.
+
+        If 'True' then no more liquidations can occur, if `False` the seize function is enabled.
+        """
+
+        contract = cls.get_instance(
+            ledger_api=ledger_api,
+            contract_address=contract_address,
+        )
+
+        return contract.functions.sizeGuardianPaused().call()
+
+    @classmethod
     def liquidate_calculate_seize_tokens(
-        self,
-        o_token_borrowed: Address,
-        o_token_collateral: Address,
-        actual_borrow_amount: Wei,
+        cls,
+        ledger_api: LedgerApi,
+        contract_address: str,
+        data: LiquidateCalculateSeizeTokens,
     ):
         """Calculate number of tokens of collateral asset to seize given an underlying amount.
 
@@ -184,21 +242,19 @@ class Unitroller(Contract):
            seizeAmount = actualRepayAmount * liquidationIncentive * priceBorrowed / priceCollateral
            seizeTokens = seizeAmount / exchangeRate
 
-        returns: number of oTokenCollateral tokens to be seized in a liquidation.
+        returns: error code and number of oTokenCollateral tokens to be seized in a liquidation.
         """
 
-        result = contract_interface.functions.liquidateCalculateSeizeTokens(
-            o_token_borrowed,
-            o_token_collateral,
-            actual_borrow_amount,
-        ).call()
-
-        error_code, seize_tokens = result
-        return to_named_tuple(
-            error_code,
-            seize_tokens=seize_tokens
+        contract = cls.get_instance(
+            ledger_api=ledger_api,
+            contract_address=contract_address,
         )
 
-        ### Likely not relevant to us now:
+        result = contract.functions.liquidateCalculateSeizeTokens(**asdict(data)).call()
+
+        error_code, seize_tokens = result
+        return to_named_tuple(error_code, seize_tokens=seize_tokens)
+
+        # Likely not relevant to us now:
         # seizeAllowed: Checks if the seizing of assets should be allowed to occur
         # seizeVerify: Validates seize and reverts on rejection.
