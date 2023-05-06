@@ -1,0 +1,45 @@
+agent_name: websocket_subscriber
+author: eightballer
+version: 0.1.0
+license: Apache-2.0
+description: ''
+aea_version: '>=1.32.0, <2.0.0'
+fingerprint: {}
+fingerprint_ignore_patterns: []
+connections:
+- eightballer/websocket_client:0.1.0:bafybeig4svgj7xosrimtdzpr2dvuzo2xha2ndgfrsr5cv4rni3op3d5giu
+contracts: []
+protocols:
+- fetchai/default:1.0.0:bafybeig3w57l7laofhuyl7nco2lfzgtbqf4cto75edfccymugtixjqnm6y
+- open_aea/signing:1.0.0:bafybeibqlfmikg5hk4phzak6gqzhpkt6akckx7xppbp53mvwt6r73h7tk4
+skills:
+- eightballer/contract_subscription:0.1.0:bafybeifsf6rkmltsny5vpxyv36bbk74bu3gismsc6o6olpnb5vomyvmxnm
+default_ledger: ethereum
+required_ledgers:
+- ethereum
+default_routing: {}
+connection_private_key_paths: {}
+skill_exception_policy: stop_and_exit
+private_key_paths: {}
+logging_config:
+  version: 1
+  disable_existing_loggers: false
+  handlers:
+    console:
+      class: rich.logging.RichHandler
+      level: DEBUG
+  loggers:
+    aea:
+      handlers:
+      - console
+      level: INFO
+      propagate: false
+dependencies:
+  open-aea-ledger-ethereum: {}
+default_connection: null
+---
+public_id: eightballer/websocket_client:0.1.0:bafybeiexove4oqyhoae5xmk2hilskthosov5imdp65olpgj3cfrepbouyy
+type: connection
+config:
+  endpoint: wss://polygon-mainnet.g.alchemy.com/v2/NoF8MPitnddMlyaaSSIg2ix4tt66N11U
+  target_skill_id: eightballer/contract_subscription:0.1.0

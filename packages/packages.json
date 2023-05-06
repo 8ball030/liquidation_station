@@ -1,9 +1,12 @@
 {
     "dev": {
-        "service/eightballer/liquidation_station/0.1.0": "bafybeieigrnx7lanovulhrgodkfecrytkmtltlqfazx2jc62i2o4zuwdvq",
-        "skill/eightballer/liquidation_station/0.1.0": "bafybeibrjpgsic76d5exquyxqlwqvuspocotnby2sqymo6wvj2l4fc42ci",
+        "service/eightballer/liquidation_station/0.1.0": "bafybeian6i47z5hktjiluz6cdxcpxej2j4zdmf6swfwr4j7o7274ellzgu",
+        "connection/eightballer/websocket_client/0.1.0": "bafybeig4svgj7xosrimtdzpr2dvuzo2xha2ndgfrsr5cv4rni3op3d5giu",
+        "skill/eightballer/liquidation_station/0.1.0": "bafybeidmjd54f5jergaimwyypuko4qrv7mobb2l7wr6qiywmmj33ikwxtm",
+        "skill/eightballer/contract_subscription/0.1.0": "bafybeifsf6rkmltsny5vpxyv36bbk74bu3gismsc6o6olpnb5vomyvmxnm",
         "skill/eightballer/metrics/0.1.0": "bafybeifsnluscoi7u7czwgvpwg6qxqtehw63ilevgalboqducta47x3ymy",
-        "agent/eightballer/liquidation_station/0.1.0": "bafybeidyjc2zsbhns5ewnuypbmnubzpsykdbih2ognahbcgjyjjl3qu7q4",
+        "agent/eightballer/liquidation_station/0.1.0": "bafybeiecvrolgncdg7oafl3m7ebmvsftjtinhnqeuxo2ogbr7mf4fekelm",
+        "agent/eightballer/websocket_subscriber/0.1.0": "bafybeiheyslk5pjc3m2cvuiaqmdlgxcjneexttttammw6ujipskttgmq2u",
         "contract/zarathustra/comptroller/0.1.0": "bafybeif7llyor55q7qcxbmywxiw6fdwjrek3uh33cqhgy5xqfs7ijh7t5u",
         "contract/zarathustra/jump_interest_model/0.1.0": "bafybeidxamew73xaldmyxshkuwf22tytugjovgp3army6pml67caidlmhu",
         "contract/zarathustra/o_dai/0.1.0": "bafybeicf6sadq3dbrqtd3i5tsd2nzz7jhcueaxiskobznoczz43n4rkchq",
