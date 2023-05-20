@@ -4,6 +4,8 @@
         "connection/eightballer/websocket_client/0.1.0": "bafybeicqkljjzvdl4v7pzbmsfd3al7uv7563x3qa5gmnzxeuoxgtmolpta",
         "skill/eightballer/liquidation_station/0.1.0": "bafybeiakjrvzhe6dtz6fx2toeueou2cvz4or2k6sjkletqswe7wnujd4pi",
         "skill/eightballer/contract_subscription/0.1.0": "bafybeice2er7hodqv5mtvchgsdy4k6qozg6rierdmv5wqkgv3uhoma7bqq",
+        "skill/eightballer/rysk_roller/0.1.0": "bafybeiafcmkswcqjg4lng3n6kucgu5izunryj2qnp6ihotztyjxb2wsc6e",
+        "agent/eightballer/rysk_roller/0.1.0": "bafybeifk4xfbmgndnkv7ueuijzkrvpthrlnadyxlaqygov6n6zzdsabggq",
         "skill/eightballer/metrics/0.1.0": "bafybeicfprrcnxuih5z2ymbujuxyv7rfc7rl2fi2n7nnlfks6c6gf2upp4",
         "agent/eightballer/liquidation_station/0.1.0": "bafybeicjbai4fe5r24pbd5nrlsulbw4qpdws7ypkoo5ifbi55aviifczpy",
         "agent/eightballer/websocket_subscriber/0.1.0": "bafybeid36ogr26tplsdjqoseeqg7l7io4gn33caldiaotmrqvqulhzhcbm",
@@ -46,6 +48,8 @@
         "connection/valory/p2p_libp2p_client/0.1.0": "bafybeidwcobzb7ut3efegoedad7jfckvt2n6prcmd4g7xnkm6hp6aafrva",
         "contract/valory/multisend/0.1.0": "bafybeigjywkl7hydjsrkogob3xebj2ifhqwmfhhxoeyrndzhhxi5u6amey",
         "protocol/valory/ipfs/0.1.0": "bafybeic72ncgqbzoz2guj4p4yjqulid7mv6yroeh65hxznloamoveeg7hq",
+        "contract/valory/uniswap_v2_erc20/0.1.0": "bafybeibkiwytuhhvxbisoxcybrx4lfstk6bvtriltles7fxxpy37yq45ja",
+        "contract/valory/uniswap_v2_router_02/0.1.0": "bafybeigk46llosgsfz3zp7gdz44t4libzqqqq7zi6d5wsjpz43evn6ww4m",
         "connection/valory/ipfs/0.1.0": "bafybeihubpyw2t3bwncz3l7jt4gf5xvfydwmob463vvgf3ikkhlwxakm3m"
     }
 }

@@ -1,0 +1,155 @@
+name: rysk_roller
+author: eightballer
+version: 0.1.0
+type: skill
+description: The scaffold skill is a scaffold for your own skill implementation.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  __init__.py: bafybeicsypfuei4zd7tykc3m4b7sujyscfovcsjz43z7ea4p3gghnfp3ue
+  behaviours.py: bafybeic55befqz32uxbzxzuqmmmnya52igs5qfss7qchervvkhh6i7ngr4
+  dialogues.py: bafybeid7xf5ye2hxzkq3puc2sx2g6sddehsrzi5ibqom56poakyvzte7xu
+  handlers.py: bafybeih7ayd727lw7id4suh6nbvhyyrytsxx4mljhjs5m6slcmammk2x2q
+  models.py: bafybeidkvworv5nycaxde7b6tyv3y6bpvn6yvwnjkot36b5jw4nfmoiszu
+  payloads.py: bafybeia56wyiccpnhcesm2xhswat3qvenuuy35sbdlkzscxesz34dnmpqm
+  rounds.py: bafybeid2xkhkljqybs6iio62znfm6sazowl2ycwxuotfpnhaz5rqhyw7uq
+  rysk_roller.yaml: bafybeibz5bfumhn3apbjvjdsrivufbmrthqjigcbkj525xgzavf7lcllgy
+  tests/__init__.py: bafybeic3534aro4pdtsdcuxywzlgkccczx2elhnwisiq3r6okvnrdu4aia
+  tests/test_behaviours.py: bafybeihenxqeya6gq2c675qizxh5yhdc2lga5pkfzbds6gnyz354ors6iq
+  tests/test_dialogues.py: bafybeihaln6pvtrh4i4gwnqvvbyhiomr4rgqnzhe2bjnlxxddt6m2jr3v4
+  tests/test_handlers.py: bafybeia2vppqs3iapunprqbtl4h7my3l37xwmrpnjelw3xjitd63pc2ml4
+  tests/test_models.py: bafybeifbhegyk4owbfu7edp4y5qt2mfadqm5h7354jgwyii2xkuxzrndha
+  tests/test_payloads.py: bafybeianv5jcychuxttpeyvo5khg4j3fwmxn2xp27prp4ygacjntoxoi4y
+  tests/test_rounds.py: bafybeih3byap3kk76uzqtxynxilj5p7vzioawo5u56t4bsdp6orrsyhehm
+fingerprint_ignore_patterns: []
+connections:
+- valory/http_client:0.23.0:bafybeidykl4elwbcjkqn32wt5h4h7tlpeqovrcq3c5bcplt6nhpznhgczi
+contracts:
+- valory/uniswap_v2_erc20:0.1.0:bafybeibkiwytuhhvxbisoxcybrx4lfstk6bvtriltles7fxxpy37yq45ja
+- valory/uniswap_v2_router_02:0.1.0:bafybeigk46llosgsfz3zp7gdz44t4libzqqqq7zi6d5wsjpz43evn6ww4m
+protocols:
+- valory/contract_api:1.0.0:bafybeidv6wxpjyb2sdyibnmmum45et4zcla6tl63bnol6ztyoqvpl4spmy
+- valory/http:1.0.0:bafybeifyoio7nlh5zzyn5yz7krkou56l22to3cwg7gw5v5o3vxwklibhty
+skills:
+- valory/abstract_round_abci:0.1.0:bafybeiar4gy4brpuxekiwjq7osh3fm254jgdoxlgkvqcp5lytu4uzrmbsm
+behaviours:
+  main:
+    args: {}
+    class_name: FlowchartToFSMRoundBehaviour
+handlers:
+  abci:
+    args: {}
+    class_name: ABCIHandler
+  contract_api:
+    args: {}
+    class_name: ContractApiHandler
+  http:
+    args: {}
+    class_name: HttpHandler
+  ipfs:
+    args: {}
+    class_name: IpfsHandler
+  ledger_api:
+    args: {}
+    class_name: LedgerApiHandler
+  signing:
+    args: {}
+    class_name: SigningHandler
+  tendermint:
+    args: {}
+    class_name: TendermintHandler
+models:
+  abci_dialogues:
+    args: {}
+    class_name: AbciDialogues
+  benchmark_tool:
+    args:
+      log_dir: /logs
+    class_name: BenchmarkTool
+  contract_api_dialogues:
+    args: {}
+    class_name: ContractApiDialogues
+  http_dialogues:
+    args: {}
+    class_name: HttpDialogues
+  ipfs_dialogues:
+    args: {}
+    class_name: IpfsDialogues
+  ledger_api_dialogues:
+    args: {}
+    class_name: LedgerApiDialogues
+  params:
+    args:
+      cleanup_history_depth: 1
+      cleanup_history_depth_current: null
+      drand_public_key: 868f005eb8e6e4ca0a47c8a77ceaa5309a47978a7c71bc5cce96366b5d7a569937c529eeda66c7293784a9402801af31
+      finalize_timeout: 60.0
+      genesis_config:
+        chain_id: chain-c4daS1
+        consensus_params:
+          block:
+            max_bytes: '22020096'
+            max_gas: '-1'
+            time_iota_ms: '1000'
+          evidence:
+            max_age_duration: '172800000000000'
+            max_age_num_blocks: '100000'
+            max_bytes: '1048576'
+          validator:
+            pub_key_types:
+            - ed25519
+          version: {}
+        genesis_time: '2022-05-20T16:00:21.735122717Z'
+        voting_power: '10'
+      history_check_timeout: 1205
+      ipfs_domain_name: null
+      keeper_allowed_retries: 3
+      keeper_timeout: 30.0
+      max_attempts: 10
+      max_healthcheck: 120
+      on_chain_service_id: null
+      option_assets:
+        WETH: '0x3b3a1de07439eeb04492fa64a889ee25a130cdd3'
+        USDC: '0x408c5755b5c7a0a28d851558ea3636cfc5b5b19d'
+      request_retry_delay: 1.0
+      request_timeout: 10.0
+      reset_pause_duration: 10
+      reset_tendermint_after: 2
+      retry_attempts: 400
+      retry_timeout: 3
+      round_timeout_seconds: 30.0
+      service_id: flowchart_to_f_s_m
+      service_registry_address: null
+      setup:
+        all_participants:
+        - '0x0000000000000000000000000000000000000000'
+        consensus_threshold: null
+        safe_contract_address: '0x0000000000000000000000000000000000000000'
+      share_tm_config_on_startup: false
+      sleep_time: 1
+      subgraph_query: "{ series\n  {\n    id\n    expiration\n    netDHVExposure\n\
+        \    strike\n    isPut\n    isBuyable\n    isSellable\n  }\n}\n"
+      subgraph_url: https://api.goldsky.com/api/public/project_clhf7zaco0n9j490ce421agn4/subgraphs/devey/0.0.2/gn
+      tendermint_check_sleep_delay: 3
+      tendermint_com_url: http://localhost:8080
+      tendermint_max_retries: 5
+      tendermint_p2p_url: localhost:26656
+      tendermint_url: http://localhost:26657
+      tx_timeout: 10.0
+      use_termination: false
+      validate_timeout: 1205
+    class_name: Params
+  requests:
+    args: {}
+    class_name: Requests
+  signing_dialogues:
+    args: {}
+    class_name: SigningDialogues
+  state:
+    args: {}
+    class_name: SharedState
+  tendermint_dialogues:
+    args: {}
+    class_name: TendermintDialogues
+dependencies: {}
+is_abstract: false
