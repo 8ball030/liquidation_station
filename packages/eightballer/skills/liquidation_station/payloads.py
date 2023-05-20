@@ -64,4 +64,3 @@ class SubmitPositionLiquidationTransactionsPayload(BaseTxPayload):
     """Represent a transaction payload for the SubmitPositionLiquidationTransactionsRound."""
 
     # TODO: define your attributes
-

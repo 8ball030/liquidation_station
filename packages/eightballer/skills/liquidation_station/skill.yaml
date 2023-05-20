@@ -6,21 +6,14 @@ description: The scaffold skill is a scaffold for your own skill implementation.
 license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
-  __init__.py: bafybeifjeluqyh7ck3rrs2jfqbe5blt6sc3ti4c6bj4j6dt6smtfngu7qy
-  behaviours.py: bafybeic36k3uvezptq3ubzqhvyeui5mhwnfkkjwwp6dh7wsenrrbf44foy
-  dialogues.py: bafybeid7jjpfscvapjsg7hv44voxd4pdy2i3ozcmckwk4phkft7zrpshmm
+  __init__.py: bafybeicvknv2oin7chupltdm6uw3vakeu2xa2t3kbyri523ynxsqyfe4dq
+  behaviours.py: bafybeicbaw4lorsbkmy5zgnera7n7z2geoq5orphgks3mk2d5muoihkec4
+  dialogues.py: bafybeifrznjwwttcxdyfhxv3ecvhkjmtudx7dn4d6e6mcqj6wktdj25rvy
   fsm_specification.yaml: bafybeifdm4hgew2jr4y2yrko7ej6yh6ozsspurzmji4urontqckdycbc7m
-  handlers.py: bafybeictjhl52fkhcraiijatscswo2m62kk47fdcuwwfc7jwjyjkbgvary
-  models.py: bafybeibmabdemdxvb5eneqxwatdkcwagfyorm5re6lpwmquim35kb24i7i
-  payloads.py: bafybeigbs724zyxwt7rquufc52wj6xqmk7qobnajbrusxizwnui4gbpgry
-  rounds.py: bafybeialx7jkxyomidibygizf5dyntfos4d6p3kmiih56ic73z4wpelxsm
-  tests/__init__.py: bafybeic3534aro4pdtsdcuxywzlgkccczx2elhnwisiq3r6okvnrdu4aia
-  tests/test_behaviours.py: bafybeiaw2gehqw4yrv2syfllvoycfukafwortm7rpqa76fsiqcj6j7nehe
-  tests/test_dialogues.py: bafybeiftyhzce2jak7wml4akj4z7ywicbmc7tbs5ajzx3gdr6wen2n6fuu
-  tests/test_handlers.py: bafybeid7awg3hwzexsrhz2coazrtatdmgcexfoaun2xdou3bnqv4mnozti
-  tests/test_models.py: bafybeicx5gqk65z4fw4yvxdxqlmxlaqv2xivhlzgbd5yqvxcvd7k7zijxy
-  tests/test_payloads.py: bafybeici4ba667asg5vuk47kz2dl6gyxjnungz25hglewq2gtubaye4qjm
-  tests/test_rounds.py: bafybeieme46n2ihwtqg5mlhbn52gsmbqwujd2an3tu6r3d725i6qx3uxju
+  handlers.py: bafybeihr75sdgdgsmvm55diohkg7sbf43flrexbgqnhogrzewps72mp7dq
+  models.py: bafybeiazotor3snbhvbygn2h7fn62jvqwaxozy7qqvb6bsrxhcah2ke5jy
+  payloads.py: bafybeibjqfk3j2mxsjtbf2mmoafl74nencpuo4nkc2qjrf3inxz7ckhpia
+  rounds.py: bafybeidec5osjipqsxe3hkkr6qqcnb7ko4633uyhgx6ykc34qwoj6zq2n4
 fingerprint_ignore_patterns: []
 connections: []
 contracts: []

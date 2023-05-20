@@ -23,8 +23,10 @@ from traceback import print_exc
 from aea.mail.base import Envelope
 from aea.skills.behaviours import OneShotBehaviour, TickerBehaviour
 
-from packages.fetchai.protocols.default.dialogues import DefaultDialogue, DefaultDialogues
-from packages.eightballer.connections.websocket_client.connection import CONNECTION_ID
+from packages.eightballer.connections.websocket_client.connection import \
+    CONNECTION_ID
+from packages.fetchai.protocols.default.dialogues import (DefaultDialogue,
+                                                          DefaultDialogues)
 from packages.fetchai.protocols.default.message import DefaultMessage
 
 subscription_msg_template = '{"jsonrpc":  "2.0",  "id":  1,  "method":  "eth_subscribe",  "params":  ["logs", {"address": "0xf25212e676d1f7f89cd72ffee66158f541246445"}]}'
@@ -39,10 +41,11 @@ class SubscriptionBehaviour(OneShotBehaviour):
     def act(self) -> None:
         """Implement the act."""
         self.context.logger.info("SubscriptionBehaviour: act called.")
-        self.context.logger.info("Sending subscription message: {}".format(subscription_msg_template))
+        self.context.logger.info(
+            "Sending subscription message: {}".format(subscription_msg_template)
+        )
         self._create_subscription(bytes(subscription_msg_template, "utf-8"))
         self.context.logger.info("Act completed.")
-
 
     def teardown(self) -> None:
         """Implement the task teardown."""
@@ -57,6 +60,7 @@ class SubscriptionBehaviour(OneShotBehaviour):
         msg._sender = str(self.context.skill_id)
         envelope = Envelope(to=msg.to, sender=msg._sender, message=msg)
         self.context.outbox.put(envelope)
+
 
 #
 # class ScheduledBehaviour(TickerBehaviour):

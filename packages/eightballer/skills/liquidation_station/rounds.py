@@ -22,24 +22,13 @@
 from enum import Enum
 from typing import Dict, List, Optional, Set, Tuple
 
-from packages.valory.skills.abstract_round_abci.base import (
-    AbciApp,
-    AbciAppTransitionFunction,
-    AbstractRound,
-    AppState,
-    BaseSynchronizedData,
-    DegenerateRound,
-    EventToTimeout,
-)
-
 from packages.eightballer.skills.liquidation_station.payloads import (
-    CalculatePositionHealthPayload,
-    CollectPositionsPayload,
-    PrepareLiquidationTransactionsPayload,
-    RegistrationPayload,
-    ResetAndPausePayload,
-    SubmitPositionLiquidationTransactionsPayload,
-)
+    CalculatePositionHealthPayload, CollectPositionsPayload,
+    PrepareLiquidationTransactionsPayload, RegistrationPayload,
+    ResetAndPausePayload, SubmitPositionLiquidationTransactionsPayload)
+from packages.valory.skills.abstract_round_abci.base import (
+    AbciApp, AbciAppTransitionFunction, AbstractRound, AppState,
+    BaseSynchronizedData, DegenerateRound, EventToTimeout)
 
 
 class Event(Enum):
@@ -203,10 +192,14 @@ class SubmitPositionLiquidationTransactionsRound(AbstractRound):
         synchronized_data = self.synchronized_data
         return synchronized_data, Event.DONE
 
-    def check_payload(self, payload: SubmitPositionLiquidationTransactionsPayload) -> None:
+    def check_payload(
+        self, payload: SubmitPositionLiquidationTransactionsPayload
+    ) -> None:
         """Check payload."""
 
-    def process_payload(self, payload: SubmitPositionLiquidationTransactionsPayload) -> None:
+    def process_payload(
+        self, payload: SubmitPositionLiquidationTransactionsPayload
+    ) -> None:
         """Process payload."""
 
 
@@ -216,33 +209,31 @@ class LiquidationStationAbciApp(AbciApp[Event]):
     initial_round_cls: AppState = RegistrationRound
     initial_states: Set[AppState] = {RegistrationRound}
     transition_function: AbciAppTransitionFunction = {
-        RegistrationRound: {
-            Event.DONE: CollectPositionsRound
-        },
+        RegistrationRound: {Event.DONE: CollectPositionsRound},
         CollectPositionsRound: {
             Event.DONE: CalculatePositionHealthRound,
             Event.ROUND_TIMEOUT: ResetAndPauseRound,
-            Event.NO_MAJORITY: ResetAndPauseRound
+            Event.NO_MAJORITY: ResetAndPauseRound,
         },
         CalculatePositionHealthRound: {
             Event.DONE: PrepareLiquidationTransactionsRound,
             Event.ROUND_TIMEOUT: ResetAndPauseRound,
-            Event.NO_MAJORITY: ResetAndPauseRound
+            Event.NO_MAJORITY: ResetAndPauseRound,
         },
         PrepareLiquidationTransactionsRound: {
             Event.DONE: SubmitPositionLiquidationTransactionsRound,
             Event.ROUND_TIMEOUT: ResetAndPauseRound,
-            Event.NO_MAJORITY: ResetAndPauseRound
+            Event.NO_MAJORITY: ResetAndPauseRound,
         },
         SubmitPositionLiquidationTransactionsRound: {
             Event.DONE: ResetAndPauseRound,
-            Event.NOT_TRIGGERED: ResetAndPauseRound
+            Event.NOT_TRIGGERED: ResetAndPauseRound,
         },
         ResetAndPauseRound: {
             Event.DONE: CollectPositionsRound,
             Event.NO_MAJORITY: ResetAndPauseRound,
-            Event.RESET_TIMEOUT: ResetAndPauseRound
-        }
+            Event.RESET_TIMEOUT: ResetAndPauseRound,
+        },
     }
     final_states: Set[AppState] = set()
     event_to_timeout: EventToTimeout = {}
@@ -250,6 +241,4 @@ class LiquidationStationAbciApp(AbciApp[Event]):
     db_pre_conditions: Dict[AppState, Set[str]] = {
         RegistrationRound: [],
     }
-    db_post_conditions: Dict[AppState, Set[str]] = {
-
-    }
+    db_post_conditions: Dict[AppState, Set[str]] = {}
