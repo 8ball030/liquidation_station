@@ -7,12 +7,12 @@ license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   __init__.py: bafybeicsypfuei4zd7tykc3m4b7sujyscfovcsjz43z7ea4p3gghnfp3ue
-  behaviours.py: bafybeig5hlisw7t4ezap774dickypxyep6t7k2elb4645qnukp7s2qa2ka
+  behaviours.py: bafybeibkeo6xnhjvhqiiimyuvu7a3mxepi7fvigdq3tpurkh6xg6aulcki
   dialogues.py: bafybeid7xf5ye2hxzkq3puc2sx2g6sddehsrzi5ibqom56poakyvzte7xu
   handlers.py: bafybeih7ayd727lw7id4suh6nbvhyyrytsxx4mljhjs5m6slcmammk2x2q
   models.py: bafybeidkvworv5nycaxde7b6tyv3y6bpvn6yvwnjkot36b5jw4nfmoiszu
-  payloads.py: bafybeibgxwpujvm32c6jz3dv4cas42l3423sw7eiyhojrzfpbhi3zxqkze
-  rounds.py: bafybeih3rwsquq6oeocrl5chen25z6mndjohthzrdblixem6ufipedmjda
+  payloads.py: bafybeiabryus3wqdz2qaihgh5fr3ezwwoqrmzjf2rtq5xiiodwbx672re4
+  rounds.py: bafybeiamelx5tfietilthoypjgsjg436oyr7mlnzw4qdkpjft5hix3mb64
   rysk_roller.yaml: bafybeibz5bfumhn3apbjvjdsrivufbmrthqjigcbkj525xgzavf7lcllgy
   tests/__init__.py: bafybeic3534aro4pdtsdcuxywzlgkccczx2elhnwisiq3r6okvnrdu4aia
   tests/test_behaviours.py: bafybeihenxqeya6gq2c675qizxh5yhdc2lga5pkfzbds6gnyz354ors6iq
@@ -27,7 +27,7 @@ connections:
 contracts:
 - valory/uniswap_v2_erc20:0.1.0:bafybeigjlrw6gfzpap4pt57ibu26ebzk6grwfsbxp53i35f3kywau5hezi
 - valory/uniswap_v2_router_02:0.1.0:bafybeihjfeemghfrbqwxdfos5zulzi3fzvq3wjxpwmdu3di4rklljp3sry
-- zarathustra/homm_vault:0.1.0:bafybeif52woa2m7uigmhhuhlxoeyri2dhyfhwjbhvg6wqlykiqtjxn5jdq
+- zarathustra/homm_vault:0.1.0:bafybeiayvznp6nxv3cex6kcnfwqxg7fpqfa2u4zozuvusqw4bkbyc4rbji
 protocols:
 - valory/contract_api:1.0.0:bafybeidv6wxpjyb2sdyibnmmum45et4zcla6tl63bnol6ztyoqvpl4spmy
 - valory/http:1.0.0:bafybeifyoio7nlh5zzyn5yz7krkou56l22to3cwg7gw5v5o3vxwklibhty
@@ -139,6 +139,7 @@ models:
       tx_timeout: 10.0
       use_termination: false
       validate_timeout: 1205
+      vault_address: '0x0000000000000000000000000000000000000000'
     class_name: Params
   requests:
     args: {}

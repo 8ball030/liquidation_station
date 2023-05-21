@@ -22,7 +22,7 @@ import json
 from abc import ABC
 from datetime import datetime
 from typing import Generator, Set, Type, cast
-from dataclasses import asdict
+from dataclasses import asdict, astuple
 import pandas as pd
 
 from packages.valory.skills.abstract_round_abci.base import AbstractRound
@@ -39,8 +39,13 @@ from packages.valory.protocols.contract_api import ContractApiMessage
 from packages.valory.connections.http_client.connection import (
     PUBLIC_ID as HTTP_CLIENT_PUBLIC_ID,
 )
-from packages.zarathustra.contracts.homm_vault.contract import OperationType, \
-    OptionSeries
+from packages.zarathustra.contracts.homm_vault.contract import (
+    OperationType,
+    QuoteOptionPrice,
+    OptionSeries,
+    HOMMVaultContract,
+    RequestQuoteOptionPrice,
+)
 
 from packages.eightballer.skills.rysk_roller.models import Params
 from packages.eightballer.skills.rysk_roller.rounds import (
@@ -307,33 +312,27 @@ class CollectPriceDataBehaviour(RyskRollerBaseBehaviour):
             collateral='0x408c5755b5c7a0a28D851558eA3636CfC5b5b19d',
         )
 
-        breakpoint()
+        request = RequestQuoteOptionPrice(
+            _option_series=option_series,
+            _amount=amount,
+            is_sell=(side == "sell"),
+            net_dhv_exposure=int(option_data['netDHVExposure'])
+        )
+
+        # breakpoint()
         contract_api_msg = yield from self.get_contract_api_response(
             performative=ContractApiMessage.Performative.GET_STATE,
             # type: ignore
-            contract_address="TODO",
-            contract_id=str(UniswapV2ERC20Contract.contract_id),
-            contract_callable="balance_of",
+            contract_address=self.context.params.config["vault_address"],
+            contract_id=str(HOMMVaultContract.contract_id),
+            contract_callable="quote_option_price",
             owner_address=self.context.agent_address,
-            option_series=asdict(option_series),
-            amount=int(amount),
-            side=True if side == "sell" else False,
-            net_dhv_exposure=int(option_data['netDHVExposure'])
-
+            request_quote_option_price=asdict(request),
         )
-        premium = contract_api_msg.state.body['totalPremium']
 
-        self.context.logger.info(f"Received price for option series {premium}.")
-
-        # result = contract_instance.functions.quoteOptionPrice(
-        #     option_series,
-        #     int(amount),
-        #     True if side == "sell" else False,
-        #     int(option_data['netDHVExposure'])).call()
-        # totalPremium
-        # totalDelta
-        # totalFees
-        return premium / 1_000_000
+        quote_option_price: QuoteOptionPrice = contract_api_msg.state.body['quote_option_price']
+        self.context.logger.info(f"Received price for option series {quote_option_price}.")
+        return quote_option_price
 
 
 class MultiplexerBehaviour(RyskRollerBaseBehaviour):

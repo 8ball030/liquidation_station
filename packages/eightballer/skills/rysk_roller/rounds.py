@@ -161,12 +161,6 @@ class CollectPriceDataRound(CollectSameUntilAllRound):
     payload_attribute = ""  # TODO: update
     synchronized_data_class = SynchronizedData
 
-    # TODO: replace AbstractRound with one of CollectDifferentUntilAllRound,
-    # CollectSameUntilAllRound, CollectSameUntilThresholdRound,
-    # CollectDifferentUntilThresholdRound, OnlyKeeperSendsRound, VotingRound,
-    # from packages/valory/skills/abstract_round_abci/base.py
-    # or implement the methods
-
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
         if self.collection_threshold_reached:
@@ -186,12 +180,6 @@ class CollectDataRound(CollectSameUntilAllRound):
     payload_class = CollectDataPayload
     payload_attribute = "rysk_data"  # TODO: update
     synchronized_data_class = SynchronizedData
-
-    # TODO: replace AbstractRound with one of CollectDifferentUntilAllRound,
-    # CollectSameUntilAllRound, CollectSameUntilThresholdRound,
-    # CollectDifferentUntilThresholdRound, OnlyKeeperSendsRound, VotingRound,
-    # from packages/valory/skills/abstract_round_abci/base.py
-    # or implement the methods
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
@@ -214,16 +202,21 @@ class MultiplexerRound(CollectSameUntilThresholdRound):
     payload_attribute = ""  # TODO: update
     synchronized_data_class = SynchronizedData
 
-    # TODO: replace AbstractRound with one of CollectDifferentUntilAllRound,
-    # CollectSameUntilAllRound, CollectSameUntilThresholdRound,
-    # CollectDifferentUntilThresholdRound, OnlyKeeperSendsRound, VotingRound,
-    # from packages/valory/skills/abstract_round_abci/base.py
-    # or implement the methods
-
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
-        if self.threshold_reached:
 
+
+
+        if self.threshold_reached:
+            payloads_json = json.loads(
+                self.collection[list(self.collection.keys())[0]].content)
+
+
+            Event.CALL_EXPIRED
+            Event.PUT_EXERCISED
+            Event.SELL_PUT_OPTION
+            Event.SELL_CALL_OPTION
+            Event.CALL_EXERCISED
 
             state = self.synchronized_data.update(
                  synchronized_data_class=self.synchronized_data_class,
