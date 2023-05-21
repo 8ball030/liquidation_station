@@ -1,0 +1,16 @@
+name: homm_vault
+author: zarathustra
+version: 0.1.0
+type: contract
+description: The scaffold contract scaffolds a contract to be implemented by the developer.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  __init__.py: bafybeifzs22oiwtftrlgrf5ze74x4kk5has2i46x5tpk6o3ivcce6vz44y
+  build/vault.json: bafybeicezxttquzoq2j3vrnjiupwh275gu2wjhwzond2n6cjwrtjf47oyu
+  contract.py: bafybeibaozhftl2yftd2poespc7nghnoo2kjlkxqfqhfrxe4khqezkmxcm
+fingerprint_ignore_patterns: []
+class_name: MyScaffoldContract
+contract_interface_paths: {}
+dependencies: {}
+contracts: []
