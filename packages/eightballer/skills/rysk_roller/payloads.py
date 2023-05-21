@@ -41,15 +41,16 @@ class CallExercisedPayload(BaseTxPayload):
 @dataclass(frozen=True)
 class CallExpiredPayload(BaseTxPayload):
     """Represent a transaction payload for the CallExpiredRound."""
-
     # TODO: define your attributes
+
 
 
 @dataclass(frozen=True)
 class CollectDataPayload(BaseTxPayload):
     """Represent a transaction payload for the CollectDataRound."""
 
-    # TODO: define your attributes
+    content: str
+
 
 @dataclass(frozen=True)
 class CollectPriceDataPayload(BaseTxPayload):
