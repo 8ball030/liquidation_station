@@ -19,7 +19,9 @@
 
 """This module contains the scaffold contract definition."""
 
-from typing import Any
+from typing import Any, List
+from enum import Enum
+from dataclasses import dataclass
 
 from aea.common import JSONLike, Address
 from aea.configurations.base import PublicId
@@ -27,6 +29,45 @@ from aea.contracts.base import Contract
 from aea.crypto.base import LedgerApi
 
 Wei = Shares = Assets = int
+
+
+class ActionType(Enum):
+    ISSUE = "issue"
+    BUY_OPTION = "buy_option"
+    SELL_OPTION = "sell_option"
+    CLOSE_OPTION = "close_option"
+
+
+class OperationType(Enum):
+    OPYN = "opyn"
+    RYSK = "rysk"
+
+
+@dataclass
+class OptionSeries:
+    expiration: int
+    strike: int
+    is_put: bool
+    underlying: Address
+    strike_asset: Address
+    collateral: Address
+
+
+@dataclass
+class ActionArgs:
+    action_type: ActionType
+    second_address: Address
+    asset: Address
+    vault_id: int
+    amount: int
+    option_series: OptionSeries
+    acceptable_premium: int
+    data: bytes
+
+@dataclass
+class OperationProcedure:
+    operation: OperationType
+    operation_queue: list[ActionArgs]
 
 
 class HOMMVaultContract(Contract):
@@ -292,7 +333,7 @@ class HOMMVaultContract(Contract):
         cls,
         ledger_api: LedgerApi,
         contract: Address,
-        operations_procedures: list,
+        operations_procedures: List[OperationProcedure],
     ) -> None:
         """
         Trade options on Rysk
