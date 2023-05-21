@@ -7,7 +7,7 @@ license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   __init__.py: bafybeifzs22oiwtftrlgrf5ze74x4kk5has2i46x5tpk6o3ivcce6vz44y
-  build/Vault.json: bafybeidrfek4uq3nn2otf6e3w3sv6dt6fb47nsczk33j4uukk3rlijshga
+  build/vault.json: bafybeiccu7k4vg7kdxihkzqubrh7buxuu44vcbohdsvodnuqz6yhbf5a7i
   contract.py: bafybeigcrmubzbtuachlv7hzkkwb7p6htwt35wwtysclylhzgqdftczv34
   tests/__init__.py: bafybeiftu27piztiu5bfxbvhqsbppgtseykyfot6wtlrrzeuzya6zrgpky
   tests/test_contract.py: bafybeidwygh7w5ttlxkeglcl2no27cfgaeqh6zn7kkjuwf6cnvpft4qwfq

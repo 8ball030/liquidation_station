@@ -207,7 +207,7 @@ class CollectDataRound(CollectSameUntilAllRound):
             return state, Event.DONE
 
 
-class MultiplexerRound(AbstractRound):
+class MultiplexerRound(CollectSameUntilThresholdRound):
     """MultiplexerRound"""
 
     payload_class = MultiplexerPayload
@@ -222,6 +222,17 @@ class MultiplexerRound(AbstractRound):
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
+        if self.threshold_reached:
+
+
+            state = self.synchronized_data.update(
+                 synchronized_data_class=self.synchronized_data_class,
+
+             )
+            return state
+
+        if not self.is_majority_possible():
+            return
 
     def check_payload(self, payload: MultiplexerPayload) -> None:
         """Check payload."""

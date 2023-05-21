@@ -1,10 +1,12 @@
 set -e 
 
 # fetch the agent from the local package registry
-aea fetch eightballer/liquidation_station --local
+#aea fetch eightballer/liquidation_station --local
+aea fetch eightballer/rysk_roller --local
 
 # go to the new agent
-cd liquidation_station/
+#cd liquidation_station/
+cd rysk_roller
 
 # install the agent
 aea install

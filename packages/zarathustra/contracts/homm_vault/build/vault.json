@@ -1,7 +1,7 @@
 {
   "_format": "hh-sol-artifact-1",
   "contractName": "HOMMVault",
-  "sourceName": "contracts/Vault.sol",
+  "sourceName": "contracts/vault.sol",
   "abi": [
     {
       "inputs": [
