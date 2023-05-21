@@ -84,8 +84,13 @@ class SynchronizedData(BaseSynchronizedData):
         """Return the data as a dictionary."""
         return cast(Dict[str, Dict[str, Any]], self.db.get_str("price_data"))
 
+    @property
+    def strategy_decision(self) -> Dict[str, Dict[str, Any]]:
+        """Return the data as a dictionary."""
+        return cast(Dict[str, Dict[str, Any]], self.db.get_str("strategy_decision"))
 
-class AnalyseDataRound(AbstractRound):
+
+class AnalyseDataRound(CollectSameUntilAllRound):
     """AnalyseDataRound"""
 
     payload_class = AnalyseDataPayload
@@ -100,12 +105,8 @@ class AnalyseDataRound(AbstractRound):
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
+        return self.synchronized_data, Event.DONE
 
-    def check_payload(self, payload: AnalyseDataPayload) -> None:
-        """Check payload."""
-
-    def process_payload(self, payload: AnalyseDataPayload) -> None:
-        """Process payload."""
 
 
 class CallExercisedRound(AbstractRound):
@@ -195,43 +196,25 @@ class CollectDataRound(CollectSameUntilAllRound):
             return state, Event.DONE
 
 
-class MultiplexerRound(CollectSameUntilThresholdRound):
+class MultiplexerRound(CollectSameUntilAllRound):
     """MultiplexerRound"""
 
     payload_class = MultiplexerPayload
-    payload_attribute = ""  # TODO: update
+    payload_attribute = "strategy_decision"  # TODO: update
     synchronized_data_class = SynchronizedData
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
-
-
-
-        if self.threshold_reached:
-            payloads_json = json.loads(
-                self.collection[list(self.collection.keys())[0]].content)
-
-
-            Event.CALL_EXPIRED
-            Event.PUT_EXERCISED
-            Event.SELL_PUT_OPTION
-            Event.SELL_CALL_OPTION
-            Event.CALL_EXERCISED
-
+        if self.collection_threshold_reached:
+            strategy_decision = self.collection[list(self.collection.keys())[0]].strategy_decision
             state = self.synchronized_data.update(
-                 synchronized_data_class=self.synchronized_data_class,
+                synchronized_data_class=self.synchronized_data_class,
+                **{
+                    get_name(SynchronizedData.strategy_decision): strategy_decision
+                }
+            )
+            return state, Event.DONE
 
-             )
-            return state
-
-        if not self.is_majority_possible():
-            return
-
-    def check_payload(self, payload: MultiplexerPayload) -> None:
-        """Check payload."""
-
-    def process_payload(self, payload: MultiplexerPayload) -> None:
-        """Process payload."""
 
 
 class PutExercisedRound(AbstractRound):

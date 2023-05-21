@@ -7,12 +7,12 @@ license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   __init__.py: bafybeicsypfuei4zd7tykc3m4b7sujyscfovcsjz43z7ea4p3gghnfp3ue
-  behaviours.py: bafybeibkeo6xnhjvhqiiimyuvu7a3mxepi7fvigdq3tpurkh6xg6aulcki
+  behaviours.py: bafybeifim4oddmc7wl4yj76rtmt4ap2fpow6rptjisrxotcwifbkmmlv5m
   dialogues.py: bafybeid7xf5ye2hxzkq3puc2sx2g6sddehsrzi5ibqom56poakyvzte7xu
   handlers.py: bafybeih7ayd727lw7id4suh6nbvhyyrytsxx4mljhjs5m6slcmammk2x2q
-  models.py: bafybeidkvworv5nycaxde7b6tyv3y6bpvn6yvwnjkot36b5jw4nfmoiszu
-  payloads.py: bafybeiabryus3wqdz2qaihgh5fr3ezwwoqrmzjf2rtq5xiiodwbx672re4
-  rounds.py: bafybeiamelx5tfietilthoypjgsjg436oyr7mlnzw4qdkpjft5hix3mb64
+  models.py: bafybeifnc6wfxirdt3lxwap5jsc5fh3ml52qhocgwzufmz5uk7robilz2i
+  payloads.py: bafybeial2hg2rlds72jauijhyllzeorcbbtlf3zpl2vy4jrdfx5qcpfjre
+  rounds.py: bafybeigp4y2wqaoeodfj2azynvz53ofbqzont7sxfrpdit6b24v32cuc5e
   rysk_roller.yaml: bafybeibz5bfumhn3apbjvjdsrivufbmrthqjigcbkj525xgzavf7lcllgy
   tests/__init__.py: bafybeic3534aro4pdtsdcuxywzlgkccczx2elhnwisiq3r6okvnrdu4aia
   tests/test_behaviours.py: bafybeihenxqeya6gq2c675qizxh5yhdc2lga5pkfzbds6gnyz354ors6iq
@@ -108,6 +108,8 @@ models:
       keeper_timeout: 30.0
       max_attempts: 10
       max_healthcheck: 120
+      min_usdc: 10000000
+      min_weth: 10000000
       on_chain_service_id: null
       option_assets:
         WETH: '0x3b3a1de07439eeb04492fa64a889ee25a130cdd3'
