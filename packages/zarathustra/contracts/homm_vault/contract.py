@@ -251,7 +251,7 @@ class HOMMVaultContract(Contract):
             assets,
             receiver,
             owner,
-        )
+        ).call()
 
     @classmethod
     def redeem(

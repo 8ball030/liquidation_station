@@ -1,4 +1,8 @@
-"abi": [
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "HOMMVault",
+  "sourceName": "contracts/Vault.sol",
+  "abi": [
     {
       "inputs": [
         {
@@ -1076,4 +1080,9 @@
       "stateMutability": "nonpayable",
       "type": "function"
     }
-  ]
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
