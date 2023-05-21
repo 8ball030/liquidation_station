@@ -19,11 +19,11 @@
 
 """This module contains the scaffold contract definition."""
 
-from typing import Any, List
-from enum import Enum
 from dataclasses import dataclass
+from enum import Enum
+from typing import Any, List
 
-from aea.common import JSONLike, Address
+from aea.common import Address, JSONLike
 from aea.configurations.base import PublicId
 from aea.contracts.base import Contract
 from aea.crypto.base import LedgerApi
@@ -32,6 +32,8 @@ Wei = Shares = Assets = int
 
 
 class ActionType(Enum):
+    """ActionType"""
+
     ISSUE = "issue"
     BUY_OPTION = "buy_option"
     SELL_OPTION = "sell_option"
@@ -39,12 +41,16 @@ class ActionType(Enum):
 
 
 class OperationType(Enum):
+    """OperationType"""
+
     OPYN = "opyn"
     RYSK = "rysk"
 
 
 @dataclass
 class OptionSeries:
+    """OptionSeries"""
+
     expiration: int
     strike: int
     is_put: bool
@@ -55,6 +61,8 @@ class OptionSeries:
 
 @dataclass
 class ActionArgs:
+    """ActionArgs"""
+
     action_type: ActionType
     second_address: Address
     asset: Address
@@ -64,8 +72,11 @@ class ActionArgs:
     acceptable_premium: int
     data: bytes
 
+
 @dataclass
 class OperationProcedure:
+    """OperationProcedure"""
+
     operation: OperationType
     operation_queue: list[ActionArgs]
 
