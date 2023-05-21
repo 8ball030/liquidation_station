@@ -20,7 +20,8 @@
 """This package contains the rounds of FlowchartToFSMAbciApp."""
 
 from enum import Enum
-from typing import Dict, List, Optional, Set, Tuple
+from typing import Dict, List, Optional, Set, Tuple, Any, cast
+import json
 
 from packages.valory.skills.abstract_round_abci.base import (
     AbciApp,
@@ -30,6 +31,10 @@ from packages.valory.skills.abstract_round_abci.base import (
     BaseSynchronizedData,
     DegenerateRound,
     EventToTimeout,
+    CollectSameUntilThresholdRound,
+    CollectSameUntilAllRound,
+    CollectDifferentUntilAllRound,
+    get_name
 )
 
 from packages.eightballer.skills.rysk_roller.payloads import (
@@ -68,6 +73,16 @@ class SynchronizedData(BaseSynchronizedData):
 
     This data is replicated by the tendermint application.
     """
+
+    @property
+    def rysk_data(self) -> Dict[str, Dict[str, Any]]:
+        """Return the data as a dictionary."""
+        return cast(Dict[str, Dict[str, Any]], self.db.get_str("rysk_data"))
+
+    @property
+    def price_data(self) -> Dict[str, Dict[str, Any]]:
+        """Return the data as a dictionary."""
+        return cast(Dict[str, Dict[str, Any]], self.db.get_str("price_data"))
 
 
 class AnalyseDataRound(AbstractRound):
@@ -139,10 +154,10 @@ class CallExpiredRound(AbstractRound):
         """Process payload."""
 
 
-class CollectPriceDataRound(AbstractRound):
+class CollectPriceDataRound(CollectSameUntilAllRound):
     """CollectDataRound"""
 
-    payload_class = CollectDataPayload
+    payload_class = CollectPriceDataPayload
     payload_attribute = ""  # TODO: update
     synchronized_data_class = SynchronizedData
 
@@ -154,19 +169,22 @@ class CollectPriceDataRound(AbstractRound):
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
+        if self.collection_threshold_reached:
+            payloads_json = json.loads(self.collection[list(self.collection.keys())[0]].content)
+            state = self.synchronized_data.update(
+                synchronized_data_class=self.synchronized_data_class,
+                **{
+                    get_name(SynchronizedData.price_data): payloads_json
+                }
+            )
+            return state, Event.DONE
 
-    def check_payload(self, payload: CollectDataPayload) -> None:
-        """Check payload."""
 
-    def process_payload(self, payload: CollectDataPayload) -> None:
-        """Process payload."""
-
-
-class CollectDataRound(AbstractRound):
+class CollectDataRound(CollectSameUntilAllRound):
     """CollectDataRound"""
 
     payload_class = CollectDataPayload
-    payload_attribute = ""  # TODO: update
+    payload_attribute = "rysk_data"  # TODO: update
     synchronized_data_class = SynchronizedData
 
     # TODO: replace AbstractRound with one of CollectDifferentUntilAllRound,
@@ -177,13 +195,16 @@ class CollectDataRound(AbstractRound):
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
-        return Done
 
-    def check_payload(self, payload: CollectDataPayload) -> None:
-        """Check payload."""
-
-    def process_payload(self, payload: CollectDataPayload) -> None:
-        """Process payload."""
+        if self.collection_threshold_reached:
+            payloads_json = json.loads(self.collection[list(self.collection.keys())[0]].content)
+            state = self.synchronized_data.update(
+                 synchronized_data_class=self.synchronized_data_class,
+                 **{
+                     get_name(SynchronizedData.rysk_data): payloads_json
+                 }
+             )
+            return state, Event.DONE
 
 
 class MultiplexerRound(AbstractRound):
