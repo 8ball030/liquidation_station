@@ -58,7 +58,6 @@ class CollectPriceDataPayload(BaseTxPayload):
 
     content: str
 
-
 @dataclass(frozen=True)
 class MultiplexerPayload(BaseTxPayload):
     """Represent a transaction payload for the MultiplexerRound."""

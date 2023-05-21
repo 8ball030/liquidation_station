@@ -14,8 +14,9 @@ connections:
 - valory/p2p_libp2p_client:0.1.0:bafybeidwcobzb7ut3efegoedad7jfckvt2n6prcmd4g7xnkm6hp6aafrva
 contracts:
 - valory/service_registry:0.1.0:bafybeiauproyi7qle35u777xnlajrz5samm7h2cdjdqxlsfkxbtwbqilzm
-- valory/uniswap_v2_erc20:0.1.0:bafybeia7wexyrsevai5ewxn2anabnlakjkivtms2xw3d2xcccwjb7sduya
-- valory/uniswap_v2_router_02:0.1.0:bafybeidxsbvqsht4bju6n24zss4k7m6i2irqxq774e2npzqbce6p4a6cbq
+- valory/uniswap_v2_erc20:0.1.0:bafybeigjlrw6gfzpap4pt57ibu26ebzk6grwfsbxp53i35f3kywau5hezi
+- valory/uniswap_v2_router_02:0.1.0:bafybeihjfeemghfrbqwxdfos5zulzi3fzvq3wjxpwmdu3di4rklljp3sry
+- zarathustra/homm_vault:0.1.0:bafybeiayvznp6nxv3cex6kcnfwqxg7fpqfa2u4zozuvusqw4bkbyc4rbji
 protocols:
 - open_aea/signing:1.0.0:bafybeibqlfmikg5hk4phzak6gqzhpkt6akckx7xppbp53mvwt6r73h7tk4
 - valory/abci:0.1.0:bafybeig3dj5jhsowlvg3t73kgobf6xn4nka7rkttakdb2gwsg5bp7rt7q4
@@ -98,3 +99,4 @@ models:
       tendermint_max_retries: 5
       tendermint_url: ${str:http://localhost:26657}
       use_termination: ${bool:false}
+      vault_address: ${str:0x0000000000000000000000000000000000000000}

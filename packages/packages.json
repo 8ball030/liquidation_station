@@ -1,13 +1,13 @@
 {
     "dev": {
-        "service/eightballer/liquidation_station/0.1.0": "bafybeici77zhuukownreqerxbejjfmtl7spgxcviepnuyk5aeeo4htrl2m",
+        "service/eightballer/liquidation_station/0.1.0": "bafybeig3nitzhpjcklxozkh4kdh7hnf57ecoppax6d4inxmna7qgt6ctcq",
         "connection/eightballer/websocket_client/0.1.0": "bafybeicqkljjzvdl4v7pzbmsfd3al7uv7563x3qa5gmnzxeuoxgtmolpta",
-        "skill/eightballer/liquidation_station/0.1.0": "bafybeiakjrvzhe6dtz6fx2toeueou2cvz4or2k6sjkletqswe7wnujd4pi",
+        "skill/eightballer/liquidation_station/0.1.0": "bafybeigje5hpvtjjmvzcu3j577idqb3kun7adl25cxkm7j5qp22dhywwdq",
         "skill/eightballer/contract_subscription/0.1.0": "bafybeice2er7hodqv5mtvchgsdy4k6qozg6rierdmv5wqkgv3uhoma7bqq",
         "skill/eightballer/rysk_roller/0.1.0": "bafybeigxfbrsmnnndhzw4aio6k3ja7bqzimbv7mraafnn5idjl5sx6yeoe",
         "agent/eightballer/rysk_roller/0.1.0": "bafybeigh3mafmvl3sigythzzxhv3c3d467eivw3mlr6ezbnvn7ggtsdku4",
         "skill/eightballer/metrics/0.1.0": "bafybeicfprrcnxuih5z2ymbujuxyv7rfc7rl2fi2n7nnlfks6c6gf2upp4",
-        "agent/eightballer/liquidation_station/0.1.0": "bafybeicjbai4fe5r24pbd5nrlsulbw4qpdws7ypkoo5ifbi55aviifczpy",
+        "agent/eightballer/liquidation_station/0.1.0": "bafybeig7b5yb3yrlptgfmgnxk5ej5wtasanx3esjoepifzyghqmn37gud4",
         "agent/eightballer/websocket_subscriber/0.1.0": "bafybeid36ogr26tplsdjqoseeqg7l7io4gn33caldiaotmrqvqulhzhcbm",
         "contract/zarathustra/comptroller/0.1.0": "bafybeif7llyor55q7qcxbmywxiw6fdwjrek3uh33cqhgy5xqfs7ijh7t5u",
         "contract/zarathustra/jump_interest_model/0.1.0": "bafybeidxamew73xaldmyxshkuwf22tytugjovgp3army6pml67caidlmhu",
@@ -26,7 +26,9 @@
         "contract/zarathustra/o_weth/0.1.0": "bafybeidda3nacec4xetnptyqauassynx2n3lzjcx4px6q7vva2czzqcjqm",
         "contract/zarathustra/owst_eth/0.1.0": "bafybeibb3wsgr54nuerckxlbuintbacbqgryg6lql7vs6zokthijpmgxti",
         "contract/zarathustra/unitroller/0.1.0": "bafybeiep5cexticlaav7nubrawpmyzyrn3uqzqcosjowevjp2qmhe27srq",
-        "contract/zarathustra/homm_vault/0.1.0": "bafybeifti5iks67l4puyoahiaxb54rclehahswxsks7jczstpvjlp4rvl4"
+        "contract/zarathustra/homm_vault/0.1.0": "bafybeiayvznp6nxv3cex6kcnfwqxg7fpqfa2u4zozuvusqw4bkbyc4rbji",
+        "contract/valory/uniswap_v2_router_02/0.1.0": "bafybeihjfeemghfrbqwxdfos5zulzi3fzvq3wjxpwmdu3di4rklljp3sry",
+        "contract/valory/uniswap_v2_erc20/0.1.0": "bafybeigjlrw6gfzpap4pt57ibu26ebzk6grwfsbxp53i35f3kywau5hezi"
     },
     "third_party": {
         "protocol/valory/abci/0.1.0": "bafybeig3dj5jhsowlvg3t73kgobf6xn4nka7rkttakdb2gwsg5bp7rt7q4",
@@ -49,8 +51,6 @@
         "connection/valory/p2p_libp2p_client/0.1.0": "bafybeidwcobzb7ut3efegoedad7jfckvt2n6prcmd4g7xnkm6hp6aafrva",
         "contract/valory/multisend/0.1.0": "bafybeigjywkl7hydjsrkogob3xebj2ifhqwmfhhxoeyrndzhhxi5u6amey",
         "protocol/valory/ipfs/0.1.0": "bafybeic72ncgqbzoz2guj4p4yjqulid7mv6yroeh65hxznloamoveeg7hq",
-        "contract/valory/uniswap_v2_erc20/0.1.0": "bafybeia7wexyrsevai5ewxn2anabnlakjkivtms2xw3d2xcccwjb7sduya",
-        "contract/valory/uniswap_v2_router_02/0.1.0": "bafybeidxsbvqsht4bju6n24zss4k7m6i2irqxq774e2npzqbce6p4a6cbq",
         "connection/valory/ipfs/0.1.0": "bafybeihubpyw2t3bwncz3l7jt4gf5xvfydwmob463vvgf3ikkhlwxakm3m"
     }
 }

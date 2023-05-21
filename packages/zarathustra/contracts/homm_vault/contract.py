@@ -251,7 +251,7 @@ class HOMMVaultContract(Contract):
             assets,
             receiver,
             owner,
-        )
+        ).call()
 
     @classmethod
     def redeem(
@@ -425,7 +425,7 @@ class HOMMVaultContract(Contract):
         cls,
         ledger_api: LedgerApi,
         contract: Address,
-        request_quote_option_price: RequestQuoteOptionPrice,
+        **request_quote_option_price: RequestQuoteOptionPrice,
     ) -> QuoteOptionPrice:
         """
         Get a quote for the option price from the BeyondPricer

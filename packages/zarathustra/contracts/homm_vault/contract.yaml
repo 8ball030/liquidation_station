@@ -7,10 +7,13 @@ license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   __init__.py: bafybeifzs22oiwtftrlgrf5ze74x4kk5has2i46x5tpk6o3ivcce6vz44y
-  build/vault.json: bafybeicezxttquzoq2j3vrnjiupwh275gu2wjhwzond2n6cjwrtjf47oyu
-  contract.py: bafybeibaozhftl2yftd2poespc7nghnoo2kjlkxqfqhfrxe4khqezkmxcm
+  build/vault.json: bafybeiccu7k4vg7kdxihkzqubrh7buxuu44vcbohdsvodnuqz6yhbf5a7i
+  contract.py: bafybeicwzmc3up46my4wdgexgd5xlpmvsut7uqjic73vquofmmsvypbtu4
+  tests/__init__.py: bafybeiftu27piztiu5bfxbvhqsbppgtseykyfot6wtlrrzeuzya6zrgpky
+  tests/test_contract.py: bafybeidwygh7w5ttlxkeglcl2no27cfgaeqh6zn7kkjuwf6cnvpft4qwfq
 fingerprint_ignore_patterns: []
-class_name: MyScaffoldContract
-contract_interface_paths: {}
+class_name: HOMMVaultContract
+contract_interface_paths:
+  ethereum: build/vault.json
 dependencies: {}
 contracts: []
