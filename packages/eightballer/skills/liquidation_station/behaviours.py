@@ -19,42 +19,28 @@
 
 """This package contains round behaviours of LiquidationStationAbciApp."""
 
-from typing import List
+import json
 from abc import ABC
-from typing import Generator, Set, Type, cast
+from functools import cached_property
+from pathlib import Path
+from typing import Generator, List, Set, Type, cast
+
 from web3 import Web3
 from web3._utils.events import get_event_data
-from pathlib import Path
-import json
-from functools import cached_property
-
-from packages.valory.skills.abstract_round_abci.base import AbstractRound
-from packages.valory.skills.abstract_round_abci.behaviours import (
-    AbstractRoundBehaviour,
-    BaseBehaviour,
-)
 
 from packages.eightballer.skills.liquidation_station.models import Params
 from packages.eightballer.skills.liquidation_station.rounds import (
-    SynchronizedData,
-    LiquidationStationAbciApp,
-    CalculatePositionHealthRound,
-    CollectPositionsRound,
-    PrepareLiquidationTransactionsRound,
-    RegistrationRound,
-    ResetAndPauseRound,
-    SubmitPositionLiquidationTransactionsRound,
-)
-from packages.eightballer.skills.liquidation_station.rounds import (
-    CalculatePositionHealthPayload,
-    CollectPositionsPayload,
-    PrepareLiquidationTransactionsPayload,
-    RegistrationPayload,
-    ResetAndPausePayload,
-    SubmitPositionLiquidationTransactionsPayload,
-)
-
+    CalculatePositionHealthPayload, CalculatePositionHealthRound,
+    CollectPositionsPayload, CollectPositionsRound, LiquidationStationAbciApp,
+    PrepareLiquidationTransactionsPayload, PrepareLiquidationTransactionsRound,
+    RegistrationPayload, RegistrationRound, ResetAndPausePayload,
+    ResetAndPauseRound, SubmitPositionLiquidationTransactionsPayload,
+    SubmitPositionLiquidationTransactionsRound, SynchronizedData)
 from packages.valory.protocols.ledger_api.message import LedgerApiMessage
+from packages.valory.skills.abstract_round_abci.base import AbstractRound
+from packages.valory.skills.abstract_round_abci.behaviours import (
+    AbstractRoundBehaviour, BaseBehaviour)
+
 
 class LiquidationStationBaseBehaviour(BaseBehaviour, ABC):
     """Base behaviour for the liquidation_station skill."""
@@ -69,23 +55,35 @@ class LiquidationStationBaseBehaviour(BaseBehaviour, ABC):
         """Return the params."""
         return cast(Params, super().params)
 
-    def update_shared_state(self, accounts=None, pending_liquidations=None, done_txs=None):
+    def update_shared_state(
+        self, accounts=None, pending_liquidations=None, done_txs=None
+    ):
         """function to update the internal shared state with the current round, allowing this data to be displayed."""
-        self.context.shared_state["state"]['round'] = self.behaviour_id
+        self.context.shared_state["state"]["round"] = self.behaviour_id
         if accounts is not None:
-            self.context.shared_state["state"]['accounts'] = accounts
+            self.context.shared_state["state"]["accounts"] = accounts
         if pending_liquidations is not None:
-            self.context.shared_state['state']['pending_liquidations'] = pending_liquidations
+            self.context.shared_state["state"][
+                "pending_liquidations"
+            ] = pending_liquidations
         if done_txs is not None:
-            self.context.shared_state['state']['done_txs'] = done_txs
+            self.context.shared_state["state"]["done_txs"] = done_txs
 
     @cached_property
     def unitroller_contract(self):  # TODO:
-        INFURA_API_KEY = self.context.params.config['infura_api_key']
+        INFURA_API_KEY = self.context.params.config["infura_api_key"]
         provider = f"https://polygon-mainnet.infura.io/v3/{INFURA_API_KEY}"
         unitroller_address = "0x8849f1a0cB6b5D6076aB150546EddEe193754F1C"
-        path = Path.cwd() / "vendor" / "zarathustra" / "contracts" / "unitroller" / "build" / "unitroller.json"
-        abi = json.loads(path.read_text())['abi']
+        path = (
+            Path.cwd()
+            / "vendor"
+            / "zarathustra"
+            / "contracts"
+            / "unitroller"
+            / "build"
+            / "unitroller.json"
+        )
+        abi = json.loads(path.read_text())["abi"]
         w3 = Web3(Web3.HTTPProvider(provider))
         contract = w3.eth.contract(address=unitroller_address, abi=abi)
         return contract
@@ -104,7 +102,9 @@ class CalculatePositionHealthBehaviour(LiquidationStationBaseBehaviour):
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = CalculatePositionHealthPayload(sender=sender, )
+            payload = CalculatePositionHealthPayload(
+                sender=sender,
+            )
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -127,9 +127,11 @@ class CollectPositionsBehaviour(LiquidationStationBaseBehaviour):
         ledger_api_response = yield from self.get_ledger_api_response(
             performative=LedgerApiMessage.Performative.GET_STATE,
             ledger_callable="get_block",
-            block_identifier="latest"
+            block_identifier="latest",
         )
-        correct_performative = ledger_api_response.performative == LedgerApiMessage.Performative.STATE
+        correct_performative = (
+            ledger_api_response.performative == LedgerApiMessage.Performative.STATE
+        )
         if not correct_performative or "number" not in ledger_api_response.state.body:
             self.context.logger.error(f"Could not extract block: {ledger_api_response}")
             return
@@ -143,7 +145,9 @@ class CollectPositionsBehaviour(LiquidationStationBaseBehaviour):
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = CollectPositionsPayload(sender=sender, )
+            payload = CollectPositionsPayload(
+                sender=sender,
+            )
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -156,24 +160,30 @@ class CollectPositionsBehaviour(LiquidationStationBaseBehaviour):
         contract = self.unitroller_contract
         event_template = contract.events.MarketEntered
         start_block = latest_block - 10_000  # TODO
-        INFURA_API_KEY = self.context.params.config['infura_api_key']
+        INFURA_API_KEY = self.context.params.config["infura_api_key"]
         provider = f"https://polygon-mainnet.infura.io/v3/{INFURA_API_KEY}"
         unitroller_address = "0x8849f1a0cB6b5D6076aB150546EddEe193754F1C"
 
         w3 = Web3(Web3.HTTPProvider(provider))
-        events = w3.eth.get_logs({
-            'fromBlock': start_block,
-            'toBlock': latest_block,
-            'address': unitroller_address,
-        })
+        events = w3.eth.get_logs(
+            {
+                "fromBlock": start_block,
+                "toBlock": latest_block,
+                "address": unitroller_address,
+            }
+        )
 
         def handle_event(event, event_template):
-            return get_event_data(event_template.web3.codec, event_template._get_event_abi(), event)
+            return get_event_data(
+                event_template.web3.codec, event_template._get_event_abi(), event
+            )
 
         accounts = []
         for event in events:
             try:
-                get_event_data(event_template.web3.codec, event_template._get_event_abi(), event)
+                get_event_data(
+                    event_template.web3.codec, event_template._get_event_abi(), event
+                )
                 result = handle_event(event=event, event_template=event_template)
                 accounts.append(result["account"])
             except:
@@ -191,12 +201,16 @@ class PrepareLiquidationTransactionsBehaviour(LiquidationStationBaseBehaviour):
     # TODO: implement logic required to set payload content for synchronization
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
-        self.context.logger.info("PrepareLiquidationTransactionsBehaviour: In the behaviour")
+        self.context.logger.info(
+            "PrepareLiquidationTransactionsBehaviour: In the behaviour"
+        )
         self.update_shared_state()
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = PrepareLiquidationTransactionsPayload(sender=sender, )
+            payload = PrepareLiquidationTransactionsPayload(
+                sender=sender,
+            )
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -218,7 +232,9 @@ class RegistrationBehaviour(LiquidationStationBaseBehaviour):
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = RegistrationPayload(sender=sender, )
+            payload = RegistrationPayload(
+                sender=sender,
+            )
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -240,7 +256,9 @@ class ResetAndPauseBehaviour(LiquidationStationBaseBehaviour):
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = ResetAndPausePayload(sender=sender, )
+            payload = ResetAndPausePayload(
+                sender=sender,
+            )
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -257,12 +275,16 @@ class SubmitPositionLiquidationTransactionsBehaviour(LiquidationStationBaseBehav
     # TODO: implement logic required to set payload content for synchronization
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
-        self.context.logger.info("SubmitPositionLiquidationTransactionsBehaviour: In the behaviour")
+        self.context.logger.info(
+            "SubmitPositionLiquidationTransactionsBehaviour: In the behaviour"
+        )
         self.update_shared_state()
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = SubmitPositionLiquidationTransactionsPayload(sender=sender, )
+            payload = SubmitPositionLiquidationTransactionsPayload(
+                sender=sender,
+            )
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -282,5 +304,5 @@ class LiquidationStationRoundBehaviour(AbstractRoundBehaviour):
         PrepareLiquidationTransactionsBehaviour,
         RegistrationBehaviour,
         ResetAndPauseBehaviour,
-        SubmitPositionLiquidationTransactionsBehaviour
+        SubmitPositionLiquidationTransactionsBehaviour,
     ]

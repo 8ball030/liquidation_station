@@ -17,31 +17,35 @@
 #
 # ------------------------------------------------------------------------------
 
-"""This package contains the tests for rounds of LiquidationStation."""
+"""This package contains the tests for rounds of FlowchartToFSM."""
 
 from typing import Any, Type, Dict, List, Callable, Hashable, Mapping
 from dataclasses import dataclass, field
 
 import pytest
 
-from packages.eightballer.skills.liquidation_station.payloads import (
-    CalculatePositionHealthPayload,
-    CollectPositionsPayload,
-    PrepareLiquidationTransactionsPayload,
-    RegistrationPayload,
-    ResetAndPausePayload,
-    SubmitPositionLiquidationTransactionsPayload,
+from packages.eightballer.skills.rysk_roller.payloads import (
+    AnalyseDataPayload,
+    CallExercisedPayload,
+    CallExpiredPayload,
+    CollectDataPayload,
+    MultiplexerPayload,
+    PutExercisedPayload,
+    PutExpiredPayload,
+    UnderAllocatedPayload,
 )
-from packages.eightballer.skills.liquidation_station.rounds import (
+from packages.eightballer.skills.rysk_roller.rounds import (
     AbstractRound,
     Event,
     SynchronizedData,
-    CalculatePositionHealthRound,
-    CollectPositionsRound,
-    PrepareLiquidationTransactionsRound,
-    RegistrationRound,
-    ResetAndPauseRound,
-    SubmitPositionLiquidationTransactionsRound,
+    AnalyseDataRound,
+    CallExercisedRound,
+    CallExpiredRound,
+    CollectDataRound,
+    MultiplexerRound,
+    PutExercisedRound,
+    PutExpiredRound,
+    UnderAllocatedRound,
 )
 from packages.valory.skills.abstract_round_abci.base import (
     BaseTxPayload,
@@ -70,8 +74,8 @@ class RoundTestCase:
 MAX_PARTICIPANTS: int = 4
 
 
-class BaseLiquidationStationRoundTest(BaseRoundTestClass):
-    """Base test class for LiquidationStation rounds."""
+class BaseFlowchartToFSMRoundTest(BaseRoundTestClass):
+    """Base test class for FlowchartToFSM rounds."""
 
     round_cls: Type[AbstractRound]
     synchronized_data: SynchronizedData
@@ -99,23 +103,10 @@ class BaseLiquidationStationRoundTest(BaseRoundTestClass):
         )
 
 
-class TestCalculatePositionHealthRound(BaseLiquidationStationRoundTest):
-    """Tests for CalculatePositionHealthRound."""
+class TestAnalyseDataRound(BaseFlowchartToFSMRoundTest):
+    """Tests for AnalyseDataRound."""
 
-    round_class = CalculatePositionHealthRound
-
-    # TODO: provide test cases
-    @pytest.mark.parametrize("test_case", [])
-    def test_run(self, test_case: RoundTestCase) -> None:
-        """Run tests."""
-
-        self.run_test(test_case)
-
-
-class TestCollectPositionsRound(BaseLiquidationStationRoundTest):
-    """Tests for CollectPositionsRound."""
-
-    round_class = CollectPositionsRound
+    round_class = AnalyseDataRound
 
     # TODO: provide test cases
     @pytest.mark.parametrize("test_case", [])
@@ -125,23 +116,10 @@ class TestCollectPositionsRound(BaseLiquidationStationRoundTest):
         self.run_test(test_case)
 
 
-class TestPrepareLiquidationTransactionsRound(BaseLiquidationStationRoundTest):
-    """Tests for PrepareLiquidationTransactionsRound."""
+class TestCallExercisedRound(BaseFlowchartToFSMRoundTest):
+    """Tests for CallExercisedRound."""
 
-    round_class = PrepareLiquidationTransactionsRound
-
-    # TODO: provide test cases
-    @pytest.mark.parametrize("test_case", [])
-    def test_run(self, test_case: RoundTestCase) -> None:
-        """Run tests."""
-
-        self.run_test(test_case)
-
-
-class TestRegistrationRound(BaseLiquidationStationRoundTest):
-    """Tests for RegistrationRound."""
-
-    round_class = RegistrationRound
+    round_class = CallExercisedRound
 
     # TODO: provide test cases
     @pytest.mark.parametrize("test_case", [])
@@ -151,10 +129,10 @@ class TestRegistrationRound(BaseLiquidationStationRoundTest):
         self.run_test(test_case)
 
 
-class TestResetAndPauseRound(BaseLiquidationStationRoundTest):
-    """Tests for ResetAndPauseRound."""
+class TestCallExpiredRound(BaseFlowchartToFSMRoundTest):
+    """Tests for CallExpiredRound."""
 
-    round_class = ResetAndPauseRound
+    round_class = CallExpiredRound
 
     # TODO: provide test cases
     @pytest.mark.parametrize("test_case", [])
@@ -164,10 +142,62 @@ class TestResetAndPauseRound(BaseLiquidationStationRoundTest):
         self.run_test(test_case)
 
 
-class TestSubmitPositionLiquidationTransactionsRound(BaseLiquidationStationRoundTest):
-    """Tests for SubmitPositionLiquidationTransactionsRound."""
+class TestCollectDataRound(BaseFlowchartToFSMRoundTest):
+    """Tests for CollectDataRound."""
 
-    round_class = SubmitPositionLiquidationTransactionsRound
+    round_class = CollectDataRound
+
+    # TODO: provide test cases
+    @pytest.mark.parametrize("test_case", [])
+    def test_run(self, test_case: RoundTestCase) -> None:
+        """Run tests."""
+
+        self.run_test(test_case)
+
+
+class TestMultiplexerRound(BaseFlowchartToFSMRoundTest):
+    """Tests for MultiplexerRound."""
+
+    round_class = MultiplexerRound
+
+    # TODO: provide test cases
+    @pytest.mark.parametrize("test_case", [])
+    def test_run(self, test_case: RoundTestCase) -> None:
+        """Run tests."""
+
+        self.run_test(test_case)
+
+
+class TestPutExercisedRound(BaseFlowchartToFSMRoundTest):
+    """Tests for PutExercisedRound."""
+
+    round_class = PutExercisedRound
+
+    # TODO: provide test cases
+    @pytest.mark.parametrize("test_case", [])
+    def test_run(self, test_case: RoundTestCase) -> None:
+        """Run tests."""
+
+        self.run_test(test_case)
+
+
+class TestPutExpiredRound(BaseFlowchartToFSMRoundTest):
+    """Tests for PutExpiredRound."""
+
+    round_class = PutExpiredRound
+
+    # TODO: provide test cases
+    @pytest.mark.parametrize("test_case", [])
+    def test_run(self, test_case: RoundTestCase) -> None:
+        """Run tests."""
+
+        self.run_test(test_case)
+
+
+class TestUnderAllocatedRound(BaseFlowchartToFSMRoundTest):
+    """Tests for UnderAllocatedRound."""
+
+    round_class = UnderAllocatedRound
 
     # TODO: provide test cases
     @pytest.mark.parametrize("test_case", [])

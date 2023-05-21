@@ -17,10 +17,10 @@
 #
 # ------------------------------------------------------------------------------
 
-"""Test the dialogues.py module of the LiquidationStation."""
+"""Test the dialogues.py module of the FlowchartToFSM."""
 
-import packages.eightballer.skills.liquidation_station.dialogues  # noqa
+import packages.eightballer.skills.rysk_roller.dialogues  # noqa
 
 
 def test_import() -> None:
-    """Test that the 'dialogues.py' of the LiquidationStation can be imported."""
+    """Test that the 'dialogues.py' of the FlowchartToFSM can be imported."""

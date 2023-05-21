@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # ------------------------------------------------------------------------------
 #
-#   Copyright 2023 eightballer
+#   Copyright 2023 Valory AG
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -17,8 +17,16 @@
 #
 # ------------------------------------------------------------------------------
 
-"""This module contains the implementation of the default skill."""
+"""Test the models.py module of the FlowchartToFSM."""
 
-from aea.configurations.base import PublicId
+from packages.valory.skills.abstract_round_abci.test_tools.base import DummyContext
+from packages.eightballer.skills.rysk_roller.models import SharedState
 
-PUBLIC_ID = PublicId.from_str("eightballer/contract_subscription:0.1.0")
+
+class TestSharedState:
+    """Test SharedState of FlowchartToFSM."""
+
+    def test_initialization(self) -> None:
+        """Test initialization."""
+        SharedState(name="", skill_context=DummyContext())
+

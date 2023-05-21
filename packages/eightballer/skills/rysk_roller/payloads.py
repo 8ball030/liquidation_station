@@ -17,7 +17,7 @@
 #
 # ------------------------------------------------------------------------------
 
-"""This module contains the transaction payloads of the LiquidationStationAbciApp."""
+"""This module contains the transaction payloads of the FlowchartToFSMAbciApp."""
 
 from dataclasses import dataclass
 
@@ -25,42 +25,62 @@ from packages.valory.skills.abstract_round_abci.base import BaseTxPayload
 
 
 @dataclass(frozen=True)
-class CalculatePositionHealthPayload(BaseTxPayload):
-    """Represent a transaction payload for the CalculatePositionHealthRound."""
+class AnalyseDataPayload(BaseTxPayload):
+    """Represent a transaction payload for the AnalyseDataRound."""
 
     # TODO: define your attributes
 
 
 @dataclass(frozen=True)
-class CollectPositionsPayload(BaseTxPayload):
-    """Represent a transaction payload for the CollectPositionsRound."""
+class CallExercisedPayload(BaseTxPayload):
+    """Represent a transaction payload for the CallExercisedRound."""
 
     # TODO: define your attributes
 
 
 @dataclass(frozen=True)
-class PrepareLiquidationTransactionsPayload(BaseTxPayload):
-    """Represent a transaction payload for the PrepareLiquidationTransactionsRound."""
+class CallExpiredPayload(BaseTxPayload):
+    """Represent a transaction payload for the CallExpiredRound."""
+    # TODO: define your attributes
+
+
+
+@dataclass(frozen=True)
+class CollectDataPayload(BaseTxPayload):
+    """Represent a transaction payload for the CollectDataRound."""
+
+    content: str
+
+
+@dataclass(frozen=True)
+class CollectPriceDataPayload(BaseTxPayload):
+    """Represent a transaction payload for the CollectDataRound."""
+
+
+@dataclass(frozen=True)
+class MultiplexerPayload(BaseTxPayload):
+    """Represent a transaction payload for the MultiplexerRound."""
 
     # TODO: define your attributes
 
 
 @dataclass(frozen=True)
-class RegistrationPayload(BaseTxPayload):
-    """Represent a transaction payload for the RegistrationRound."""
+class PutExercisedPayload(BaseTxPayload):
+    """Represent a transaction payload for the PutExercisedRound."""
 
     # TODO: define your attributes
 
 
 @dataclass(frozen=True)
-class ResetAndPausePayload(BaseTxPayload):
-    """Represent a transaction payload for the ResetAndPauseRound."""
+class PutExpiredPayload(BaseTxPayload):
+    """Represent a transaction payload for the PutExpiredRound."""
 
     # TODO: define your attributes
 
 
 @dataclass(frozen=True)
-class SubmitPositionLiquidationTransactionsPayload(BaseTxPayload):
-    """Represent a transaction payload for the SubmitPositionLiquidationTransactionsRound."""
+class UnderAllocatedPayload(BaseTxPayload):
+    """Represent a transaction payload for the UnderAllocatedRound."""
 
     # TODO: define your attributes
+

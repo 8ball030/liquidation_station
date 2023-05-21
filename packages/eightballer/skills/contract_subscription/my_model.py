@@ -20,16 +20,18 @@
 """This package contains a scaffold of a model."""
 
 from aea.skills.base import Model
-from packages.fetchai.protocols.default.dialogues import DefaultDialogue, DefaultDialogues
+
+from packages.fetchai.protocols.default.dialogues import (DefaultDialogue,
+                                                          DefaultDialogues)
 
 
 def get_role(*args, **kwargs) -> DefaultDialogue.Role:
     """Get the role of the agent for the dialogue."""
     return DefaultDialogue.Role.AGENT
 
+
 class MyModel(Model):
     """This class scaffolds a model."""
-
 
     def setup(self) -> None:
         """Set up the model."""

@@ -17,16 +17,25 @@
 #
 # ------------------------------------------------------------------------------
 
-"""Test the models.py module of the LiquidationStation."""
+"""This module contains the shared state for the abci skill of FlowchartToFSMAbciApp."""
 
-from packages.valory.skills.abstract_round_abci.test_tools.base import DummyContext
-from packages.eightballer.skills.liquidation_station.models import SharedState
+from packages.valory.skills.abstract_round_abci.models import BaseParams
+from packages.valory.skills.abstract_round_abci.models import (
+    BenchmarkTool as BaseBenchmarkTool,
+)
+from packages.valory.skills.abstract_round_abci.models import Requests as BaseRequests
+from packages.valory.skills.abstract_round_abci.models import (
+    SharedState as BaseSharedState,
+)
+from packages.eightballer.skills.rysk_roller.rounds import FlowchartToFSMAbciApp
 
 
-class TestSharedState:
-    """Test SharedState of LiquidationStation."""
+class SharedState(BaseSharedState):
+    """Keep the current shared state of the skill."""
 
-    def test_initialization(self) -> None:
-        """Test initialization."""
-        SharedState(name="", skill_context=DummyContext())
+    abci_app_cls = FlowchartToFSMAbciApp
 
+
+Params = BaseParams
+Requests = BaseRequests
+BenchmarkTool = BaseBenchmarkTool

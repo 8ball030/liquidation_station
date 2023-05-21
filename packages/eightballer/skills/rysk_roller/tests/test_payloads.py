@@ -17,21 +17,23 @@
 #
 # ------------------------------------------------------------------------------
 
-"""This package contains payload tests for the LiquidationStationAbciApp."""
+"""This package contains payload tests for the FlowchartToFSMAbciApp."""
 
 from typing import Type, Hashable
 from dataclasses import dataclass
 
 import pytest
 
-from packages.eightballer.skills.liquidation_station.payloads import (
+from packages.eightballer.skills.rysk_roller.payloads import (
     BaseTxPayload,
-    CalculatePositionHealthPayload,
-    CollectPositionsPayload,
-    PrepareLiquidationTransactionsPayload,
-    RegistrationPayload,
-    ResetAndPausePayload,
-    SubmitPositionLiquidationTransactionsPayload,
+    AnalyseDataPayload,
+    CallExercisedPayload,
+    CallExpiredPayload,
+    CollectDataPayload,
+    MultiplexerPayload,
+    PutExercisedPayload,
+    PutExpiredPayload,
+    UnderAllocatedPayload,
 )
 
 
@@ -47,7 +49,7 @@ class PayloadTestCase:
 # TODO: provide test cases
 @pytest.mark.parametrize("test_case", [])
 def test_payloads(test_case: PayloadTestCase) -> None:
-    """Tests for LiquidationStationAbciApp payloads"""
+    """Tests for FlowchartToFSMAbciApp payloads"""
 
     payload = test_case.payload_cls(sender="sender", content=test_case.content)
     assert payload.sender == "sender"

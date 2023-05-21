@@ -10,6 +10,8 @@ python = "^3.9"
 open-autonomy = "^0.10.1"
 docker-compose = "^1.29.2"
 rich-click = "^1.6.1"
+hypothesis = "^6.75.3"
+autonomy-dev = {extras = ["all"], version = "^0.1.3"}
 
 
 
