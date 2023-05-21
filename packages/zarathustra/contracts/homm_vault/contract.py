@@ -19,7 +19,7 @@
 
 """This module contains the scaffold contract definition."""
 
-from dataclasses import dataclass, astuple
+from dataclasses import astuple, dataclass
 from enum import Enum
 from typing import Any, List
 
@@ -83,13 +83,18 @@ class OperationProcedure:
 
 @dataclass
 class RequestQuoteOptionPrice:
+    """RequestQuoteOptionPrice"""
+
     _option_series: OptionSeries
     _amount: int
     is_sell: bool
     net_dhv_exposure: int
 
+
 @dataclass
 class QuoteOptionPrice:
+    """QuoteOptionPrice"""
+
     total_premium: int
     total_delta: int
     total_fees: int
@@ -97,11 +102,16 @@ class QuoteOptionPrice:
 
 @dataclass
 class Component:
+    """Component"""
+
     epoch: int
     shares: int  # e18
 
+
 @dataclass
 class CompleteWithdrawal:
+    """CompleteWithdrawal"""
+
     withdrawal_amount: int
     withdrawal_shares: int
     components: list[Component]
