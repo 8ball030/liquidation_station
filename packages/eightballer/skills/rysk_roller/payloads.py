@@ -56,10 +56,13 @@ class CollectDataPayload(BaseTxPayload):
 class CollectPriceDataPayload(BaseTxPayload):
     """Represent a transaction payload for the CollectDataRound."""
 
+    content: str
+
 
 @dataclass(frozen=True)
 class MultiplexerPayload(BaseTxPayload):
     """Represent a transaction payload for the MultiplexerRound."""
+    strategy_decision: int
 
     # TODO: define your attributes
 

@@ -63,6 +63,7 @@ from packages.eightballer.skills.rysk_roller.rounds import (
     PutExpiredPayload,
     UnderAllocatedPayload,
 )
+from packages.eightballer.skills.rysk_roller.models import StrategyAction
 
 from packages.valory.protocols.http.message import HttpMessage
 
@@ -70,6 +71,9 @@ DISPLAY_FORMAT = 1000000000000000000
 
 price_devisor = 1_000_000_000_000_000_000
 exposure_devisor = 100_000_000_000_000_0000
+
+
+
 
 def from_timestamp(date_string):
     """Parse a timestamp."""
@@ -215,7 +219,6 @@ class CollectDataBehaviour(RyskRollerBaseBehaviour):
 
         self.set_done()
     
-
     def _request_subgraph_data(self):
         """Perform a http request to the subgraph api."""
         self.context.logger.info("Requesting subgraph data.")
@@ -245,11 +248,13 @@ class CollectPriceDataBehaviour(RyskRollerBaseBehaviour):
         """Do the act, supporting asynchronous execution."""
 
         # positions = yield from self.get_positions()
-        result = yield from self.get_options_prices()
+        price_data = yield from self.get_options_prices()
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = CollectPriceDataPayload(sender=sender, )
+            payload = CollectPriceDataPayload(sender=sender, content=json.dumps({
+                'price_data': price_data,
+            }))
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -266,9 +271,12 @@ class CollectPriceDataBehaviour(RyskRollerBaseBehaviour):
 
         for row in data:
             if row['isBuyable']:
-                yield from self._get_option_price(row, side="buy")
+                row['ask'] = yield from self._get_option_price(row, side="buy")
             if row['isSellable']:
-                yield from self._get_option_price(row, side="sell")
+                row['bid'] = yield from self._get_option_price(row, side="sell")
+        return data
+
+
 
     def get_positions(self):
         """Get the price for an option series."""
@@ -292,7 +300,8 @@ class CollectPriceDataBehaviour(RyskRollerBaseBehaviour):
             '0x408c5755b5c7a0a28D851558eA3636CfC5b5b19d'
         )
 
-        breakpoint()
+        return 234556
+
         contract_api_msg = yield from self.get_contract_api_response(
             performative=ContractApiMessage.Performative.GET_STATE,  # type: ignore
             contract_address="TODO",
@@ -333,16 +342,23 @@ class MultiplexerBehaviour(RyskRollerBaseBehaviour):
         # 3. if we have available funds, we need to sell options
 
         balances = self.context.state.synchronized_data.db.get("rysk_data")['balances']
-        subgraph = self.context.state.synchronized_data.db.get("rysk_data")['subgraph']
-        # note we also need to know what our current position is
 
-        if balances['WETH'] > self.context.params['min_eth']:
-            # we have enough eth to sell options
-            pass
+        # subgraph = self.context.state.synchronized_data.db.get("rysk_data")['subgraph']
+        # positions = self.context.state.synchronized_data.db.get("rysk_data")['positions']
+
+        if balances['WETH'] > self.context.params.config['min_weth']:
+            self.context.logger.info(f"Available WETH funds: {balances['WETH']}")
+            decision = StrategyAction.SELL_CALL.value
+        elif balances['USDC'] > self.context.params.config['min_usdc']:
+            self.context.logger.info(f"Available USDC funds: {balances['USDC']}")
+            decision = StrategyAction.SELL_PUT.value
+        else:
+            self.context.logger.info(f"No funds available: {balances}")
+            decision = StrategyAction.HOLD.value
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = MultiplexerPayload(sender=sender, )
+            payload = MultiplexerPayload(sender=sender, strategy_decision=decision)
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -356,7 +372,6 @@ class PutExercisedBehaviour(RyskRollerBaseBehaviour):
 
     matching_round: Type[AbstractRound] = PutExercisedRound
 
-    # TODO: implement logic required to set payload content for synchronization
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
 
@@ -370,13 +385,16 @@ class PutExercisedBehaviour(RyskRollerBaseBehaviour):
 
         self.set_done()
 
+    def _build_swap_transaction(self):
+        """Build the swap transaction."""
+        self.context.logger.info("Building swap transaction...")
+
 
 class PutExpiredBehaviour(RyskRollerBaseBehaviour):
     """PutExpiredBehaviour"""
 
     matching_round: Type[AbstractRound] = PutExpiredRound
 
-    # TODO: implement logic required to set payload content for synchronization
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
 
@@ -396,7 +414,6 @@ class UnderAllocatedBehaviour(RyskRollerBaseBehaviour):
 
     matching_round: Type[AbstractRound] = UnderAllocatedRound
 
-    # TODO: implement logic required to set payload content for synchronization
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
 
