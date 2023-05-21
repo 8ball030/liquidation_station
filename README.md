@@ -1,8 +1,30 @@
 # Liquidation Station
 
-The application is build on top of the open-autonomy framework.
+Much of the contemporary defi protocols depend on bot operators to perform
+various tasks in order to ensure that actions get taken when required.
+The operators are incentivized by the reward they receive, however, the
+environment is extremely competitive which inevitably leads to scenarios where
+only those most skilled and well equiped can participate. Not only does this
+lead to centralization which diminishes fault tolerance, the software that these
+operators run is often a black box to those whose protocols rely on it. We take
+the opposite approach in our multi-agent application, where we incentivize
+collaboration by securing off chain computation using Tendermint. Doing so all
+state transitions during off chain computation require consensus. After a
+complete iteration the final transactions to liquidate are submitted on-chain
+(polygon mainnet). The agents share a multisig wallet and the rewards are
+distributed evenly, where operators that perform better get rewarded more, and
+those that do not contribute can be removed from the set of active participants
+if so decided by majority consensus, in order to allow the system to be purged
+from parasites that will inevitably arise.
 
-This allows us to define a multi-agent system secured on chain, using the autonolas stack.
+These liquidation fees and subsequently used in the Rysk Roller skill, which the
+agents use the trade using the Wheel Options Strategy.  By utilizing the Wheel
+Strategy, Rysk Roller aims to capitalize on market opportunities while
+maintaining a balanced and fully collateralized position. This allows for
+additional income generation through options premiums.
+
+The application is build on top of the open-autonomy framework.
+This allows us to define a multi-agent system secured on chain, using the Autonolas stack.
 
 
 ## Live Deployments
