@@ -19,7 +19,7 @@
 
 """This module contains the scaffold contract definition."""
 
-from dataclasses import dataclass
+from dataclasses import dataclass, astuple
 from enum import Enum
 from typing import Any, List
 
@@ -28,7 +28,7 @@ from aea.configurations.base import PublicId
 from aea.contracts.base import Contract
 from aea.crypto.base import LedgerApi
 
-Wei = Shares = Assets = int
+Shares = Assets = int
 
 
 class ActionType(Enum):
@@ -79,6 +79,32 @@ class OperationProcedure:
 
     operation: OperationType
     operation_queue: list[ActionArgs]
+
+
+@dataclass
+class RequestQuoteOptionPrice:
+    _option_series: OptionSeries
+    _amount: int
+    is_sell: bool
+    net_dhv_exposure: int
+
+@dataclass
+class QuoteOptionPrice:
+    total_premium: int
+    total_delta: int
+    total_fees: int
+
+
+@dataclass
+class Component:
+    epoch: int
+    shares: int  # e18
+
+@dataclass
+class CompleteWithdrawal:
+    withdrawal_amount: int
+    withdrawal_shares: int
+    components: list[Component]
 
 
 class HOMMVaultContract(Contract):
@@ -250,7 +276,7 @@ class HOMMVaultContract(Contract):
         cls,
         ledger_api: LedgerApi,
         contract: Address,
-    ) -> Wei:
+    ) -> int:
         """Returns the total amount of "assets" (USDC) held by this contract.
 
         :return: int
@@ -281,12 +307,15 @@ class HOMMVaultContract(Contract):
 
         return contract_interface.functions.isLocked().call()
 
+    # *´:°•.°+.*•´.*:˚.°*.˚•´.°:°•.°•.*•´.*:˚.°*.˚•´.°:°•.°+.*•´.*:* #
+    # *                  FUND OPERATOR FUNCTIONS                   * #
+    # *.•°:°.´+˚.*°.˚:*.´•*.+°.•°:´*.´•*.•°.•°:°.´:•˚°.*°.˚:*.´+°.•* #
     @classmethod
     def deposit_liquidity(
         cls,
         ledger_api: LedgerApi,
         contract: Address,
-        _amount: Wei,
+        _amount: int,
     ) -> bool:
         """
         Deposit liquidity into Rysk liquidity pool.
@@ -325,7 +354,7 @@ class HOMMVaultContract(Contract):
         cls,
         ledger_api: LedgerApi,
         contract: Address,
-    ) -> None:
+    ) -> CompleteWithdrawal:
         """
         Complete withdrawal from Rysk liquidity pool using existing receipt
 
@@ -337,7 +366,8 @@ class HOMMVaultContract(Contract):
             contract_address=contract,
         )
 
-        return contract_interface.functions.completeWithdraw().call()
+        result = contract_interface.functions.completeWithdraw().call()
+        return CompleteWithdrawal(*astuple(result))
 
     @classmethod
     def trade(
@@ -379,3 +409,61 @@ class HOMMVaultContract(Contract):
         )
 
         return contract_interface.functions.redeemOptionTokens(_series).call()
+
+    @classmethod
+    def quote_option_price(
+        cls,
+        ledger_api: LedgerApi,
+        contract: Address,
+        request_quote_option_price: RequestQuoteOptionPrice,
+    ) -> QuoteOptionPrice:
+        """
+        Get a quote for the option price from the BeyondPricer
+
+        :param request_quote_option_price:
+        :return: amount of assets
+        """
+
+        contract_interface = cls.get_instance(
+            ledger_api=ledger_api,
+            contract_address=contract,
+        )
+
+        result = contract_interface.functions.quoteOptionPrice(
+            *astuple(request_quote_option_price)
+        ).call()
+
+        total_premium, total_delta, total_fees = result
+        return QuoteOptionPrice(total_premium, total_delta, total_fees)
+
+    @classmethod
+    def get_call_slippage_gradient_multipliers(
+        cls,
+        ledger_api: LedgerApi,
+        contract: Address,
+        _series: Address,
+    ) -> Assets:
+        """getCallSlippageGradientMultipliers"""
+
+        contract_interface = cls.get_instance(
+            ledger_api=ledger_api,
+            contract_address=contract,
+        )
+
+        return contract_interface.functions.getCallSlippageGradientMultipliers().call()
+
+    @classmethod
+    def get_put_slippage_gradient_multipliers(
+        cls,
+        ledger_api: LedgerApi,
+        contract: Address,
+        _series: Address,
+    ) -> Assets:
+        """getPutSlippageGradientMultipliers"""
+
+        contract_interface = cls.get_instance(
+            ledger_api=ledger_api,
+            contract_address=contract,
+        )
+
+        return contract_interface.functions.getPutSlippageGradientMultipliers().call()
