@@ -19,6 +19,7 @@
 
 """This module contains the shared state for the abci skill of FlowchartToFSMAbciApp."""
 
+from enum import Enum
 from packages.valory.skills.abstract_round_abci.models import BaseParams
 from packages.valory.skills.abstract_round_abci.models import (
     BenchmarkTool as BaseBenchmarkTool,
@@ -34,6 +35,16 @@ class SharedState(BaseSharedState):
     """Keep the current shared state of the skill."""
 
     abci_app_cls = FlowchartToFSMAbciApp
+
+
+class StrategyAction(Enum):
+    """Strategy action."""
+
+    SELL_CALL = 1
+    SELL_PUT = 2
+    SWAP_USDC_TO_ETH = 3
+    SWAP_ETH_TO_USDC = 4
+    HOLD = 5
 
 
 Params = BaseParams
