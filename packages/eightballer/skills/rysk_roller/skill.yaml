@@ -7,12 +7,12 @@ license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   __init__.py: bafybeicsypfuei4zd7tykc3m4b7sujyscfovcsjz43z7ea4p3gghnfp3ue
-  behaviours.py: bafybeifim4oddmc7wl4yj76rtmt4ap2fpow6rptjisrxotcwifbkmmlv5m
+  behaviours.py: bafybeifa4k53hmwj6uccpo7sw2waj624nrqq33bn3mic3h53faqgsxyoaq
   dialogues.py: bafybeid7xf5ye2hxzkq3puc2sx2g6sddehsrzi5ibqom56poakyvzte7xu
   handlers.py: bafybeih7ayd727lw7id4suh6nbvhyyrytsxx4mljhjs5m6slcmammk2x2q
   models.py: bafybeifnc6wfxirdt3lxwap5jsc5fh3ml52qhocgwzufmz5uk7robilz2i
-  payloads.py: bafybeial2hg2rlds72jauijhyllzeorcbbtlf3zpl2vy4jrdfx5qcpfjre
-  rounds.py: bafybeigp4y2wqaoeodfj2azynvz53ofbqzont7sxfrpdit6b24v32cuc5e
+  payloads.py: bafybeicd6oxsvqkdt2fwarvr737ps6bvo23uke6c2jrkwxiv6oj5v7qbdq
+  rounds.py: bafybeidstrz2y7ixumkiar5bvwmnypgxy3q7bcfeioz2kebtkjcaerx7gm
   rysk_roller.yaml: bafybeibz5bfumhn3apbjvjdsrivufbmrthqjigcbkj525xgzavf7lcllgy
   tests/__init__.py: bafybeic3534aro4pdtsdcuxywzlgkccczx2elhnwisiq3r6okvnrdu4aia
   tests/test_behaviours.py: bafybeihenxqeya6gq2c675qizxh5yhdc2lga5pkfzbds6gnyz354ors6iq
@@ -25,7 +25,7 @@ fingerprint_ignore_patterns: []
 connections:
 - valory/http_client:0.23.0:bafybeidykl4elwbcjkqn32wt5h4h7tlpeqovrcq3c5bcplt6nhpznhgczi
 contracts:
-- valory/uniswap_v2_erc20:0.1.0:bafybeigjlrw6gfzpap4pt57ibu26ebzk6grwfsbxp53i35f3kywau5hezi
+- valory/uniswap_v2_erc20:0.1.0:bafybeia7wexyrsevai5ewxn2anabnlakjkivtms2xw3d2xcccwjb7sduya
 - valory/uniswap_v2_router_02:0.1.0:bafybeihjfeemghfrbqwxdfos5zulzi3fzvq3wjxpwmdu3di4rklljp3sry
 - zarathustra/homm_vault:0.1.0:bafybeiayvznp6nxv3cex6kcnfwqxg7fpqfa2u4zozuvusqw4bkbyc4rbji
 protocols:

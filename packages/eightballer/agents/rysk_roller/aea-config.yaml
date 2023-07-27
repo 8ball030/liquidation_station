@@ -14,7 +14,7 @@ connections:
 - valory/p2p_libp2p_client:0.1.0:bafybeidwcobzb7ut3efegoedad7jfckvt2n6prcmd4g7xnkm6hp6aafrva
 contracts:
 - valory/service_registry:0.1.0:bafybeiauproyi7qle35u777xnlajrz5samm7h2cdjdqxlsfkxbtwbqilzm
-- valory/uniswap_v2_erc20:0.1.0:bafybeigjlrw6gfzpap4pt57ibu26ebzk6grwfsbxp53i35f3kywau5hezi
+- valory/uniswap_v2_erc20:0.1.0:bafybeia7wexyrsevai5ewxn2anabnlakjkivtms2xw3d2xcccwjb7sduya
 - valory/uniswap_v2_router_02:0.1.0:bafybeihjfeemghfrbqwxdfos5zulzi3fzvq3wjxpwmdu3di4rklljp3sry
 - zarathustra/homm_vault:0.1.0:bafybeiayvznp6nxv3cex6kcnfwqxg7fpqfa2u4zozuvusqw4bkbyc4rbji
 protocols:
@@ -27,7 +27,7 @@ protocols:
 - valory/ledger_api:1.0.0:bafybeibo4bdtcrxi2suyzldwoetjar6pqfzm6vt5xal22ravkkcvdmtksi
 - valory/tendermint:0.1.0:bafybeicusvezoqlmyt6iqomcbwaz3xkhk2qf3d56q5zprmj3xdxfy64k54
 skills:
-- eightballer/rysk_roller:0.1.0:bafybeigxfbrsmnnndhzw4aio6k3ja7bqzimbv7mraafnn5idjl5sx6yeoe
+- eightballer/rysk_roller:0.1.0:bafybeiglsbx5jqp3dmn5xvpoigm5ipnlxlds6ycsjbgzr2enqv3ewkpcqq
 - valory/abstract_abci:0.1.0:bafybeicujajnqzbndtndrndj53znohemihludifuyc5dazfbz6fltyj5ci
 - valory/abstract_round_abci:0.1.0:bafybeiar4gy4brpuxekiwjq7osh3fm254jgdoxlgkvqcp5lytu4uzrmbsm
 default_ledger: ethereum
