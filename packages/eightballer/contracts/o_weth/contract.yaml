@@ -6,8 +6,9 @@ description: The scaffold contract scaffolds a contract to be implemented by the
 license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
-  __init__.py: bafybeiddvydebdxub67dnzrzeva6ul4rknc2acnhwogpddvupl2gpb775y
-  contract.py: bafybeifixconyy55afy336t4btic7bv5z3tj7qsycfmbwrphvwbtmndxoi
+  __init__.py: bafybeiep4axriqpradrb2kx2obne5s74cntdw4tmt42z3k4zz5g4dadiri
+  build/o_weth.json: bafybeihodnrjquggmdlmjdshlrq2itkjc7qhfczkldwoalhrhw3ags2m7e
+  contract.py: bafybeid3ziykmwewratfy7uavvyxllaa5eqzi2qe5jzgjomgwzwsjwcfim
 fingerprint_ignore_patterns: []
 class_name: OWeth
 contract_interface_paths:
