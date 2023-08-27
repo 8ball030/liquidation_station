@@ -26,9 +26,9 @@
         "contract/zarathustra/o_weth/0.1.0": "bafybeidda3nacec4xetnptyqauassynx2n3lzjcx4px6q7vva2czzqcjqm",
         "contract/zarathustra/owst_eth/0.1.0": "bafybeibb3wsgr54nuerckxlbuintbacbqgryg6lql7vs6zokthijpmgxti",
         "contract/zarathustra/unitroller/0.1.0": "bafybeihbfrtwjoccjaxa67dehdfzt6bi64mim6rmapvsste22elbvngvqa",
-        "contract/zarathustra/homm_vault/0.1.0": "bafybeigkietdimlhzwnjdifdthy6uzna36zdj5cthqhh5q5erfddtucnpm",
         "contract/valory/uniswap_v2_router_02/0.1.0": "bafybeie6dabrmod674i2nvotde2rodjlslh5ngxmm5pd7u632oi32tf6om",
-        "contract/valory/uniswap_v2_erc20/0.1.0": "bafybeieh4h5pedo3otnxq4h43fyg6f6t7bbn7vncqv2hhj5z5wvwo72bsm"
+        "contract/valory/uniswap_v2_erc20/0.1.0": "bafybeieh4h5pedo3otnxq4h43fyg6f6t7bbn7vncqv2hhj5z5wvwo72bsm",
+        "contract/zarathustra/homm_vault/0.1.0": "bafybeigkietdimlhzwnjdifdthy6uzna36zdj5cthqhh5q5erfddtucnpm"
     },
     "third_party": {
         "protocol/valory/abci/0.1.0": "bafybeifsttranjnxstpoyswpm2dzfyzimpatdfbu5pdpu7ibmda5x24ipe",
