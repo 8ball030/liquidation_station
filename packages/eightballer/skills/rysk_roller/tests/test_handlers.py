@@ -17,11 +17,11 @@
 #
 # ------------------------------------------------------------------------------
 
-"""Test the handlers.py module of the LiquidationStation."""
+"""Test the handlers.py module of the FlowchartToFSM."""
 
-import packages.eightballer.skills.liquidation_station.handlers  # noqa
+import packages.eightballer.skills.rysk_roller.handlers  # noqa
 
 
 def test_import() -> None:
-    """Test that the 'handlers.py' of the LiquidationStation can be imported."""
+    """Test that the 'handlers.py' of the FlowchartToFSM can be imported."""
 

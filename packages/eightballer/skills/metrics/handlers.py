@@ -19,27 +19,18 @@
 
 """This package contains a scaffold of a handler."""
 
-from typing import Optional
+import json
+from typing import Optional, cast
 
 from aea.configurations.base import PublicId
 from aea.protocols.base import Message
 from aea.skills.base import Handler
 
-import json
-from typing import cast
-
-from aea.protocols.base import Message
-from aea.skills.base import Handler
-
-from packages.eightballer.skills.metrics.dialogues import (
-    DefaultDialogues,
-    HttpDialogue,
-    HttpDialogues,
-)
+from packages.eightballer.skills.metrics.dialogues import (DefaultDialogues,
+                                                           HttpDialogue,
+                                                           HttpDialogues)
 from packages.fetchai.protocols.default import DefaultMessage
 from packages.valory.protocols.http.message import HttpMessage
-
-
 
 
 class HttpHandler(Handler):
@@ -47,7 +38,6 @@ class HttpHandler(Handler):
 
     SUPPORTED_PROTOCOL = HttpMessage.protocol_id
     enable_cors = True
-
 
     def setup(self) -> None:
         """Implement the setup."""
@@ -164,4 +154,3 @@ class HttpHandler(Handler):
 
     def teardown(self) -> None:
         """Tear down the class."""
-

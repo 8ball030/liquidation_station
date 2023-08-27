@@ -27,7 +27,6 @@ transition_func:
     (CalculatePositionHealthRound, ROUND_TIMEOUT): ResetAndPauseRound
     (CalculatePositionHealthRound, NO_MAJORITY): ResetAndPauseRound
 
-
     (PrepareLiquidationTransactionsRound, DONE): SubmitPositionLiquidationTransactionsRound
     (PrepareLiquidationTransactionsRound, ROUND_TIMEOUT): ResetAndPauseRound
     (PrepareLiquidationTransactionsRound, NO_MAJORITY): ResetAndPauseRound

@@ -17,23 +17,34 @@
 #
 # ------------------------------------------------------------------------------
 
-"""This module contains the shared state for the abci skill of LiquidationStationAbciApp."""
+"""This module contains the shared state for the abci skill of FlowchartToFSMAbciApp."""
 
-from packages.eightballer.skills.liquidation_station.rounds import \
-    LiquidationStationAbciApp
+from enum import Enum
 from packages.valory.skills.abstract_round_abci.models import BaseParams
-from packages.valory.skills.abstract_round_abci.models import \
-    BenchmarkTool as BaseBenchmarkTool
-from packages.valory.skills.abstract_round_abci.models import \
-    Requests as BaseRequests
-from packages.valory.skills.abstract_round_abci.models import \
-    SharedState as BaseSharedState
+from packages.valory.skills.abstract_round_abci.models import (
+    BenchmarkTool as BaseBenchmarkTool,
+)
+from packages.valory.skills.abstract_round_abci.models import Requests as BaseRequests
+from packages.valory.skills.abstract_round_abci.models import (
+    SharedState as BaseSharedState,
+)
+from packages.eightballer.skills.rysk_roller.rounds import FlowchartToFSMAbciApp
 
 
 class SharedState(BaseSharedState):
     """Keep the current shared state of the skill."""
 
-    abci_app_cls = LiquidationStationAbciApp
+    abci_app_cls = FlowchartToFSMAbciApp
+
+
+class StrategyAction(Enum):
+    """Strategy action."""
+
+    SELL_CALL = 1
+    SELL_PUT = 2
+    SWAP_USDC_TO_ETH = 3
+    SWAP_ETH_TO_USDC = 4
+    HOLD = 5
 
 
 Params = BaseParams

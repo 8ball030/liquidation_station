@@ -1,0 +1,39 @@
+name: contract_subscription
+author: eightballer
+version: 0.1.0
+type: skill
+description: The scaffold skill is a simple client to subscribe to transactions using
+  the websocket connection.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  __init__.py: bafybeihby72yquictws2b6dxskiuskjbkcojyhelkl7hs4uilmmafukvim
+  behaviours.py: bafybeigxaglmnzorre57jm3vdmxf5o3fqqtggjudpdcqdlorcz7kgxcmam
+  dialogues.py: bafybeic26xmxq5dmbiiwdtr432zso66icbm6gwovtk27dvuopkymo7blum
+  handlers.py: bafybeiaxcxv2moimnvhqiiby45rlm4z4ni4qvbdfixv3hxve4a742wyroy
+  my_model.py: bafybeie4z5v5fioiqtcuwfxzbo7wawm4scxxoxy2gfbifdjrwgtes3hdh4
+fingerprint_ignore_patterns: []
+connections:
+- eightballer/websocket_client:0.1.0:bafybeicqkljjzvdl4v7pzbmsfd3al7uv7563x3qa5gmnzxeuoxgtmolpta
+contracts: []
+protocols:
+- fetchai/default:1.0.0:bafybeig3w57l7laofhuyl7nco2lfzgtbqf4cto75edfccymugtixjqnm6y
+skills: []
+behaviours:
+  subscriptions:
+    args:
+      foo: bar
+    class_name: SubscriptionBehaviour
+handlers:
+  new_event:
+    args: {}
+    class_name: WebSocketHandler
+models:
+  default_dialogues:
+    args: {}
+    class_name: DefaultDialogues
+  subscription_strategy:
+    args: {}
+    class_name: MyModel
+dependencies: {}
+is_abstract: false

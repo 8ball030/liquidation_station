@@ -1,4 +1,4 @@
-name: liquidation_station
+name: rysk_roller
 author: eightballer
 version: 0.1.0
 type: skill
@@ -6,25 +6,37 @@ description: The scaffold skill is a scaffold for your own skill implementation.
 license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
-  __init__.py: bafybeicvknv2oin7chupltdm6uw3vakeu2xa2t3kbyri523ynxsqyfe4dq
-  behaviours.py: bafybeicbaw4lorsbkmy5zgnera7n7z2geoq5orphgks3mk2d5muoihkec4
-  dialogues.py: bafybeifrznjwwttcxdyfhxv3ecvhkjmtudx7dn4d6e6mcqj6wktdj25rvy
-  fsm_specification.yaml: bafybeicvxohjo3yikm6wz7lrwzevaxyxtydffbjgf5podl5cl7reqcdm7m
-  handlers.py: bafybeihr75sdgdgsmvm55diohkg7sbf43flrexbgqnhogrzewps72mp7dq
-  models.py: bafybeiazotor3snbhvbygn2h7fn62jvqwaxozy7qqvb6bsrxhcah2ke5jy
-  payloads.py: bafybeibjqfk3j2mxsjtbf2mmoafl74nencpuo4nkc2qjrf3inxz7ckhpia
-  rounds.py: bafybeidec5osjipqsxe3hkkr6qqcnb7ko4633uyhgx6ykc34qwoj6zq2n4
+  __init__.py: bafybeicsypfuei4zd7tykc3m4b7sujyscfovcsjz43z7ea4p3gghnfp3ue
+  behaviours.py: bafybeifim4oddmc7wl4yj76rtmt4ap2fpow6rptjisrxotcwifbkmmlv5m
+  dialogues.py: bafybeid7xf5ye2hxzkq3puc2sx2g6sddehsrzi5ibqom56poakyvzte7xu
+  handlers.py: bafybeih7ayd727lw7id4suh6nbvhyyrytsxx4mljhjs5m6slcmammk2x2q
+  models.py: bafybeifnc6wfxirdt3lxwap5jsc5fh3ml52qhocgwzufmz5uk7robilz2i
+  payloads.py: bafybeial2hg2rlds72jauijhyllzeorcbbtlf3zpl2vy4jrdfx5qcpfjre
+  rounds.py: bafybeigp4y2wqaoeodfj2azynvz53ofbqzont7sxfrpdit6b24v32cuc5e
+  rysk_roller.yaml: bafybeibz5bfumhn3apbjvjdsrivufbmrthqjigcbkj525xgzavf7lcllgy
+  tests/__init__.py: bafybeic3534aro4pdtsdcuxywzlgkccczx2elhnwisiq3r6okvnrdu4aia
+  tests/test_behaviours.py: bafybeihenxqeya6gq2c675qizxh5yhdc2lga5pkfzbds6gnyz354ors6iq
+  tests/test_dialogues.py: bafybeihaln6pvtrh4i4gwnqvvbyhiomr4rgqnzhe2bjnlxxddt6m2jr3v4
+  tests/test_handlers.py: bafybeia2vppqs3iapunprqbtl4h7my3l37xwmrpnjelw3xjitd63pc2ml4
+  tests/test_models.py: bafybeifbhegyk4owbfu7edp4y5qt2mfadqm5h7354jgwyii2xkuxzrndha
+  tests/test_payloads.py: bafybeianv5jcychuxttpeyvo5khg4j3fwmxn2xp27prp4ygacjntoxoi4y
+  tests/test_rounds.py: bafybeih3byap3kk76uzqtxynxilj5p7vzioawo5u56t4bsdp6orrsyhehm
 fingerprint_ignore_patterns: []
-connections: []
-contracts: []
+connections:
+- valory/http_client:0.23.0:bafybeidykl4elwbcjkqn32wt5h4h7tlpeqovrcq3c5bcplt6nhpznhgczi
+contracts:
+- valory/uniswap_v2_erc20:0.1.0:bafybeigjlrw6gfzpap4pt57ibu26ebzk6grwfsbxp53i35f3kywau5hezi
+- valory/uniswap_v2_router_02:0.1.0:bafybeihjfeemghfrbqwxdfos5zulzi3fzvq3wjxpwmdu3di4rklljp3sry
+- zarathustra/homm_vault:0.1.0:bafybeiayvznp6nxv3cex6kcnfwqxg7fpqfa2u4zozuvusqw4bkbyc4rbji
 protocols:
-- valory/ledger_api:1.0.0:bafybeibo4bdtcrxi2suyzldwoetjar6pqfzm6vt5xal22ravkkcvdmtksi
+- valory/contract_api:1.0.0:bafybeidv6wxpjyb2sdyibnmmum45et4zcla6tl63bnol6ztyoqvpl4spmy
+- valory/http:1.0.0:bafybeifyoio7nlh5zzyn5yz7krkou56l22to3cwg7gw5v5o3vxwklibhty
 skills:
 - valory/abstract_round_abci:0.1.0:bafybeiar4gy4brpuxekiwjq7osh3fm254jgdoxlgkvqcp5lytu4uzrmbsm
 behaviours:
   main:
     args: {}
-    class_name: LiquidationStationRoundBehaviour
+    class_name: FlowchartToFSMRoundBehaviour
 handlers:
   abci:
     args: {}
@@ -91,14 +103,17 @@ models:
         genesis_time: '2022-05-20T16:00:21.735122717Z'
         voting_power: '10'
       history_check_timeout: 1205
-      infura_api_key: SECRET
       ipfs_domain_name: null
       keeper_allowed_retries: 3
       keeper_timeout: 30.0
       max_attempts: 10
       max_healthcheck: 120
+      min_usdc: 10000000
+      min_weth: 10000000
       on_chain_service_id: null
-      polygonscan_api_key: secret
+      option_assets:
+        WETH: '0x3b3a1de07439eeb04492fa64a889ee25a130cdd3'
+        USDC: '0x408c5755b5c7a0a28d851558ea3636cfc5b5b19d'
       request_retry_delay: 1.0
       request_timeout: 10.0
       reset_pause_duration: 10
@@ -106,23 +121,27 @@ models:
       retry_attempts: 400
       retry_timeout: 3
       round_timeout_seconds: 30.0
-      service_id: liquidation_station
+      service_id: flowchart_to_f_s_m
       service_registry_address: null
       setup:
         all_participants:
         - '0x0000000000000000000000000000000000000000'
-        consensus_threshold: null
+        consensus_threshold: 1
         safe_contract_address: '0x0000000000000000000000000000000000000000'
       share_tm_config_on_startup: false
       sleep_time: 1
+      subgraph_query: "{ series\n  {\n    id\n    expiration\n    netDHVExposure\n\
+        \    strike\n    isPut\n    isBuyable\n    isSellable\n  }\n}\n"
+      subgraph_url: https://api.goldsky.com/api/public/project_clhf7zaco0n9j490ce421agn4/subgraphs/devey/0.0.2/gn
       tendermint_check_sleep_delay: 3
       tendermint_com_url: http://localhost:8080
       tendermint_max_retries: 5
       tendermint_p2p_url: localhost:26656
       tendermint_url: http://localhost:26657
       tx_timeout: 10.0
-      use_termination: true
+      use_termination: false
       validate_timeout: 1205
+      vault_address: '0x0000000000000000000000000000000000000000'
     class_name: Params
   requests:
     args: {}

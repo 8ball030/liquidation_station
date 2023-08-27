@@ -17,8 +17,32 @@
 #
 # ------------------------------------------------------------------------------
 
-"""This module contains the implementation of the default skill."""
+"""This package contains a scaffold of a handler."""
+
+from typing import Optional
 
 from aea.configurations.base import PublicId
+from aea.protocols.base import Message
+from aea.skills.base import Handler
 
-PUBLIC_ID = PublicId.from_str("eightballer/metrics:0.1.0")
+from packages.fetchai.protocols.default.message import DefaultMessage
+
+
+class WebSocketHandler(Handler):
+    """This class scaffolds a handler."""
+
+    SUPPORTED_PROTOCOL = DefaultMessage.protocol_id
+
+    def setup(self) -> None:
+        """Implement the setup."""
+
+    def handle(self, message: Message) -> None:
+        """
+        Implement the reaction to an envelope.
+
+        :param message: the message
+        """
+        self.context.logger.info("Received message: {}".format(message))
+
+    def teardown(self) -> None:
+        """Implement the handler teardown."""
