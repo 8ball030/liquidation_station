@@ -19,8 +19,8 @@
 
 """This package contains the tests for rounds of FlowchartToFSM."""
 
-from typing import Any, Type, Dict, List, Callable, Hashable, Mapping
 from dataclasses import dataclass, field
+from typing import Any, Callable, Dict, Hashable, List, Mapping, Type
 
 import pytest
 
@@ -36,26 +36,24 @@ from packages.eightballer.skills.rysk_roller.payloads import (
 )
 from packages.eightballer.skills.rysk_roller.rounds import (
     AbstractRound,
-    Event,
-    SynchronizedData,
     AnalyseDataRound,
     CallExercisedRound,
     CallExpiredRound,
     CollectDataRound,
+    Event,
     MultiplexerRound,
     PutExercisedRound,
     PutExpiredRound,
+    SynchronizedData,
     UnderAllocatedRound,
 )
-from packages.valory.skills.abstract_round_abci.base import (
-    BaseTxPayload,
-)
+from packages.valory.skills.abstract_round_abci.base import BaseTxPayload
 from packages.valory.skills.abstract_round_abci.test_tools.rounds import (
-    BaseRoundTestClass,
-    BaseOnlyKeeperSendsRoundTest,
     BaseCollectDifferentUntilThresholdRoundTest,
     BaseCollectSameUntilThresholdRoundTest,
- )
+    BaseOnlyKeeperSendsRoundTest,
+    BaseRoundTestClass,
+)
 
 
 @dataclass
@@ -95,7 +93,9 @@ class BaseFlowchartToFSMRoundTest(BaseRoundTestClass):
             self._test_round(
                 test_round=test_round,
                 round_payloads=test_case.payloads,
-                synchronized_data_update_fn=lambda sync_data, _: sync_data.update(**test_case.final_data),
+                synchronized_data_update_fn=lambda sync_data, _: sync_data.update(
+                    **test_case.final_data
+                ),
                 synchronized_data_attr_checks=test_case.synchronized_data_attr_checks,
                 exit_event=test_case.event,
                 **test_case.kwargs,  # varies per BaseRoundTestClass child
@@ -205,4 +205,3 @@ class TestUnderAllocatedRound(BaseFlowchartToFSMRoundTest):
         """Run tests."""
 
         self.run_test(test_case)
-

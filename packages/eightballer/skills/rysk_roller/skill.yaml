@@ -6,33 +6,33 @@ description: The scaffold skill is a scaffold for your own skill implementation.
 license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
-  __init__.py: bafybeicsypfuei4zd7tykc3m4b7sujyscfovcsjz43z7ea4p3gghnfp3ue
-  behaviours.py: bafybeifim4oddmc7wl4yj76rtmt4ap2fpow6rptjisrxotcwifbkmmlv5m
-  dialogues.py: bafybeid7xf5ye2hxzkq3puc2sx2g6sddehsrzi5ibqom56poakyvzte7xu
-  handlers.py: bafybeih7ayd727lw7id4suh6nbvhyyrytsxx4mljhjs5m6slcmammk2x2q
-  models.py: bafybeifnc6wfxirdt3lxwap5jsc5fh3ml52qhocgwzufmz5uk7robilz2i
-  payloads.py: bafybeial2hg2rlds72jauijhyllzeorcbbtlf3zpl2vy4jrdfx5qcpfjre
-  rounds.py: bafybeigp4y2wqaoeodfj2azynvz53ofbqzont7sxfrpdit6b24v32cuc5e
+  __init__.py: bafybeieqylebcjgbeopbnekgfs2ll6axzuewp2sc2hv5wfkz3wybuvsen4
+  behaviours.py: bafybeics2lo5vok6yfn5k3fll5uvgllb7haai3kuygalkpijius7lfwmli
+  dialogues.py: bafybeiae543p7bo2j7r42m3zaoubxndasysfjtkdwkjvn34ct5lu7l3iji
+  handlers.py: bafybeiauh2icm6ycmnadpizkf3tz7kqhwji4bz36xzw6eqohfao4xg6qra
+  models.py: bafybeia2mrzgwub6mw4oowuuadpksylizgvyowut2gswikkphxjy2nqmqm
+  payloads.py: bafybeig7k7fnuo7wmgm4twxennbewjwv3k57u7xswphxsohfwai2mrghim
+  rounds.py: bafybeic5udo3plbxz4miana26fuqtnueqgnngm7o5qmbn7vy4tuefgn4hi
   rysk_roller.yaml: bafybeibz5bfumhn3apbjvjdsrivufbmrthqjigcbkj525xgzavf7lcllgy
-  tests/__init__.py: bafybeic3534aro4pdtsdcuxywzlgkccczx2elhnwisiq3r6okvnrdu4aia
-  tests/test_behaviours.py: bafybeihenxqeya6gq2c675qizxh5yhdc2lga5pkfzbds6gnyz354ors6iq
+  tests/__init__.py: bafybeic6evwhxdwtdjvz7xv3dqqhdhd7uxyr55xhymeiqfe4ga7mfdptxm
+  tests/test_behaviours.py: bafybeicizrqyolrwahdxuoxu2vcx5erpcoewvz7usvdebqu46nvawp2rhe
   tests/test_dialogues.py: bafybeihaln6pvtrh4i4gwnqvvbyhiomr4rgqnzhe2bjnlxxddt6m2jr3v4
-  tests/test_handlers.py: bafybeia2vppqs3iapunprqbtl4h7my3l37xwmrpnjelw3xjitd63pc2ml4
-  tests/test_models.py: bafybeifbhegyk4owbfu7edp4y5qt2mfadqm5h7354jgwyii2xkuxzrndha
-  tests/test_payloads.py: bafybeianv5jcychuxttpeyvo5khg4j3fwmxn2xp27prp4ygacjntoxoi4y
-  tests/test_rounds.py: bafybeih3byap3kk76uzqtxynxilj5p7vzioawo5u56t4bsdp6orrsyhehm
+  tests/test_handlers.py: bafybeictslhjsp4hv5lw64hl2apbzoird5h2o2ll4am7zrm7eyvqqkno6q
+  tests/test_models.py: bafybeihwneyrklnj5tilciilurwvwhpaynb2biuwbrffjpsoikz36wifqu
+  tests/test_payloads.py: bafybeifv43jp5aky3pm2ufsynn243wuwycm7an6k53wmecpgarqvnhtxc4
+  tests/test_rounds.py: bafybeib4wrt5344n63kg242ktqgaubeutt4j23aopwlpiz7n5n2ja4tpoa
 fingerprint_ignore_patterns: []
 connections:
-- valory/http_client:0.23.0:bafybeidykl4elwbcjkqn32wt5h4h7tlpeqovrcq3c5bcplt6nhpznhgczi
+- valory/http_client:0.23.0:bafybeicxuedaogf2q4z3zekgr2yvsxt6tieo3fzv7deg3734datprtsyry
 contracts:
-- valory/uniswap_v2_erc20:0.1.0:bafybeigjlrw6gfzpap4pt57ibu26ebzk6grwfsbxp53i35f3kywau5hezi
-- valory/uniswap_v2_router_02:0.1.0:bafybeihjfeemghfrbqwxdfos5zulzi3fzvq3wjxpwmdu3di4rklljp3sry
-- zarathustra/homm_vault:0.1.0:bafybeiayvznp6nxv3cex6kcnfwqxg7fpqfa2u4zozuvusqw4bkbyc4rbji
+- valory/uniswap_v2_erc20:0.1.0:bafybeieh4h5pedo3otnxq4h43fyg6f6t7bbn7vncqv2hhj5z5wvwo72bsm
+- valory/uniswap_v2_router_02:0.1.0:bafybeie6dabrmod674i2nvotde2rodjlslh5ngxmm5pd7u632oi32tf6om
+- zarathustra/homm_vault:0.1.0:bafybeigkietdimlhzwnjdifdthy6uzna36zdj5cthqhh5q5erfddtucnpm
 protocols:
-- valory/contract_api:1.0.0:bafybeidv6wxpjyb2sdyibnmmum45et4zcla6tl63bnol6ztyoqvpl4spmy
-- valory/http:1.0.0:bafybeifyoio7nlh5zzyn5yz7krkou56l22to3cwg7gw5v5o3vxwklibhty
+- valory/contract_api:1.0.0:bafybeihzhpxgwxkapv73bc5mytc77u557e7upmmahgoyqndysjkzvxxcyy
+- valory/http:1.0.0:bafybeieshrrplt5oadws5tz3rhjo6m2spchdyhkwa2z6ze2bs4ivauusfq
 skills:
-- valory/abstract_round_abci:0.1.0:bafybeiar4gy4brpuxekiwjq7osh3fm254jgdoxlgkvqcp5lytu4uzrmbsm
+- valory/abstract_round_abci:0.1.0:bafybeief2qtrja6n5p44lkh6ivoq5ias6thnut6xozwdk5ahdpt4rvjuei
 behaviours:
   main:
     args: {}
@@ -132,7 +132,7 @@ models:
       sleep_time: 1
       subgraph_query: "{ series\n  {\n    id\n    expiration\n    netDHVExposure\n\
         \    strike\n    isPut\n    isBuyable\n    isSellable\n  }\n}\n"
-      subgraph_url: https://api.goldsky.com/api/public/project_clhf7zaco0n9j490ce421agn4/subgraphs/devey/0.0.2/gn
+      subgraph_url: https://api.goldsky.com/api/public/project_clhf7zaco0n9j490ce421agn4/subgraphs/arbitrum-one/0.1.17/gn
       tendermint_check_sleep_delay: 3
       tendermint_com_url: http://localhost:8080
       tendermint_max_retries: 5

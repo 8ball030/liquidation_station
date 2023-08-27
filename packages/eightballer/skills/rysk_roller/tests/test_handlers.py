@@ -24,4 +24,3 @@ import packages.eightballer.skills.rysk_roller.handlers  # noqa
 
 def test_import() -> None:
     """Test that the 'handlers.py' of the FlowchartToFSM can be imported."""
-
