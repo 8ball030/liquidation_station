@@ -25,9 +25,11 @@ from typing import cast
 from aea.protocols.base import Message
 from aea.skills.base import Handler
 
-from packages.eightballer.skills.metrics.dialogues import (DefaultDialogues,
-                                                           HttpDialogue,
-                                                           HttpDialogues)
+from packages.eightballer.skills.metrics.dialogues import (
+    DefaultDialogues,
+    HttpDialogue,
+    HttpDialogues,
+)
 from packages.fetchai.protocols.default import DefaultMessage
 from packages.valory.protocols.http.message import HttpMessage
 

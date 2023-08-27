@@ -24,24 +24,42 @@ from dataclasses import asdict
 from datetime import datetime
 from typing import Generator, Set, Type, cast
 
-from packages.eightballer.skills.rysk_roller.models import (Params,
-                                                            StrategyAction)
+from packages.eightballer.skills.rysk_roller.models import Params, StrategyAction
 from packages.eightballer.skills.rysk_roller.rounds import (
-    AnalyseDataPayload, AnalyseDataRound, CallExercisedPayload,
-    CallExercisedRound, CallExpiredPayload, CallExpiredRound,
-    CollectDataPayload, CollectDataRound, CollectPriceDataPayload,
-    CollectPriceDataRound, FlowchartToFSMAbciApp, MultiplexerPayload,
-    MultiplexerRound, PutExercisedPayload, PutExercisedRound,
-    PutExpiredPayload, PutExpiredRound, SynchronizedData,
-    UnderAllocatedPayload, UnderAllocatedRound)
-from packages.valory.contracts.uniswap_v2_erc20.contract import \
-    UniswapV2ERC20Contract
+    AnalyseDataPayload,
+    AnalyseDataRound,
+    CallExercisedPayload,
+    CallExercisedRound,
+    CallExpiredPayload,
+    CallExpiredRound,
+    CollectDataPayload,
+    CollectDataRound,
+    CollectPriceDataPayload,
+    CollectPriceDataRound,
+    FlowchartToFSMAbciApp,
+    MultiplexerPayload,
+    MultiplexerRound,
+    PutExercisedPayload,
+    PutExercisedRound,
+    PutExpiredPayload,
+    PutExpiredRound,
+    SynchronizedData,
+    UnderAllocatedPayload,
+    UnderAllocatedRound,
+)
+from packages.valory.contracts.uniswap_v2_erc20.contract import UniswapV2ERC20Contract
 from packages.valory.protocols.contract_api import ContractApiMessage
 from packages.valory.skills.abstract_round_abci.base import AbstractRound
 from packages.valory.skills.abstract_round_abci.behaviours import (
-    AbstractRoundBehaviour, BaseBehaviour)
+    AbstractRoundBehaviour,
+    BaseBehaviour,
+)
 from packages.zarathustra.contracts.homm_vault.contract import (
-    HOMMVaultContract, OptionSeries, QuoteOptionPrice, RequestQuoteOptionPrice)
+    HOMMVaultContract,
+    OptionSeries,
+    QuoteOptionPrice,
+    RequestQuoteOptionPrice,
+)
 
 DISPLAY_FORMAT = 1000000000000000000
 
@@ -291,7 +309,6 @@ class CollectPriceDataBehaviour(RyskRollerBaseBehaviour):
         self, option_data, amount=1000000000000000000, side="buy", collateral="eth"
     ):
         """Get the price for an option series."""
-
 
         option_series = OptionSeries(
             expiration=int(option_data["expiration"]),

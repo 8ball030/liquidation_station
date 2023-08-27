@@ -1,0 +1,16 @@
+name: ov_ghst
+author: eightballer
+version: 0.1.0
+type: contract
+description: The scaffold contract scaffolds a contract to be implemented by the developer.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  __init__.py: bafybeiddvydebdxub67dnzrzeva6ul4rknc2acnhwogpddvupl2gpb775y
+  contract.py: bafybeifixconyy55afy336t4btic7bv5z3tj7qsycfmbwrphvwbtmndxoi
+fingerprint_ignore_patterns: []
+class_name: OvGhst
+contract_interface_paths:
+  ethereum: build/ov_ghst.json
+dependencies: {}
+contracts: []

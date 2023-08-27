@@ -24,13 +24,27 @@ from enum import Enum
 from typing import Any, Dict, Optional, Set, Tuple, cast
 
 from packages.eightballer.skills.rysk_roller.payloads import (
-    AnalyseDataPayload, CallExercisedPayload, CallExpiredPayload,
-    CollectDataPayload, CollectPriceDataPayload, MultiplexerPayload,
-    PutExercisedPayload, PutExpiredPayload, UnderAllocatedPayload)
+    AnalyseDataPayload,
+    CallExercisedPayload,
+    CallExpiredPayload,
+    CollectDataPayload,
+    CollectPriceDataPayload,
+    MultiplexerPayload,
+    PutExercisedPayload,
+    PutExpiredPayload,
+    UnderAllocatedPayload,
+)
 from packages.valory.skills.abstract_round_abci.base import (
-    AbciApp, AbciAppTransitionFunction, AbstractRound, AppState,
-    BaseSynchronizedData, CollectSameUntilAllRound, DegenerateRound,
-    EventToTimeout, get_name)
+    AbciApp,
+    AbciAppTransitionFunction,
+    AbstractRound,
+    AppState,
+    BaseSynchronizedData,
+    CollectSameUntilAllRound,
+    DegenerateRound,
+    EventToTimeout,
+    get_name,
+)
 
 
 class Event(Enum):

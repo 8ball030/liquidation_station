@@ -8,16 +8,16 @@ license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   __init__.py: bafybeihby72yquictws2b6dxskiuskjbkcojyhelkl7hs4uilmmafukvim
-  behaviours.py: bafybeihqrsjdpgo5efnpwhs6t6m66lxg4oluyoo3ucv34fp4qgyhiixoz4
-  dialogues.py: bafybeic26xmxq5dmbiiwdtr432zso66icbm6gwovtk27dvuopkymo7blum
+  behaviours.py: bafybeibclrjvya57eavtkorqk2jccnompcr4pqckxv5elq2tfukip2nuai
+  dialogues.py: bafybeigylmck2wy3y7sqk4eb2xnpjfizr77jzuypnpcweeex43tj6634je
   handlers.py: bafybeihjobcsja36xugkk2rhajrj43yyx7dff2da4tj6xlfhmnvmujtihi
   my_model.py: bafybeiblpqola4by47rrckarjeqmnqo2rpdloj2zxmgjrt4srwtdk3ptfq
 fingerprint_ignore_patterns: []
 connections:
-- eightballer/websocket_client:0.1.0:bafybeicf2z7s2edn3nbiqxoadcmzc735lcxervz3ncbplma2fzpitaod2q
+- eightballer/websocket_client:0.1.0:bafybeicqkljjzvdl4v7pzbmsfd3al7uv7563x3qa5gmnzxeuoxgtmolpta
 contracts: []
 protocols:
-- fetchai/default:1.0.0:bafybeiaobn62fqxofbx6gkuihyjjb76g6fwsvw6ikcnazt7evdnldhitxe
+- fetchai/default:1.0.0:bafybeig3w57l7laofhuyl7nco2lfzgtbqf4cto75edfccymugtixjqnm6y
 skills: []
 behaviours:
   subscriptions:

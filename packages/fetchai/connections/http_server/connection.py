@@ -40,20 +40,21 @@ from aea.protocols.dialogue.base import DialogueLabel
 from aiohttp import web
 from aiohttp.web_request import BaseRequest
 from openapi_core import create_spec
-from openapi_core.validation.request.datatypes import (OpenAPIRequest,
-                                                       RequestParameters)
+from openapi_core.validation.request.datatypes import OpenAPIRequest, RequestParameters
 from openapi_core.validation.request.shortcuts import validate_request
 from openapi_core.validation.request.validators import RequestValidator
-from openapi_spec_validator.exceptions import \
-    OpenAPIValidationError  # pylint: disable=wrong-import-order
-from openapi_spec_validator.schemas import \
-    read_yaml_file  # pylint: disable=wrong-import-order
-from werkzeug.datastructures import \
-    ImmutableMultiDict  # pylint: disable=wrong-import-order
+from openapi_spec_validator.exceptions import (
+    OpenAPIValidationError,
+)  # pylint: disable=wrong-import-order
+from openapi_spec_validator.schemas import (
+    read_yaml_file,
+)  # pylint: disable=wrong-import-order
+from werkzeug.datastructures import (
+    ImmutableMultiDict,
+)  # pylint: disable=wrong-import-order
 
 from packages.valory.protocols.http.dialogues import HttpDialogue
-from packages.valory.protocols.http.dialogues import \
-    HttpDialogues as BaseHttpDialogues
+from packages.valory.protocols.http.dialogues import HttpDialogues as BaseHttpDialogues
 from packages.valory.protocols.http.message import HttpMessage
 
 SUCCESS = 200

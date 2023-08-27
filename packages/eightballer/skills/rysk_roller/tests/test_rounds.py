@@ -25,12 +25,22 @@ from typing import Any, Callable, Dict, Hashable, List, Mapping, Type
 import pytest
 
 from packages.eightballer.skills.rysk_roller.rounds import (
-    AbstractRound, AnalyseDataRound, CallExercisedRound, CallExpiredRound,
-    CollectDataRound, Event, MultiplexerRound, PutExercisedRound,
-    PutExpiredRound, SynchronizedData, UnderAllocatedRound)
+    AbstractRound,
+    AnalyseDataRound,
+    CallExercisedRound,
+    CallExpiredRound,
+    CollectDataRound,
+    Event,
+    MultiplexerRound,
+    PutExercisedRound,
+    PutExpiredRound,
+    SynchronizedData,
+    UnderAllocatedRound,
+)
 from packages.valory.skills.abstract_round_abci.base import BaseTxPayload
-from packages.valory.skills.abstract_round_abci.test_tools.rounds import \
-    BaseRoundTestClass
+from packages.valory.skills.abstract_round_abci.test_tools.rounds import (
+    BaseRoundTestClass,
+)
 
 
 @dataclass

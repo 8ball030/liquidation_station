@@ -22,8 +22,7 @@
 from aea.mail.base import Envelope
 from aea.skills.behaviours import OneShotBehaviour
 
-from packages.eightballer.connections.websocket_client.connection import \
-    CONNECTION_ID
+from packages.eightballer.connections.websocket_client.connection import CONNECTION_ID
 from packages.fetchai.protocols.default.message import DefaultMessage
 
 subscription_msg_template = '{"jsonrpc":  "2.0",  "id":  1,  "method":  "eth_subscribe",  "params":  ["logs", {"address": "0xf25212e676d1f7f89cd72ffee66158f541246445"}]}'

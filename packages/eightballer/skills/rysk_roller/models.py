@@ -21,15 +21,15 @@
 
 from enum import Enum
 
-from packages.eightballer.skills.rysk_roller.rounds import \
-    FlowchartToFSMAbciApp
+from packages.eightballer.skills.rysk_roller.rounds import FlowchartToFSMAbciApp
 from packages.valory.skills.abstract_round_abci.models import BaseParams
-from packages.valory.skills.abstract_round_abci.models import \
-    BenchmarkTool as BaseBenchmarkTool
-from packages.valory.skills.abstract_round_abci.models import \
-    Requests as BaseRequests
-from packages.valory.skills.abstract_round_abci.models import \
-    SharedState as BaseSharedState
+from packages.valory.skills.abstract_round_abci.models import (
+    BenchmarkTool as BaseBenchmarkTool,
+)
+from packages.valory.skills.abstract_round_abci.models import Requests as BaseRequests
+from packages.valory.skills.abstract_round_abci.models import (
+    SharedState as BaseSharedState,
+)
 
 
 class SharedState(BaseSharedState):

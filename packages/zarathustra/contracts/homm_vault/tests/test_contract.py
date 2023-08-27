@@ -10,7 +10,10 @@ from aea.test_tools.test_contract import BaseContractTestCase
 from aea_ledger_ethereum import EthereumApi, EthereumCrypto
 
 from packages.zarathustra.contracts.homm_vault.contract import (
-    HOMMVaultContract, OptionSeries, RequestQuoteOptionPrice)
+    HOMMVaultContract,
+    OptionSeries,
+    RequestQuoteOptionPrice,
+)
 
 NULL = "0x" + "0" * 40
 DEFAULT_GAS = 1000000
