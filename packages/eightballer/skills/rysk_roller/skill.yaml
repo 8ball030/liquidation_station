@@ -2,7 +2,9 @@ name: rysk_roller
 author: eightballer
 version: 0.1.0
 type: skill
-description: The scaffold skill is a scaffold for your own skill implementation.
+description: The rysk roller is a very simple abci entered as part of the ETHAMS 2023
+  All Stars Hackathon. It integrated with Rysk in order to allow an MAS to trade options
+  in a decentralised fashion.
 license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:

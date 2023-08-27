@@ -2,7 +2,7 @@ agent_name: rysk_roller
 author: eightballer
 version: 0.1.0
 license: Apache-2.0
-description: ''
+description: The rysk roller is a trading agent designed to run on the Rysk network.
 aea_version: '>=1.32.0, <2.0.0'
 fingerprint: {}
 fingerprint_ignore_patterns: []
@@ -26,7 +26,7 @@ protocols:
 - valory/ledger_api:1.0.0:bafybeieoq3vtqst3hrbhxqchqkqd3hhbcf6rwgkz7zhnbupa6ecpgeesdi
 - valory/tendermint:0.1.0:bafybeicavolm7gshxgdsiokj2hnhrm2m4j4ljrvm6nvvupmszp7da56gxm
 skills:
-- eightballer/rysk_roller:0.1.0:bafybeieyvklyrohkke6ruqwxkds6dgje67jwsjicfofyhyjff34wddupy4
+- eightballer/rysk_roller:0.1.0:bafybeigldjkkdkgh7gw5m5fs73jvf7ruquxts5idfzpqkrkmuntpkgopxe
 - valory/abstract_abci:0.1.0:bafybeia7z7grrixjkofv7z3o7wyxodquiqrlqpnhzlpbwbolcau5ht6gz4
 - valory/abstract_round_abci:0.1.0:bafybeibj5lhxkmfy33a2llmjyma52al26iijdq4epl3h2yljgrjejqswxe
 default_ledger: ethereum

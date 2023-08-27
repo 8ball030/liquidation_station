@@ -2,14 +2,14 @@
     "dev": {
         "contract/zarathustra/homm_vault/0.1.0": "bafybeid5fwit4ypxaqvknrefmfe6vq3psdzfue6oc2oqftfzcw3islvjnq",
         "contract/valory/uniswap_v2_erc20/0.1.0": "bafybeifewyykjldtaaece4xhguveuj54zqrhf3cw35i6zhjaaubjluerj4",
-        "skill/eightballer/rysk_roller/0.1.0": "bafybeieyvklyrohkke6ruqwxkds6dgje67jwsjicfofyhyjff34wddupy4",
-        "service/eightballer/rysk_roller/0.1.0": "bafybeib4gmxq3evfpmkfn5lxwscur2iraiiah4qwk63t7nc6il4wu4slza",
+        "skill/eightballer/rysk_roller/0.1.0": "bafybeigldjkkdkgh7gw5m5fs73jvf7ruquxts5idfzpqkrkmuntpkgopxe",
+        "agent/eightballer/rysk_roller/0.1.0": "bafybeiglapk2ury52au2s5bg27uyhogkmhxo4o53l3da3jaic3r5awp25a",
+        "service/eightballer/rysk_roller/0.1.0": "bafybeiek4eh4gijtebqqplhsstlpuq2ag6orrpcdqtpx3lxoqo62ygiwxq",
         "connection/eightballer/websocket_client/0.1.0": "bafybeicqkljjzvdl4v7pzbmsfd3al7uv7563x3qa5gmnzxeuoxgtmolpta",
         "skill/eightballer/liquidation_station/0.1.0": "bafybeia2576mm3kevyypdgso5da42qcjt6n74h5c2klqh3g4notks7hlfy",
         "skill/eightballer/metrics/0.1.0": "bafybeifr3xzd35ukdrpatpy26lk7wdocqgsggpcbmzzvwubmvb3ajkxxwm",
         "skill/eightballer/contract_subscription/0.1.0": "bafybeiharq7ux25toa2x4lvql3su567x3olf6axklo6xylo4itlrm2uw6i",
         "agent/eightballer/liquidation_station/0.1.0": "bafybeicmen5ry4e5seu2zpkyombhnol3s354zva7iru4hzbkpx765rtfmi",
-        "agent/eightballer/rysk_roller/0.1.0": "bafybeihltnkmbr2hp4r4h4extnn6x7iluiewa3b3uqtkxkaj33mrihgyjy",
         "agent/eightballer/websocket_subscriber/0.1.0": "bafybeiaa3y5hr6qadwfiggxttldodw6wwaz4ncbq4efsdgzqcjp7chkgv4",
         "service/eightballer/liquidation_station/0.1.0": "bafybeiczyq2e74cwa6vput2onau7ou33uopkmlj4gu7o45k7focwmmthzy"
     },
