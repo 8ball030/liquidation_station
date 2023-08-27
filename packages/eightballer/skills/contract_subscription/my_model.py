@@ -26,6 +26,7 @@ from packages.fetchai.protocols.default.dialogues import DefaultDialogue
 
 def get_role(*args, **kwargs) -> DefaultDialogue.Role:
     """Get the role of the agent for the dialogue."""
+    del args, kwargs
     return DefaultDialogue.Role.AGENT
 
 

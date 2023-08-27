@@ -25,7 +25,7 @@ fingerprint_ignore_patterns: []
 connections: []
 contracts:
 - valory/uniswap_v2_erc20:0.1.0:bafybeic5dtudo4dulkmj6fqvv4fj3dmzam2pf3xsajlip5pafgbje3cone
-- zarathustra/homm_vault:0.1.0:bafybeibzcdjpawaaxnospeusfe4qbvwgzm2xxhr7wbfxjutrfxhf44jdre
+- zarathustra/homm_vault:0.1.0:bafybeia3ker4tqdv64w25vhziiwpzqk323xg33qtofwiusnxfsvfz2uiai
 protocols:
 - valory/contract_api:1.0.0:bafybeibh5ysa3hltzh2jjquxylgaopsaufqhs3fdtbgintdbtf6htezfma
 skills:

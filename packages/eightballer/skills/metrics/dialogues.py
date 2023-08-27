@@ -38,9 +38,6 @@ from packages.fetchai.protocols.default.dialogues import (
 from packages.fetchai.protocols.default.dialogues import (
     DefaultDialogues as BaseDefaultDialogues,
 )
-
-# from packages.fetchai.protocols.http.dialogues import HttpDialogue as BaseHttpDialogue
-# from packages.fetchai.protocols.http.dialogues import HttpDialogues as BaseHttpDialogues
 from packages.valory.protocols.http.dialogues import HttpDialogue as BaseHttpDialogue
 from packages.valory.protocols.http.dialogues import HttpDialogues as BaseHttpDialogues
 
@@ -67,6 +64,7 @@ class DefaultDialogues(Model, BaseDefaultDialogues):
             :param receiver_address: the address of the receiving agent
             :return: The role of the agent
             """
+            del receiver_address, message
             return DefaultDialogue.Role.AGENT
 
         BaseDefaultDialogues.__init__(

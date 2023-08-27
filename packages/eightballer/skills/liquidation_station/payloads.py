@@ -28,39 +28,27 @@ from packages.valory.skills.abstract_round_abci.base import BaseTxPayload
 class CalculatePositionHealthPayload(BaseTxPayload):
     """Represent a transaction payload for the CalculatePositionHealthRound."""
 
-    # TODO: define your attributes
-
 
 @dataclass(frozen=True)
 class CollectPositionsPayload(BaseTxPayload):
     """Represent a transaction payload for the CollectPositionsRound."""
-
-    # TODO: define your attributes
 
 
 @dataclass(frozen=True)
 class PrepareLiquidationTransactionsPayload(BaseTxPayload):
     """Represent a transaction payload for the PrepareLiquidationTransactionsRound."""
 
-    # TODO: define your attributes
-
 
 @dataclass(frozen=True)
 class RegistrationPayload(BaseTxPayload):
     """Represent a transaction payload for the RegistrationRound."""
-
-    # TODO: define your attributes
 
 
 @dataclass(frozen=True)
 class ResetAndPausePayload(BaseTxPayload):
     """Represent a transaction payload for the ResetAndPauseRound."""
 
-    # TODO: define your attributes
-
 
 @dataclass(frozen=True)
 class SubmitPositionLiquidationTransactionsPayload(BaseTxPayload):
     """Represent a transaction payload for the SubmitPositionLiquidationTransactionsRound."""
-
-    # TODO: define your attributes

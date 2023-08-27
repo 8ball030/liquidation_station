@@ -39,6 +39,7 @@ class DefaultDialogues(Model, BaseDefaultDialogues):
             :param receiver_address: the address of the receiving agent
             :return: The role of the agent
             """
+            del receiver_address, message
             return DefaultDialogue.Role.AGENT
 
         BaseDefaultDialogues.__init__(

@@ -94,7 +94,7 @@ class Unitroller(Contract):
         :param kwargs: the keyword arguments.
         :return: the tx  # noqa: DAR202
         """
-        raise NotImplementedError
+        del ledger_api, contract, kwargs
 
     @classmethod
     def get_raw_message(
@@ -111,7 +111,7 @@ class Unitroller(Contract):
         :param kwargs: the keyword arguments.
         :return: the tx  # noqa: DAR202
         """
-        raise NotImplementedError
+        del ledger_api, contract, kwargs
 
     @classmethod
     def get_state(
@@ -128,7 +128,7 @@ class Unitroller(Contract):
         :param kwargs: the keyword arguments.
         :return: the tx  # noqa: DAR202
         """
-        raise NotImplementedError
+        del ledger_api, contract, kwargs
 
     def get_account_liquidity(self, account: Address) -> NamedTuple:
         """Determine the current account liquidity wrt collateral requirements."""

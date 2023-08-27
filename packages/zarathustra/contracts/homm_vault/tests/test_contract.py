@@ -1,3 +1,6 @@
+"""
+Test HOMMVaultContract.
+"""
 from dataclasses import astuple
 from pathlib import Path
 from typing import Dict
@@ -23,6 +26,7 @@ PACKAGE_DIR = Path(__file__).parent.parent
 
 
 def test_dataclass_conversion():
+    """Test dataclass conversion."""
 
     expected = ((1, 2, True, NULL, NULL, NULL), 3, False, 4)
     option_series = OptionSeries(
@@ -55,7 +59,7 @@ class TestHOMMVaultContract(BaseContractTestCase):
         return NULL
 
     @classmethod
-    def _deploy_contract(
+    def _deploy_contract(  # pragma: no cover
         cls,
         contract: Contract,
         ledger_api: EthereumApi,
@@ -63,6 +67,7 @@ class TestHOMMVaultContract(BaseContractTestCase):
         gas: int,
     ) -> Dict:
         """Deploy contract."""
+        del gas
         return {}
 
     def test_non_implemented_methods(
@@ -80,6 +85,7 @@ class TestHOMMVaultContract(BaseContractTestCase):
             self.contract.get_state(self.ledger_api, "")
 
     def test_deposit(self):
+        """Test deposit method."""
 
         with mock.patch.object(w3.manager, "request_blocking"):
             result = self.contract.is_locked(

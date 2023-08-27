@@ -40,7 +40,7 @@ class WebSocketHandler(Handler):
 
         :param message: the message
         """
-        self.context.logger.info("Received message: {}".format(message))
+        self.context.logger.info(f"Received message: {message}")
 
     def teardown(self) -> None:
         """Implement the handler teardown."""
