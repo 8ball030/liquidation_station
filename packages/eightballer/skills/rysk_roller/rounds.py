@@ -44,6 +44,7 @@ class Event(Enum):
     SWAP_FROM_USDC_TO_ETH = "swap_from_usdc_to_eth"
     CALL_EXERCISED = "call_exercised"
     SWAP_FROM_ETH_TO_USDC = "swap_from_eth_to_usdc"
+    INSUFFICIENT_FUNDS = "insufficient_funds"
     DONE = "done"
     PUT_EXPIRED = "put_expired"
     SELL_CALL_OPTION = "sell_call_option"
@@ -302,6 +303,7 @@ class FlowchartToFSMAbciApp(AbciApp[Event]):
             Event.UNDER_ALLOCATED: UnderAllocatedRound,
             Event.SELL_PUT_OPTION: SellPutOptionRound,
             Event.SELL_CALL_OPTION: SellCallOptionRound,
+            Event.DONE: CollectDataRound,
         },
         PutExpiredRound: {Event.SELL_PUT_OPTION: SellPutOptionRound},
         CallExpiredRound: {Event.SELL_CALL_OPTION: SellCallOptionRound},

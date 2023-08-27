@@ -15,7 +15,6 @@ connections:
 contracts:
 - valory/service_registry:0.1.0:bafybeibt3uhw7s72subuiqve2jd3mrd4vot7fh3jsdjd5d35wuiicaemv4
 - valory/uniswap_v2_erc20:0.1.0:bafybeic5dtudo4dulkmj6fqvv4fj3dmzam2pf3xsajlip5pafgbje3cone
-- valory/uniswap_v2_router_02:0.1.0:bafybeie6dabrmod674i2nvotde2rodjlslh5ngxmm5pd7u632oi32tf6om
 - zarathustra/homm_vault:0.1.0:bafybeiby63o3nlkgupdp6tq5r3hrwzw7hbnlf2yuwp3fr5vump6it4rece
 protocols:
 - open_aea/signing:1.0.0:bafybeigqmouus33blg3ttpbtmy2tbhzyaefeyumxhfzxobpw43mocf7sru
@@ -27,7 +26,7 @@ protocols:
 - valory/ledger_api:1.0.0:bafybeieoq3vtqst3hrbhxqchqkqd3hhbcf6rwgkz7zhnbupa6ecpgeesdi
 - valory/tendermint:0.1.0:bafybeib25ulpp3tri3ppexk4t6yttuajhr7wpgs7wajpsnbbnzo256ubem
 skills:
-- eightballer/rysk_roller:0.1.0:bafybeibpoxwyb3mxevsmywagji2naof5k5zgbk6ktdjapyqekfpbl3b3mm
+- eightballer/rysk_roller:0.1.0:bafybeid7basixvtuav2ugozbsgdkcdxfgb4flho26lmt22oiq7z6vpdecm
 - valory/abstract_abci:0.1.0:bafybeia7z7grrixjkofv7z3o7wyxodquiqrlqpnhzlpbwbolcau5ht6gz4
 - valory/abstract_round_abci:0.1.0:bafybeiasqns6d3hyfjjjbygkcyqvogs34f2ykdwqh7zws7ic3aph47ojae
 default_ledger: ethereum
@@ -82,10 +81,10 @@ type: connection
 config:
   ledger_apis:
     ethereum:
-      address: https://arbitrum-goerli.rpc.thirdweb.com
-      chain_id: 421613
-      poa_chain: false
-      default_gas_price_strategy: eip1559
+      address: ${str:https://arbitrum-goerli.rpc.thirdweb.com}
+      chain_id: ${int:421613}
+      poa_chain: ${bool:false}
+      default_gas_price_strategy: ${str:eip1559}
 ---
 public_id: eightballer/rysk_roller:0.1.0
 type: skill

@@ -1,13 +1,14 @@
 {
     "dev": {
         "service/eightballer/liquidation_station/0.1.0": "bafybeibvjop4qkzfbkgocx5jo334fujoh3xolu7aby4qbh3tpbp7qrlqaa",
+        "service/eightballer/rysk_roller/0.1.0": "bafybeidc67nqghpxmzta4qsox57v3s4t2jmlb25t4vmzdh5ieqivjjp4ki",
         "skill/eightballer/liquidation_station/0.1.0": "bafybeiageqwiw44bmh6rdwivhxdigj2oiuikrs4njypxnhpec5egiie2hu",
         "skill/eightballer/metrics/0.1.0": "bafybeidcdvlh4jayu533uy4mqhkcagc2lyb6yh6qumynvktzppf4dnfvtq",
         "agent/eightballer/liquidation_station/0.1.0": "bafybeig5jxogw75deuz6z43cfz3jpysrvdff47ahvp7agznulq4yzsxjfu",
         "connection/eightballer/websocket_client/0.1.0": "bafybeicf2z7s2edn3nbiqxoadcmzc735lcxervz3ncbplma2fzpitaod2q",
         "skill/eightballer/contract_subscription/0.1.0": "bafybeidfsch7cahvlba6ygnnonfz2j5o2hz2fdcpgebwpwrpixnhp7rftm",
-        "skill/eightballer/rysk_roller/0.1.0": "bafybeibpoxwyb3mxevsmywagji2naof5k5zgbk6ktdjapyqekfpbl3b3mm",
-        "agent/eightballer/rysk_roller/0.1.0": "bafybeiai5pn2yv5nsj2i2ddvnswby5t547e7smvodhougg4zfhyqz2piw4",
+        "skill/eightballer/rysk_roller/0.1.0": "bafybeid7basixvtuav2ugozbsgdkcdxfgb4flho26lmt22oiq7z6vpdecm",
+        "agent/eightballer/rysk_roller/0.1.0": "bafybeigel2ngolwobyettvsej32g7q7cd6xtv2h5bti73ozwwxjyi7s5gu",
         "agent/eightballer/websocket_subscriber/0.1.0": "bafybeic3jlpyp6b773etcfhpww7vpq6uk42ko5e6oekhnrqlrbw77bcmfi",
         "contract/zarathustra/comptroller/0.1.0": "bafybeif7llyor55q7qcxbmywxiw6fdwjrek3uh33cqhgy5xqfs7ijh7t5u",
         "contract/zarathustra/jump_interest_model/0.1.0": "bafybeidxamew73xaldmyxshkuwf22tytugjovgp3army6pml67caidlmhu",

@@ -292,6 +292,7 @@ class CollectPriceDataBehaviour(RyskRollerBaseBehaviour):
     ):
         """Get the price for an option series."""
 
+
         option_series = OptionSeries(
             expiration=int(option_data["expiration"]),
             strike=int(option_data["strike"]),
@@ -318,7 +319,7 @@ class CollectPriceDataBehaviour(RyskRollerBaseBehaviour):
             owner_address=self.context.agent_address,
             request_quote_option_price=asdict(request),
         )
-        if contract_api_msg.Performative == ContractApiMessage.Performative.ERROR:
+        if contract_api_msg.performative == ContractApiMessage.Performative.ERROR:
             return {}
 
         quote_option_price: QuoteOptionPrice = contract_api_msg.state.body[
