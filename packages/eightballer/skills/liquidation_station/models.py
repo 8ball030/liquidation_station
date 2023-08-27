@@ -19,15 +19,17 @@
 
 """This module contains the shared state for the abci skill of LiquidationStationAbciApp."""
 
-from packages.eightballer.skills.liquidation_station.rounds import \
-    LiquidationStationAbciApp
+from packages.eightballer.skills.liquidation_station.rounds import (
+    LiquidationStationAbciApp,
+)
 from packages.valory.skills.abstract_round_abci.models import BaseParams
-from packages.valory.skills.abstract_round_abci.models import \
-    BenchmarkTool as BaseBenchmarkTool
-from packages.valory.skills.abstract_round_abci.models import \
-    Requests as BaseRequests
-from packages.valory.skills.abstract_round_abci.models import \
-    SharedState as BaseSharedState
+from packages.valory.skills.abstract_round_abci.models import (
+    BenchmarkTool as BaseBenchmarkTool,
+)
+from packages.valory.skills.abstract_round_abci.models import Requests as BaseRequests
+from packages.valory.skills.abstract_round_abci.models import (
+    SharedState as BaseSharedState,
+)
 
 
 class SharedState(BaseSharedState):

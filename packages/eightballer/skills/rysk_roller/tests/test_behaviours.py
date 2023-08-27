@@ -19,39 +19,32 @@
 
 """This package contains round behaviours of FlowchartToFSMAbciApp."""
 
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Dict, Hashable, Optional, Type
-from dataclasses import dataclass, field
 
 import pytest
 
-from packages.valory.skills.abstract_round_abci.base import AbciAppDB
-from packages.valory.skills.abstract_round_abci.behaviours import (
-    AbstractRoundBehaviour,
-    BaseBehaviour,
-    make_degenerate_behaviour,
-)
 from packages.eightballer.skills.rysk_roller.behaviours import (
-    RyskRollerBaseBehaviour,
-    FlowchartToFSMRoundBehaviour,
     AnalyseDataBehaviour,
     CallExercisedBehaviour,
     CallExpiredBehaviour,
     CollectDataBehaviour,
+    FlowchartToFSMRoundBehaviour,
     MultiplexerBehaviour,
     PutExercisedBehaviour,
     PutExpiredBehaviour,
+    RyskRollerBaseBehaviour,
     UnderAllocatedBehaviour,
 )
 from packages.eightballer.skills.rysk_roller.rounds import (
-    SynchronizedData,
-    DegenerateRound,
-    Event,
-    FlowchartToFSMAbciApp,
     AnalyseDataRound,
     CallExercisedRound,
     CallExpiredRound,
     CollectDataRound,
+    DegenerateRound,
+    Event,
+    FlowchartToFSMAbciApp,
     MultiplexerRound,
     PutExercisedRound,
     PutExpiredRound,
@@ -59,9 +52,15 @@ from packages.eightballer.skills.rysk_roller.rounds import (
     SellPutOptionRound,
     SwapFromETHtoUSDCRound,
     SwapFromUSDCtoETHRound,
+    SynchronizedData,
     UnderAllocatedRound,
 )
-
+from packages.valory.skills.abstract_round_abci.base import AbciAppDB
+from packages.valory.skills.abstract_round_abci.behaviours import (
+    AbstractRoundBehaviour,
+    BaseBehaviour,
+    make_degenerate_behaviour,
+)
 from packages.valory.skills.abstract_round_abci.test_tools.base import (
     FSMBehaviourBaseCase,
 )
@@ -257,4 +256,3 @@ class TestUnderAllocatedBehaviour(BaseFlowchartToFSMTest):
         # TODO: mock the necessary calls
         # self.mock_ ...
         self.complete(test_case.event)
-

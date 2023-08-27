@@ -19,10 +19,9 @@
 
 """This module contains the scaffold contract definition."""
 import logging
-
-from typing import Any, NamedTuple
-from enum import IntEnum, auto
 from collections import namedtuple
+from enum import IntEnum, auto
+from typing import Any, NamedTuple
 
 from aea.common import JSONLike
 from aea.configurations.base import PublicId
@@ -31,7 +30,6 @@ from aea.crypto.base import LedgerApi
 
 
 class Error(IntEnum):
-
     def _generate_next_value_(name, start, count, last_values):
         """Generate consecutive automatic numbers starting from zero"""
         return count
@@ -44,7 +42,7 @@ class Error(IntEnum):
     INVALID_CLOSE_FACTOR = auto()
     INVALID_COLLATERAL_FACTOR = auto()
     INVALID_LIQUIDATION_INCENTIVE = auto()
-    MARKET_NOT_ENTERED  = auto() # no longer possible
+    MARKET_NOT_ENTERED = auto()  # no longer possible
     MARKET_NOT_LISTED = auto()
     MARKET_ALREADY_LISTED = auto()
     MATH_ERROR = auto()
@@ -69,7 +67,7 @@ _logger = logging.getLogger(
 def to_named_tuple(error: int, **kwargs) -> NamedTuple:
     kwargs = {"error": Error(error), **kwargs}
     keys, values = zip(*kwargs.items())
-    return namedtuple('contract_response', keys)(*values)
+    return namedtuple("contract_response", keys)(*values)
 
 
 class Unitroller(Contract):
@@ -135,9 +133,7 @@ class Unitroller(Contract):
     def get_account_liquidity(self, account: Address) -> NamedTuple:
         """Determine the current account liquidity wrt collateral requirements."""
 
-        result = contract_interface.functions.getAccountLiquidity(
-            account
-        ).call()
+        result = contract_interface.functions.getAccountLiquidity(account).call()
 
         error_code, liquidity, shortfall = result
         return to_named_tuple(
@@ -194,10 +190,7 @@ class Unitroller(Contract):
         ).call()
 
         error_code, seize_tokens = result
-        return to_named_tuple(
-            error_code,
-            seize_tokens=seize_tokens
-        )
+        return to_named_tuple(error_code, seize_tokens=seize_tokens)
 
         ### Likely not relevant to us now:
         # seizeAllowed: Checks if the seizing of assets should be allowed to occur

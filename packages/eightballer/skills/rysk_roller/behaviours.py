@@ -20,61 +20,56 @@
 """This package contains round behaviours of FlowchartToFSMAbciApp."""
 import json
 from abc import ABC
+from dataclasses import asdict, astuple
 from datetime import datetime
 from typing import Generator, Set, Type, cast
-from dataclasses import asdict, astuple
+
 import pandas as pd
 
+from packages.eightballer.skills.rysk_roller.models import Params, StrategyAction
+from packages.eightballer.skills.rysk_roller.rounds import (
+    AnalyseDataPayload,
+    AnalyseDataRound,
+    CallExercisedPayload,
+    CallExercisedRound,
+    CallExpiredPayload,
+    CallExpiredRound,
+    CollectDataPayload,
+    CollectDataRound,
+    CollectPriceDataPayload,
+    CollectPriceDataRound,
+    FlowchartToFSMAbciApp,
+    MultiplexerPayload,
+    MultiplexerRound,
+    PutExercisedPayload,
+    PutExercisedRound,
+    PutExpiredPayload,
+    PutExpiredRound,
+    SynchronizedData,
+    UnderAllocatedPayload,
+    UnderAllocatedRound,
+)
+from packages.valory.connections.http_client.connection import (
+    PUBLIC_ID as HTTP_CLIENT_PUBLIC_ID,
+)
+from packages.valory.contracts.uniswap_v2_erc20.contract import UniswapV2ERC20Contract
+from packages.valory.contracts.uniswap_v2_router_02.contract import (
+    UniswapV2Router02Contract,
+)
+from packages.valory.protocols.contract_api import ContractApiMessage
+from packages.valory.protocols.http.message import HttpMessage
 from packages.valory.skills.abstract_round_abci.base import AbstractRound
 from packages.valory.skills.abstract_round_abci.behaviours import (
     AbstractRoundBehaviour,
     BaseBehaviour,
 )
-from packages.valory.contracts.uniswap_v2_erc20.contract import \
-    UniswapV2ERC20Contract
-from packages.valory.contracts.uniswap_v2_router_02.contract import (
-    UniswapV2Router02Contract,
-)
-from packages.valory.protocols.contract_api import ContractApiMessage
-from packages.valory.connections.http_client.connection import (
-    PUBLIC_ID as HTTP_CLIENT_PUBLIC_ID,
-)
 from packages.zarathustra.contracts.homm_vault.contract import (
-    OperationType,
-    QuoteOptionPrice,
-    OptionSeries,
     HOMMVaultContract,
+    OperationType,
+    OptionSeries,
+    QuoteOptionPrice,
     RequestQuoteOptionPrice,
 )
-
-from packages.eightballer.skills.rysk_roller.models import Params
-from packages.eightballer.skills.rysk_roller.rounds import (
-    SynchronizedData,
-    FlowchartToFSMAbciApp,
-    AnalyseDataRound,
-    CallExercisedRound,
-    CallExpiredRound,
-    CollectDataRound,
-    CollectPriceDataRound,
-    MultiplexerRound,
-    PutExercisedRound,
-    PutExpiredRound,
-    UnderAllocatedRound,
-)
-from packages.eightballer.skills.rysk_roller.rounds import (
-    AnalyseDataPayload,
-    CallExercisedPayload,
-    CallExpiredPayload,
-    CollectDataPayload,
-    CollectPriceDataPayload,
-    MultiplexerPayload,
-    PutExercisedPayload,
-    PutExpiredPayload,
-    UnderAllocatedPayload,
-)
-from packages.eightballer.skills.rysk_roller.models import StrategyAction
-
-from packages.valory.protocols.http.message import HttpMessage
 
 DISPLAY_FORMAT = 1000000000000000000
 
@@ -97,7 +92,7 @@ def to_human_format(row):
     month_code = expiration_datetime.strftime("%b").upper()
     day = expiration_datetime.strftime("%d")
     year = str(expiration_datetime.year)[2:]
-    strike_price = str(int(int(row['strike']) / price_devisor))
+    strike_price = str(int(int(row["strike"]) / price_devisor))
 
     return f"ETH-{day}{month_code}{year}-{strike_price}-{'P' if row['isPut'] else 'C'}"
 
@@ -137,9 +132,10 @@ class RyskRollerBaseBehaviour(BaseBehaviour, ABC):
                 contract_callable="balance_of",
                 owner_address=self.context.agent_address,
             )
-            balance = contract_api_msg.state.body['balance']
+            balance = contract_api_msg.state.body["balance"]
             self.context.logger.info(
-                f"Requested balance for {name} at {address} is {str(balance / DISPLAY_FORMAT)}.")
+                f"Requested balance for {name} at {address} is {str(balance / DISPLAY_FORMAT)}."
+            )
             balances[name] = balance
         return balances
 
@@ -155,7 +151,9 @@ class AnalyseDataBehaviour(RyskRollerBaseBehaviour):
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = AnalyseDataPayload(sender=sender, )
+            payload = AnalyseDataPayload(
+                sender=sender,
+            )
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -175,7 +173,9 @@ class CallExercisedBehaviour(RyskRollerBaseBehaviour):
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = CallExercisedPayload(sender=sender, )
+            payload = CallExercisedPayload(
+                sender=sender,
+            )
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -195,7 +195,9 @@ class CallExpiredBehaviour(RyskRollerBaseBehaviour):
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = CallExpiredPayload(sender=sender, )
+            payload = CallExpiredPayload(
+                sender=sender,
+            )
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -213,16 +215,21 @@ class CollectDataBehaviour(RyskRollerBaseBehaviour):
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
 
-        assets = self.context.params.config['option_assets']
+        assets = self.context.params.config["option_assets"]
         subgraph = yield from self._request_subgraph_data()
         balances = yield from self._request_erc20_balances(assets)
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = CollectDataPayload(sender=sender, content=json.dumps({
-                'balances': balances,
-                'subgraph': subgraph,
-            }))
+            payload = CollectDataPayload(
+                sender=sender,
+                content=json.dumps(
+                    {
+                        "balances": balances,
+                        "subgraph": subgraph,
+                    }
+                ),
+            )
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -233,18 +240,16 @@ class CollectDataBehaviour(RyskRollerBaseBehaviour):
     def _request_subgraph_data(self):
         """Perform a http request to the subgraph api."""
         self.context.logger.info("Requesting subgraph data.")
-        url = self.context.params.config['subgraph_url']
-        query = self.context.params.config['subgraph_query']
-        data = json.dumps({
-            "query": query
-        })
+        url = self.context.params.config["subgraph_url"]
+        query = self.context.params.config["subgraph_query"]
+        data = json.dumps({"query": query})
         response = yield from self.get_http_response(
             method="POST",
             url=url,
             content=data.encode("utf-8"),
             headers={"Content-Type": "application/json"},
         )
-        response_data = json.loads(response.body)['data']
+        response_data = json.loads(response.body)["data"]
         self.context.logger.info(f"Received subgraph data!")
         return response_data
 
@@ -263,9 +268,14 @@ class CollectPriceDataBehaviour(RyskRollerBaseBehaviour):
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = CollectPriceDataPayload(sender=sender, content=json.dumps({
-                'price_data': price_data,
-            }))
+            payload = CollectPriceDataPayload(
+                sender=sender,
+                content=json.dumps(
+                    {
+                        "price_data": price_data,
+                    }
+                ),
+            )
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -273,56 +283,57 @@ class CollectPriceDataBehaviour(RyskRollerBaseBehaviour):
 
         self.set_done()
 
-    def get_options_prices(self, ):
+    def get_options_prices(
+        self,
+    ):
         """
         We call the beyond pricer to determine the prices for a market
         huge thanks to 0xPawel2 and Jib &&
         """
-        data = \
-        self.context.state.synchronized_data.db.get("rysk_data")['subgraph'][
-            'series']
+        data = self.context.state.synchronized_data.db.get("rysk_data")["subgraph"][
+            "series"
+        ]
 
         for row in data:
-            if row['isBuyable']:
-                row['ask'] = yield from self._get_option_price(row, side="buy")
-            if row['isSellable']:
-                row['bid'] = yield from self._get_option_price(row, side="sell")
+            if row["isBuyable"]:
+                row["ask"] = yield from self._get_option_price(row, side="buy")
+            if row["isSellable"]:
+                row["bid"] = yield from self._get_option_price(row, side="sell")
         return data
-
-
 
     def get_positions(self):
         """Get the price for an option series."""
 
-        data = \
-        self.context.state.synchronized_data.db.get("rysk_data")['subgraph'][
-            'series']
-        assets = {to_human_format(row): row['id'] for row in data}
-        self.context.logger.info(
-            f"Requesting positions for {len(assets)} assets.")
+        data = self.context.state.synchronized_data.db.get("rysk_data")["subgraph"][
+            "series"
+        ]
+        assets = {to_human_format(row): row["id"] for row in data}
+        self.context.logger.info(f"Requesting positions for {len(assets)} assets.")
         balances = yield from self._request_erc20_balances(assets)
-        current_positions = filter(lambda x: x['balance'] > 0, balances)
+        current_positions = filter(lambda x: x["balance"] > 0, balances)
         self.context.logger.info(
-            f"Received positions for {len(list(current_positions))} assets.")
+            f"Received positions for {len(list(current_positions))} assets."
+        )
 
-    def _get_option_price(self, option_data, amount=1000000000000000000,
-                          side="buy", collateral="eth"):
+    def _get_option_price(
+        self, option_data, amount=1000000000000000000, side="buy", collateral="eth"
+    ):
         """Get the price for an option series."""
 
         option_series = OptionSeries(
-            expiration=int(option_data['expiration']),
-            strike=int(option_data['strike']),
-            is_put=bool(option_data['isPut']),
-            underlying='0x3b3a1dE07439eeb04492Fa64A889eE25A130CDd3',
-            strike_asset='0x408c5755b5c7a0a28D851558eA3636CfC5b5b19d',
-            collateral='0x408c5755b5c7a0a28D851558eA3636CfC5b5b19d',
+            expiration=int(option_data["expiration"]),
+            strike=int(option_data["strike"]),
+            is_put=bool(option_data["isPut"]),
+            underlying="0x3b3a1dE07439eeb04492Fa64A889eE25A130CDd3",
+            strike_asset="0x408c5755b5c7a0a28D851558eA3636CfC5b5b19d",
+            collateral="0x408c5755b5c7a0a28D851558eA3636CfC5b5b19d",
         )
 
         request = RequestQuoteOptionPrice(
             _option_series=option_series,
             _amount=amount,
             is_sell=(side == "sell"),
-            net_dhv_exposure=int(option_data['netDHVExposure'])
+            net_dhv_exposure=int(option_data["netDHVExposure"]),
         )
 
         # breakpoint()
@@ -335,9 +346,15 @@ class CollectPriceDataBehaviour(RyskRollerBaseBehaviour):
             owner_address=self.context.agent_address,
             request_quote_option_price=asdict(request),
         )
+        if contract_api_msg.Performative == ContractApiMessage.Performative.ERROR:
+            return {}
 
-        quote_option_price: QuoteOptionPrice = contract_api_msg.state.body['quote_option_price']
-        self.context.logger.info(f"Received price for option series {quote_option_price}.")
+        quote_option_price: QuoteOptionPrice = contract_api_msg.state.body[
+            "quote_option_price"
+        ]
+        self.context.logger.info(
+            f"Received price for option series {quote_option_price}."
+        )
         return quote_option_price
 
 
@@ -353,15 +370,15 @@ class MultiplexerBehaviour(RyskRollerBaseBehaviour):
         # 2. if we have options to settle, we need to settle them
         # 3. if we have available funds, we need to sell options
 
-        balances = self.context.state.synchronized_data.db.get("rysk_data")['balances']
+        balances = self.context.state.synchronized_data.db.get("rysk_data")["balances"]
 
         # subgraph = self.context.state.synchronized_data.db.get("rysk_data")['subgraph']
         # positions = self.context.state.synchronized_data.db.get("rysk_data")['positions']
 
-        if balances['WETH'] > self.context.params.config['min_weth']:
+        if balances["WETH"] > self.context.params.config["min_weth"]:
             self.context.logger.info(f"Available WETH funds: {balances['WETH']}")
             decision = StrategyAction.SELL_CALL.value
-        elif balances['USDC'] > self.context.params.config['min_usdc']:
+        elif balances["USDC"] > self.context.params.config["min_usdc"]:
             self.context.logger.info(f"Available USDC funds: {balances['USDC']}")
             decision = StrategyAction.SELL_PUT.value
         else:
@@ -389,7 +406,9 @@ class PutExercisedBehaviour(RyskRollerBaseBehaviour):
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = PutExercisedPayload(sender=sender, )
+            payload = PutExercisedPayload(
+                sender=sender,
+            )
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -412,7 +431,9 @@ class PutExpiredBehaviour(RyskRollerBaseBehaviour):
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = PutExpiredPayload(sender=sender, )
+            payload = PutExpiredPayload(
+                sender=sender,
+            )
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -431,7 +452,9 @@ class UnderAllocatedBehaviour(RyskRollerBaseBehaviour):
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = UnderAllocatedPayload(sender=sender, )
+            payload = UnderAllocatedPayload(
+                sender=sender,
+            )
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -454,5 +477,5 @@ class FlowchartToFSMRoundBehaviour(AbstractRoundBehaviour):
         MultiplexerBehaviour,
         PutExercisedBehaviour,
         PutExpiredBehaviour,
-        UnderAllocatedBehaviour
+        UnderAllocatedBehaviour,
     ]

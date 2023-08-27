@@ -31,8 +31,6 @@ from unittest.mock import MagicMock, Mock, patch
 
 import aiohttp
 import pytest
-from aiohttp.client_reqrep import ClientResponse
-
 from aea.common import Address
 from aea.configurations.base import ConnectionConfig
 from aea.identity.base import Identity
@@ -40,6 +38,7 @@ from aea.mail.base import Envelope, Message
 from aea.protocols.dialogue.base import Dialogue as BaseDialogue
 from aea.test_tools.mocks import RegexComparator
 from aea.test_tools.network import get_host, get_unused_tcp_port
+from aiohttp.client_reqrep import ClientResponse
 
 from packages.fetchai.connections.http_server.connection import (
     APISpec,
@@ -49,7 +48,6 @@ from packages.fetchai.connections.http_server.connection import (
 from packages.valory.protocols.http.dialogues import HttpDialogue
 from packages.valory.protocols.http.dialogues import HttpDialogues as BaseHttpDialogues
 from packages.valory.protocols.http.message import HttpMessage
-
 
 logger = logging.getLogger(__name__)
 

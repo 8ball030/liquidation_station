@@ -41,8 +41,8 @@ class CallExercisedPayload(BaseTxPayload):
 @dataclass(frozen=True)
 class CallExpiredPayload(BaseTxPayload):
     """Represent a transaction payload for the CallExpiredRound."""
-    # TODO: define your attributes
 
+    # TODO: define your attributes
 
 
 @dataclass(frozen=True)
@@ -58,9 +58,11 @@ class CollectPriceDataPayload(BaseTxPayload):
 
     content: str
 
+
 @dataclass(frozen=True)
 class MultiplexerPayload(BaseTxPayload):
     """Represent a transaction payload for the MultiplexerRound."""
+
     strategy_decision: int
 
     # TODO: define your attributes
@@ -85,4 +87,3 @@ class UnderAllocatedPayload(BaseTxPayload):
     """Represent a transaction payload for the UnderAllocatedRound."""
 
     # TODO: define your attributes
-

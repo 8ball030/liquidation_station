@@ -23,12 +23,22 @@ from enum import Enum
 from typing import Dict, List, Optional, Set, Tuple
 
 from packages.eightballer.skills.liquidation_station.payloads import (
-    CalculatePositionHealthPayload, CollectPositionsPayload,
-    PrepareLiquidationTransactionsPayload, RegistrationPayload,
-    ResetAndPausePayload, SubmitPositionLiquidationTransactionsPayload)
+    CalculatePositionHealthPayload,
+    CollectPositionsPayload,
+    PrepareLiquidationTransactionsPayload,
+    RegistrationPayload,
+    ResetAndPausePayload,
+    SubmitPositionLiquidationTransactionsPayload,
+)
 from packages.valory.skills.abstract_round_abci.base import (
-    AbciApp, AbciAppTransitionFunction, AbstractRound, AppState,
-    BaseSynchronizedData, DegenerateRound, EventToTimeout)
+    AbciApp,
+    AbciAppTransitionFunction,
+    AbstractRound,
+    AppState,
+    BaseSynchronizedData,
+    DegenerateRound,
+    EventToTimeout,
+)
 
 
 class Event(Enum):

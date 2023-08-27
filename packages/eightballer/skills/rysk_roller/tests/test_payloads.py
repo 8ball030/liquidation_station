@@ -19,14 +19,14 @@
 
 """This package contains payload tests for the FlowchartToFSMAbciApp."""
 
-from typing import Type, Hashable
 from dataclasses import dataclass
+from typing import Hashable, Type
 
 import pytest
 
 from packages.eightballer.skills.rysk_roller.payloads import (
-    BaseTxPayload,
     AnalyseDataPayload,
+    BaseTxPayload,
     CallExercisedPayload,
     CallExpiredPayload,
     CollectDataPayload,
@@ -54,4 +54,3 @@ def test_payloads(test_case: PayloadTestCase) -> None:
     payload = test_case.payload_cls(sender="sender", content=test_case.content)
     assert payload.sender == "sender"
     assert payload.from_json(payload.json) == payload
-

@@ -1,22 +1,21 @@
-
-from typing import Dict
-
-from aea.contracts.base import Contract
-from aea_ledger_ethereum import EthereumApi, EthereumCrypto
-from pathlib import Path
-from aea.test_tools.test_contract import BaseContractTestCase
 from dataclasses import astuple
+from pathlib import Path
+from typing import Dict
+from unittest import mock
+
+import pytest
+import web3 as w3
+from aea.contracts.base import Contract
+from aea.test_tools.test_contract import BaseContractTestCase
+from aea_ledger_ethereum import EthereumApi, EthereumCrypto
+from hypothesis import strategies as st
+
 from packages.zarathustra.contracts.homm_vault.contract import (
+    HOMMVaultContract,
     OperationType,
     OptionSeries,
     RequestQuoteOptionPrice,
-    HOMMVaultContract,
 )
-import web3 as w3
-import pytest
-from unittest import mock
-from hypothesis import strategies as st
-
 
 NULL = "0x" + "0" * 40
 DEFAULT_GAS = 1000000

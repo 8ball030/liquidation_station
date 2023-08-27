@@ -19,23 +19,9 @@
 
 """This package contains the rounds of FlowchartToFSMAbciApp."""
 
-from enum import Enum
-from typing import Dict, List, Optional, Set, Tuple, Any, cast
 import json
-
-from packages.valory.skills.abstract_round_abci.base import (
-    AbciApp,
-    AbciAppTransitionFunction,
-    AbstractRound,
-    AppState,
-    BaseSynchronizedData,
-    DegenerateRound,
-    EventToTimeout,
-    CollectSameUntilThresholdRound,
-    CollectSameUntilAllRound,
-    CollectDifferentUntilAllRound,
-    get_name
-)
+from enum import Enum
+from typing import Any, Dict, List, Optional, Set, Tuple, cast
 
 from packages.eightballer.skills.rysk_roller.payloads import (
     AnalyseDataPayload,
@@ -47,6 +33,19 @@ from packages.eightballer.skills.rysk_roller.payloads import (
     PutExercisedPayload,
     PutExpiredPayload,
     UnderAllocatedPayload,
+)
+from packages.valory.skills.abstract_round_abci.base import (
+    AbciApp,
+    AbciAppTransitionFunction,
+    AbstractRound,
+    AppState,
+    BaseSynchronizedData,
+    CollectDifferentUntilAllRound,
+    CollectSameUntilAllRound,
+    CollectSameUntilThresholdRound,
+    DegenerateRound,
+    EventToTimeout,
+    get_name,
 )
 
 
@@ -108,7 +107,6 @@ class AnalyseDataRound(CollectSameUntilAllRound):
         return self.synchronized_data, Event.DONE
 
 
-
 class CallExercisedRound(AbstractRound):
     """CallExercisedRound"""
 
@@ -165,12 +163,12 @@ class CollectPriceDataRound(CollectSameUntilAllRound):
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
         if self.collection_threshold_reached:
-            payloads_json = json.loads(self.collection[list(self.collection.keys())[0]].content)
+            payloads_json = json.loads(
+                self.collection[list(self.collection.keys())[0]].content
+            )
             state = self.synchronized_data.update(
                 synchronized_data_class=self.synchronized_data_class,
-                **{
-                    get_name(SynchronizedData.price_data): payloads_json
-                }
+                **{get_name(SynchronizedData.price_data): payloads_json}
             )
             return state, Event.DONE
 
@@ -186,13 +184,13 @@ class CollectDataRound(CollectSameUntilAllRound):
         """Process the end of the block."""
 
         if self.collection_threshold_reached:
-            payloads_json = json.loads(self.collection[list(self.collection.keys())[0]].content)
+            payloads_json = json.loads(
+                self.collection[list(self.collection.keys())[0]].content
+            )
             state = self.synchronized_data.update(
-                 synchronized_data_class=self.synchronized_data_class,
-                 **{
-                     get_name(SynchronizedData.rysk_data): payloads_json
-                 }
-             )
+                synchronized_data_class=self.synchronized_data_class,
+                **{get_name(SynchronizedData.rysk_data): payloads_json}
+            )
             return state, Event.DONE
 
 
@@ -206,15 +204,14 @@ class MultiplexerRound(CollectSameUntilAllRound):
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
         if self.collection_threshold_reached:
-            strategy_decision = self.collection[list(self.collection.keys())[0]].strategy_decision
+            strategy_decision = self.collection[
+                list(self.collection.keys())[0]
+            ].strategy_decision
             state = self.synchronized_data.update(
                 synchronized_data_class=self.synchronized_data_class,
-                **{
-                    get_name(SynchronizedData.strategy_decision): strategy_decision
-                }
+                **{get_name(SynchronizedData.strategy_decision): strategy_decision}
             )
             return state, Event.DONE
-
 
 
 class PutExercisedRound(AbstractRound):
@@ -308,15 +305,9 @@ class FlowchartToFSMAbciApp(AbciApp[Event]):
     initial_round_cls: AppState = CollectDataRound
     initial_states: Set[AppState] = {CollectDataRound}
     transition_function: AbciAppTransitionFunction = {
-        CollectDataRound: {
-            Event.DONE: CollectPriceDataRound
-        },
-        CollectPriceDataRound: {
-            Event.DONE: AnalyseDataRound
-        },
-        AnalyseDataRound: {
-            Event.DONE: MultiplexerRound
-        },
+        CollectDataRound: {Event.DONE: CollectPriceDataRound},
+        CollectPriceDataRound: {Event.DONE: AnalyseDataRound},
+        AnalyseDataRound: {Event.DONE: MultiplexerRound},
         MultiplexerRound: {
             Event.NOT_DONE: CollectDataRound,
             Event.ERROR: CollectDataRound,
@@ -326,30 +317,27 @@ class FlowchartToFSMAbciApp(AbciApp[Event]):
             Event.CALL_EXERCISED: CallExercisedRound,
             Event.UNDER_ALLOCATED: UnderAllocatedRound,
             Event.SELL_PUT_OPTION: SellPutOptionRound,
-            Event.SELL_CALL_OPTION: SellCallOptionRound
+            Event.SELL_CALL_OPTION: SellCallOptionRound,
         },
-        PutExpiredRound: {
-            Event.SELL_PUT_OPTION: SellPutOptionRound
-        },
-        CallExpiredRound: {
-            Event.SELL_CALL_OPTION: SellCallOptionRound
-        },
-        PutExercisedRound: {
-            Event.SWAP_FROM_USDC_TO_ETH: SwapFromUSDCtoETHRound
-        },
-        CallExercisedRound: {
-            Event.SWAP_FROM_ETH_TO_USDC: SwapFromETHtoUSDCRound
-        },
+        PutExpiredRound: {Event.SELL_PUT_OPTION: SellPutOptionRound},
+        CallExpiredRound: {Event.SELL_CALL_OPTION: SellCallOptionRound},
+        PutExercisedRound: {Event.SWAP_FROM_USDC_TO_ETH: SwapFromUSDCtoETHRound},
+        CallExercisedRound: {Event.SWAP_FROM_ETH_TO_USDC: SwapFromETHtoUSDCRound},
         UnderAllocatedRound: {
             Event.SELL_PUT_OPTION: SellPutOptionRound,
-            Event.SELL_CALL_OPTION: SellCallOptionRound
+            Event.SELL_CALL_OPTION: SellCallOptionRound,
         },
         SellCallOptionRound: {},
         SwapFromUSDCtoETHRound: {},
         SwapFromETHtoUSDCRound: {},
-        SellPutOptionRound: {}
+        SellPutOptionRound: {},
     }
-    final_states: Set[AppState] = {SwapFromUSDCtoETHRound, SellPutOptionRound, SellCallOptionRound, SwapFromETHtoUSDCRound}
+    final_states: Set[AppState] = {
+        SwapFromUSDCtoETHRound,
+        SellPutOptionRound,
+        SellCallOptionRound,
+        SwapFromETHtoUSDCRound,
+    }
     event_to_timeout: EventToTimeout = {}
     cross_period_persisted_keys: Set[str] = []
     db_pre_conditions: Dict[AppState, Set[str]] = {
@@ -357,7 +345,7 @@ class FlowchartToFSMAbciApp(AbciApp[Event]):
     }
     db_post_conditions: Dict[AppState, Set[str]] = {
         SwapFromUSDCtoETHRound: [],
-    	SellPutOptionRound: [],
-    	SellCallOptionRound: [],
-    	SwapFromETHtoUSDCRound: [],
+        SellPutOptionRound: [],
+        SellCallOptionRound: [],
+        SwapFromETHtoUSDCRound: [],
     }

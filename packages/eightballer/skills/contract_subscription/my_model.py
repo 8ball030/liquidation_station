@@ -21,8 +21,10 @@
 
 from aea.skills.base import Model
 
-from packages.fetchai.protocols.default.dialogues import (DefaultDialogue,
-                                                          DefaultDialogues)
+from packages.fetchai.protocols.default.dialogues import (
+    DefaultDialogue,
+    DefaultDialogues,
+)
 
 
 def get_role(*args, **kwargs) -> DefaultDialogue.Role:

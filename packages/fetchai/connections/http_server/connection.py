@@ -31,33 +31,31 @@ from traceback import format_exc
 from typing import Any, Dict, Optional, cast
 from urllib.parse import parse_qs, urlparse
 
-from aiohttp import web
-from aiohttp.web_request import BaseRequest
-from openapi_core import create_spec
-from openapi_core.validation.request.datatypes import OpenAPIRequest, RequestParameters
-from openapi_core.validation.request.shortcuts import validate_request
-from openapi_core.validation.request.validators import RequestValidator
-from openapi_spec_validator.exceptions import (  # pylint: disable=wrong-import-order
-    OpenAPIValidationError,
-)
-from openapi_spec_validator.schemas import (  # pylint: disable=wrong-import-order
-    read_yaml_file,
-)
-from werkzeug.datastructures import (  # pylint: disable=wrong-import-order
-    ImmutableMultiDict,
-)
-
 from aea.common import Address
 from aea.configurations.base import PublicId
 from aea.connections.base import Connection, ConnectionStates
 from aea.mail.base import Envelope, Message
 from aea.protocols.dialogue.base import Dialogue as BaseDialogue
 from aea.protocols.dialogue.base import DialogueLabel
+from aiohttp import web
+from aiohttp.web_request import BaseRequest
+from openapi_core import create_spec
+from openapi_core.validation.request.datatypes import OpenAPIRequest, RequestParameters
+from openapi_core.validation.request.shortcuts import validate_request
+from openapi_core.validation.request.validators import RequestValidator
+from openapi_spec_validator.exceptions import (
+    OpenAPIValidationError,
+)  # pylint: disable=wrong-import-order
+from openapi_spec_validator.schemas import (
+    read_yaml_file,
+)  # pylint: disable=wrong-import-order
+from werkzeug.datastructures import (
+    ImmutableMultiDict,
+)  # pylint: disable=wrong-import-order
 
 from packages.valory.protocols.http.dialogues import HttpDialogue
 from packages.valory.protocols.http.dialogues import HttpDialogues as BaseHttpDialogues
 from packages.valory.protocols.http.message import HttpMessage
-
 
 SUCCESS = 200
 NOT_FOUND = 404
