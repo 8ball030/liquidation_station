@@ -41,12 +41,10 @@ from aea.test_tools.network import get_host, get_unused_tcp_port
 from aiohttp.client_reqrep import ClientResponse
 
 from packages.fetchai.connections.http_server.connection import (
-    APISpec,
-    HTTPServerConnection,
-    Response,
-)
+    APISpec, HTTPServerConnection, Response)
 from packages.valory.protocols.http.dialogues import HttpDialogue
-from packages.valory.protocols.http.dialogues import HttpDialogues as BaseHttpDialogues
+from packages.valory.protocols.http.dialogues import \
+    HttpDialogues as BaseHttpDialogues
 from packages.valory.protocols.http.message import HttpMessage
 
 logger = logging.getLogger(__name__)

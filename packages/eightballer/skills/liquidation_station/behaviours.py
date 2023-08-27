@@ -30,27 +30,16 @@ from web3._utils.events import get_event_data
 
 from packages.eightballer.skills.liquidation_station.models import Params
 from packages.eightballer.skills.liquidation_station.rounds import (
-    CalculatePositionHealthPayload,
-    CalculatePositionHealthRound,
-    CollectPositionsPayload,
-    CollectPositionsRound,
-    LiquidationStationAbciApp,
-    PrepareLiquidationTransactionsPayload,
-    PrepareLiquidationTransactionsRound,
-    RegistrationPayload,
-    RegistrationRound,
-    ResetAndPausePayload,
-    ResetAndPauseRound,
-    SubmitPositionLiquidationTransactionsPayload,
-    SubmitPositionLiquidationTransactionsRound,
-    SynchronizedData,
-)
+    CalculatePositionHealthPayload, CalculatePositionHealthRound,
+    CollectPositionsPayload, CollectPositionsRound, LiquidationStationAbciApp,
+    PrepareLiquidationTransactionsPayload, PrepareLiquidationTransactionsRound,
+    RegistrationPayload, RegistrationRound, ResetAndPausePayload,
+    ResetAndPauseRound, SubmitPositionLiquidationTransactionsPayload,
+    SubmitPositionLiquidationTransactionsRound, SynchronizedData)
 from packages.valory.protocols.ledger_api.message import LedgerApiMessage
 from packages.valory.skills.abstract_round_abci.base import AbstractRound
 from packages.valory.skills.abstract_round_abci.behaviours import (
-    AbstractRoundBehaviour,
-    BaseBehaviour,
-)
+    AbstractRoundBehaviour, BaseBehaviour)
 
 
 class LiquidationStationBaseBehaviour(BaseBehaviour, ABC):

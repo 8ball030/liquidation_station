@@ -26,44 +26,16 @@ from typing import Any, Dict, Hashable, Optional, Type
 import pytest
 
 from packages.eightballer.skills.rysk_roller.behaviours import (
-    AnalyseDataBehaviour,
-    CallExercisedBehaviour,
-    CallExpiredBehaviour,
-    CollectDataBehaviour,
-    FlowchartToFSMRoundBehaviour,
-    MultiplexerBehaviour,
-    PutExercisedBehaviour,
-    PutExpiredBehaviour,
-    RyskRollerBaseBehaviour,
-    UnderAllocatedBehaviour,
-)
-from packages.eightballer.skills.rysk_roller.rounds import (
-    AnalyseDataRound,
-    CallExercisedRound,
-    CallExpiredRound,
-    CollectDataRound,
-    DegenerateRound,
-    Event,
-    FlowchartToFSMAbciApp,
-    MultiplexerRound,
-    PutExercisedRound,
-    PutExpiredRound,
-    SellCallOptionRound,
-    SellPutOptionRound,
-    SwapFromETHtoUSDCRound,
-    SwapFromUSDCtoETHRound,
-    SynchronizedData,
-    UnderAllocatedRound,
-)
+    AnalyseDataBehaviour, CallExercisedBehaviour, CallExpiredBehaviour,
+    CollectDataBehaviour, FlowchartToFSMRoundBehaviour, MultiplexerBehaviour,
+    PutExercisedBehaviour, PutExpiredBehaviour, RyskRollerBaseBehaviour,
+    UnderAllocatedBehaviour)
+from packages.eightballer.skills.rysk_roller.rounds import (Event,
+                                                            SynchronizedData)
 from packages.valory.skills.abstract_round_abci.base import AbciAppDB
-from packages.valory.skills.abstract_round_abci.behaviours import (
-    AbstractRoundBehaviour,
-    BaseBehaviour,
-    make_degenerate_behaviour,
-)
-from packages.valory.skills.abstract_round_abci.test_tools.base import (
-    FSMBehaviourBaseCase,
-)
+from packages.valory.skills.abstract_round_abci.behaviours import BaseBehaviour
+from packages.valory.skills.abstract_round_abci.test_tools.base import \
+    FSMBehaviourBaseCase
 
 
 @dataclass

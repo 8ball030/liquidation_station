@@ -19,9 +19,7 @@
 
 """This package contains a scaffold of a handler."""
 
-from typing import Optional
 
-from aea.configurations.base import PublicId
 from aea.protocols.base import Message
 from aea.skills.base import Handler
 
