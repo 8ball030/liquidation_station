@@ -80,8 +80,8 @@ type: skill
 models:
   params:
     args:
-      infura_api_key: ${SKILL_LIQUIDATION_STATION_MODELS_PARAMS_ARGS_INFURA_API_KEY:str}
-      polygonscan_api_key: ${SKILL_LIQUIDATION_STATION_MODELS_PARAMS_ARGS_POLYGONSCAN_API_KEY:str}
+      infura_api_key: ${str:000000}
+      polygonscan_api_key: ${str:000000}
       sleep_time: 1
       tendermint_check_sleep_delay: 3
       tendermint_p2p_url: ${str:localhost:26656}

@@ -6,7 +6,7 @@ aea_version: '>=1.0.0, <2.0.0'
 license: Apache-2.0
 fingerprint: {}
 fingerprint_ignore_patterns: []
-agent: eightballer/rysk_roller:0.1.0:bafybeigel2ngolwobyettvsej32g7q7cd6xtv2h5bti73ozwwxjyi7s5gu
+agent: eightballer/rysk_roller:0.1.0:bafybeifmcek7r55fgyps7gu24dm3liqzpmzjwi2oer2kzqvlgcfc4sdrdu
 number_of_agents: 4
 deployment:
   agent:
@@ -30,7 +30,7 @@ config:
       poa_chain: ${bool:false}
       default_gas_price_strategy: ${str:eip1559}
 ---
-public_id: rengen/chained_rysk_arb:0.1.0:bafybeicmuthcay6doky6sgy235n52chsk5fkzswpvyg5s4yeptvmzmxoqy
+public_id: eightballer/rysk_roller:0.1.0:bafybeicmuthcay6doky6sgy235n52chsk5fkzswpvyg5s4yeptvmzmxoqy
 type: skill
 models:
   params:
@@ -42,27 +42,3 @@ models:
         - ${MAS_ADDRESS:str}
       tendermint_p2p_url: node0:26656
       tendermint_com_url: http://node0:8080
-      cex_data_retrieval_config:
-        enabled: true
-        exchange_ids:
-        - deribit
-        extra_kwargs:
-          deribit:
-            currency: ETH
-        backoff: 1.0
-        retries: 5
-      arb_strategy:
-        trade_size: 1.0
-        min_profit_percent: 15
-        min_profit_usd: 4.0
-        quote_to_close: true
-        order_age_threshold: 300.0
-        quote_to_close_percent: 0.0
-        txn_retry_attempts: 3
-        protocol_id: ${CHAIN_NAME:str:arbitrum}
-        alert_config:
-          enabled: true
-          url: ${SLACK_WEBHOOK:str:https://hooks.slack.com/services/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}
-      rysk_data_collection_config:
-        enabled: true
-        protocol_id: ${CHAIN_NAME:str:arbitrum}

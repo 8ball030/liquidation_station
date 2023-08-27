@@ -67,5 +67,9 @@ lock:
 run-single-agent:
 	bash scripts/start_agent.sh
 
-run-mas:
-	bash scripts/start_multi_agent.sh
+run-mas-liquidation-station:
+	bash scripts/start_multi_agent.sh eightballer/liquidation_station
+
+run-mas-rysk-roller:
+	bash scripts/start_multi_agent.sh eightballer/rysk_roller
+

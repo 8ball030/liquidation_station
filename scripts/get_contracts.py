@@ -1,9 +1,10 @@
 
-import os
 import json
-from brownie import Contract, network
+import os
 import subprocess
 from pathlib import Path
+
+from brownie import Contract, network
 
 AUTHOR = "zarathustra"
 EXPECTED_ENV_VARS = [
