@@ -24,12 +24,12 @@ fingerprint:
 fingerprint_ignore_patterns: []
 connections: []
 contracts:
-- valory/uniswap_v2_erc20:0.1.0:bafybeic5dtudo4dulkmj6fqvv4fj3dmzam2pf3xsajlip5pafgbje3cone
+- valory/uniswap_v2_erc20:0.1.0:bafybeifewyykjldtaaece4xhguveuj54zqrhf3cw35i6zhjaaubjluerj4
 - zarathustra/homm_vault:0.1.0:bafybeid5fwit4ypxaqvknrefmfe6vq3psdzfue6oc2oqftfzcw3islvjnq
 protocols:
-- valory/contract_api:1.0.0:bafybeibh5ysa3hltzh2jjquxylgaopsaufqhs3fdtbgintdbtf6htezfma
+- valory/contract_api:1.0.0:bafybeibcmlxllyrfbp244upa2ea7hhliawv64ldrrn3fb64fdx2342orsy
 skills:
-- valory/abstract_round_abci:0.1.0:bafybeidlv4z63bxni26jmlxffc6scjxhkx3tlasv22fkbcsyvqpcgsyxz4
+- valory/abstract_round_abci:0.1.0:bafybeibj5lhxkmfy33a2llmjyma52al26iijdq4epl3h2yljgrjejqswxe
 behaviours:
   main:
     args: {}
