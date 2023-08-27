@@ -9,9 +9,9 @@ aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   __init__.py: bafybeihby72yquictws2b6dxskiuskjbkcojyhelkl7hs4uilmmafukvim
   behaviours.py: bafybeibclrjvya57eavtkorqk2jccnompcr4pqckxv5elq2tfukip2nuai
-  dialogues.py: bafybeigylmck2wy3y7sqk4eb2xnpjfizr77jzuypnpcweeex43tj6634je
-  handlers.py: bafybeihjobcsja36xugkk2rhajrj43yyx7dff2da4tj6xlfhmnvmujtihi
-  my_model.py: bafybeiblpqola4by47rrckarjeqmnqo2rpdloj2zxmgjrt4srwtdk3ptfq
+  dialogues.py: bafybeig3ztuhmqj7atppgub3jzmy4i6fb2fqnq7wtulaiv7j7dh7xg3jom
+  handlers.py: bafybeibeelhwsb7ehkofk3h2qjhcstx7o2hnu4j6slzra6hklxujzowfvu
+  my_model.py: bafybeifbmb5bhx2f46myn7mcrku25bfvzzddyzzuxc4sp5wzdk7gkhvgci
 fingerprint_ignore_patterns: []
 connections:
 - eightballer/websocket_client:0.1.0:bafybeicqkljjzvdl4v7pzbmsfd3al7uv7563x3qa5gmnzxeuoxgtmolpta

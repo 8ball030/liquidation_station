@@ -11,7 +11,7 @@ fingerprint:
   build/vault.json: bafybeiccu7k4vg7kdxihkzqubrh7buxuu44vcbohdsvodnuqz6yhbf5a7i
   contract.py: bafybeicwzmc3up46my4wdgexgd5xlpmvsut7uqjic73vquofmmsvypbtu4
   tests/__init__.py: bafybeiemxmqrlmgx4k2dlhjzjjlxh2aglku2kbv43x7hkkf3ppv2er3lme
-  tests/test_contract.py: bafybeignpi7i52nizfmhktsbzmsgb64lv5ii2l6tekrvrwrihs7l4jb5bi
+  tests/test_contract.py: bafybeifbgseqy4fipqgeylrt3yxricaa47o3xj3fmbuvarfq2ajlfdcxgi
 fingerprint_ignore_patterns: []
 class_name: HOMMVaultContract
 contract_interface_paths:

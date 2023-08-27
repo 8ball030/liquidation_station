@@ -2,7 +2,7 @@ agent_name: liquidation_station
 author: eightballer
 version: 0.1.0
 license: Apache-2.0
-description: ''
+description: 'The liquidation station was built in Eth Prague 2021. It allows for the liquidation of collateralized debt positions.'
 aea_version: '>=1.32.0, <2.0.0'
 fingerprint: {}
 fingerprint_ignore_patterns: []
@@ -27,8 +27,8 @@ protocols:
 - valory/ledger_api:1.0.0:bafybeieoq3vtqst3hrbhxqchqkqd3hhbcf6rwgkz7zhnbupa6ecpgeesdi
 - valory/tendermint:0.1.0:bafybeib25ulpp3tri3ppexk4t6yttuajhr7wpgs7wajpsnbbnzo256ubem
 skills:
-- eightballer/liquidation_station:0.1.0:bafybeifj6bcs4gmauwmndodl77mw5je4fk266nt4k3jekesie3vlnkvlqu
-- eightballer/metrics:0.1.0:bafybeidgpexgwelyarhh6drobvznllphgcucwfjukft3jugkxu4v72d63a
+- eightballer/liquidation_station:0.1.0:bafybeiamebsua2rly6pkpsq36ytohsym4g6sgbhtyxhbptklswjrwuhfva
+- eightballer/metrics:0.1.0:bafybeifbwuofo3buohj7jj3qdojhmha7uhi7a5rezzyfrwbfznaefzulia
 - valory/abstract_abci:0.1.0:bafybeia7z7grrixjkofv7z3o7wyxodquiqrlqpnhzlpbwbolcau5ht6gz4
 - valory/abstract_round_abci:0.1.0:bafybeidlv4z63bxni26jmlxffc6scjxhkx3tlasv22fkbcsyvqpcgsyxz4
 default_ledger: ethereum
