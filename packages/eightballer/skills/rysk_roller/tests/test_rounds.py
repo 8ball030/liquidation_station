@@ -24,16 +24,6 @@ from typing import Any, Callable, Dict, Hashable, List, Mapping, Type
 
 import pytest
 
-from packages.eightballer.skills.rysk_roller.payloads import (
-    AnalyseDataPayload,
-    CallExercisedPayload,
-    CallExpiredPayload,
-    CollectDataPayload,
-    MultiplexerPayload,
-    PutExercisedPayload,
-    PutExpiredPayload,
-    UnderAllocatedPayload,
-)
 from packages.eightballer.skills.rysk_roller.rounds import (
     AbstractRound,
     AnalyseDataRound,
@@ -49,9 +39,6 @@ from packages.eightballer.skills.rysk_roller.rounds import (
 )
 from packages.valory.skills.abstract_round_abci.base import BaseTxPayload
 from packages.valory.skills.abstract_round_abci.test_tools.rounds import (
-    BaseCollectDifferentUntilThresholdRoundTest,
-    BaseCollectSameUntilThresholdRoundTest,
-    BaseOnlyKeeperSendsRoundTest,
     BaseRoundTestClass,
 )
 

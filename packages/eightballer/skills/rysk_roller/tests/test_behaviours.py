@@ -37,30 +37,9 @@ from packages.eightballer.skills.rysk_roller.behaviours import (
     RyskRollerBaseBehaviour,
     UnderAllocatedBehaviour,
 )
-from packages.eightballer.skills.rysk_roller.rounds import (
-    AnalyseDataRound,
-    CallExercisedRound,
-    CallExpiredRound,
-    CollectDataRound,
-    DegenerateRound,
-    Event,
-    FlowchartToFSMAbciApp,
-    MultiplexerRound,
-    PutExercisedRound,
-    PutExpiredRound,
-    SellCallOptionRound,
-    SellPutOptionRound,
-    SwapFromETHtoUSDCRound,
-    SwapFromUSDCtoETHRound,
-    SynchronizedData,
-    UnderAllocatedRound,
-)
+from packages.eightballer.skills.rysk_roller.rounds import Event, SynchronizedData
 from packages.valory.skills.abstract_round_abci.base import AbciAppDB
-from packages.valory.skills.abstract_round_abci.behaviours import (
-    AbstractRoundBehaviour,
-    BaseBehaviour,
-    make_degenerate_behaviour,
-)
+from packages.valory.skills.abstract_round_abci.behaviours import BaseBehaviour
 from packages.valory.skills.abstract_round_abci.test_tools.base import (
     FSMBehaviourBaseCase,
 )
@@ -117,17 +96,14 @@ class BaseFlowchartToFSMTest(FSMBehaviourBaseCase):
 class TestAnalyseDataBehaviour(BaseFlowchartToFSMTest):
     """Tests AnalyseDataBehaviour"""
 
-    # TODO: set next_behaviour_class
     behaviour_class: Type[BaseBehaviour] = AnalyseDataBehaviour
     next_behaviour_class: Type[BaseBehaviour] = ...
 
-    # TODO: provide test cases
     @pytest.mark.parametrize("test_case", [])
     def test_run(self, test_case: BehaviourTestCase) -> None:
         """Run tests."""
 
         self.fast_forward(test_case.initial_data)
-        # TODO: mock the necessary calls
         # self.mock_ ...
         self.complete(test_case.event)
 
@@ -135,17 +111,14 @@ class TestAnalyseDataBehaviour(BaseFlowchartToFSMTest):
 class TestCallExercisedBehaviour(BaseFlowchartToFSMTest):
     """Tests CallExercisedBehaviour"""
 
-    # TODO: set next_behaviour_class
     behaviour_class: Type[BaseBehaviour] = CallExercisedBehaviour
     next_behaviour_class: Type[BaseBehaviour] = ...
 
-    # TODO: provide test cases
     @pytest.mark.parametrize("test_case", [])
     def test_run(self, test_case: BehaviourTestCase) -> None:
         """Run tests."""
 
         self.fast_forward(test_case.initial_data)
-        # TODO: mock the necessary calls
         # self.mock_ ...
         self.complete(test_case.event)
 
@@ -153,17 +126,14 @@ class TestCallExercisedBehaviour(BaseFlowchartToFSMTest):
 class TestCallExpiredBehaviour(BaseFlowchartToFSMTest):
     """Tests CallExpiredBehaviour"""
 
-    # TODO: set next_behaviour_class
     behaviour_class: Type[BaseBehaviour] = CallExpiredBehaviour
     next_behaviour_class: Type[BaseBehaviour] = ...
 
-    # TODO: provide test cases
     @pytest.mark.parametrize("test_case", [])
     def test_run(self, test_case: BehaviourTestCase) -> None:
         """Run tests."""
 
         self.fast_forward(test_case.initial_data)
-        # TODO: mock the necessary calls
         # self.mock_ ...
         self.complete(test_case.event)
 
@@ -171,17 +141,14 @@ class TestCallExpiredBehaviour(BaseFlowchartToFSMTest):
 class TestCollectDataBehaviour(BaseFlowchartToFSMTest):
     """Tests CollectDataBehaviour"""
 
-    # TODO: set next_behaviour_class
     behaviour_class: Type[BaseBehaviour] = CollectDataBehaviour
     next_behaviour_class: Type[BaseBehaviour] = ...
 
-    # TODO: provide test cases
     @pytest.mark.parametrize("test_case", [])
     def test_run(self, test_case: BehaviourTestCase) -> None:
         """Run tests."""
 
         self.fast_forward(test_case.initial_data)
-        # TODO: mock the necessary calls
         # self.mock_ ...
         self.complete(test_case.event)
 
@@ -189,17 +156,14 @@ class TestCollectDataBehaviour(BaseFlowchartToFSMTest):
 class TestMultiplexerBehaviour(BaseFlowchartToFSMTest):
     """Tests MultiplexerBehaviour"""
 
-    # TODO: set next_behaviour_class
     behaviour_class: Type[BaseBehaviour] = MultiplexerBehaviour
     next_behaviour_class: Type[BaseBehaviour] = ...
 
-    # TODO: provide test cases
     @pytest.mark.parametrize("test_case", [])
     def test_run(self, test_case: BehaviourTestCase) -> None:
         """Run tests."""
 
         self.fast_forward(test_case.initial_data)
-        # TODO: mock the necessary calls
         # self.mock_ ...
         self.complete(test_case.event)
 
@@ -207,17 +171,14 @@ class TestMultiplexerBehaviour(BaseFlowchartToFSMTest):
 class TestPutExercisedBehaviour(BaseFlowchartToFSMTest):
     """Tests PutExercisedBehaviour"""
 
-    # TODO: set next_behaviour_class
     behaviour_class: Type[BaseBehaviour] = PutExercisedBehaviour
     next_behaviour_class: Type[BaseBehaviour] = ...
 
-    # TODO: provide test cases
     @pytest.mark.parametrize("test_case", [])
     def test_run(self, test_case: BehaviourTestCase) -> None:
         """Run tests."""
 
         self.fast_forward(test_case.initial_data)
-        # TODO: mock the necessary calls
         # self.mock_ ...
         self.complete(test_case.event)
 
@@ -225,17 +186,14 @@ class TestPutExercisedBehaviour(BaseFlowchartToFSMTest):
 class TestPutExpiredBehaviour(BaseFlowchartToFSMTest):
     """Tests PutExpiredBehaviour"""
 
-    # TODO: set next_behaviour_class
     behaviour_class: Type[BaseBehaviour] = PutExpiredBehaviour
     next_behaviour_class: Type[BaseBehaviour] = ...
 
-    # TODO: provide test cases
     @pytest.mark.parametrize("test_case", [])
     def test_run(self, test_case: BehaviourTestCase) -> None:
         """Run tests."""
 
         self.fast_forward(test_case.initial_data)
-        # TODO: mock the necessary calls
         # self.mock_ ...
         self.complete(test_case.event)
 
@@ -243,16 +201,13 @@ class TestPutExpiredBehaviour(BaseFlowchartToFSMTest):
 class TestUnderAllocatedBehaviour(BaseFlowchartToFSMTest):
     """Tests UnderAllocatedBehaviour"""
 
-    # TODO: set next_behaviour_class
     behaviour_class: Type[BaseBehaviour] = UnderAllocatedBehaviour
     next_behaviour_class: Type[BaseBehaviour] = ...
 
-    # TODO: provide test cases
     @pytest.mark.parametrize("test_case", [])
     def test_run(self, test_case: BehaviourTestCase) -> None:
         """Run tests."""
 
         self.fast_forward(test_case.initial_data)
-        # TODO: mock the necessary calls
         # self.mock_ ...
         self.complete(test_case.event)

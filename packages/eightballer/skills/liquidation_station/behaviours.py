@@ -81,9 +81,12 @@ class LiquidationStationBaseBehaviour(BaseBehaviour, ABC):
             self.context.shared_state["state"]["done_txs"] = done_txs
 
     @cached_property
-    def unitroller_contract(self):  # TODO:
-        INFURA_API_KEY = self.context.params.config["infura_api_key"]
-        provider = f"https://polygon-mainnet.infura.io/v3/{INFURA_API_KEY}"
+    def unitroller_contract(self):
+        """
+        Returns the unitroller contract object
+        """
+        infura_api_key = self.context.params.config["infura_api_key"]
+        provider = f"https://polygon-mainnet.infura.io/v3/{infura_api_key}"
         unitroller_address = "0x8849f1a0cB6b5D6076aB150546EddEe193754F1C"
         path = (
             Path.cwd()
@@ -95,8 +98,8 @@ class LiquidationStationBaseBehaviour(BaseBehaviour, ABC):
             / "unitroller.json"
         )
         abi = json.loads(path.read_text())["abi"]
-        w3 = Web3(Web3.HTTPProvider(provider))
-        contract = w3.eth.contract(address=unitroller_address, abi=abi)
+        web3 = Web3(Web3.HTTPProvider(provider))
+        contract = web3.eth.contract(address=unitroller_address, abi=abi)
         return contract
 
 
@@ -105,7 +108,6 @@ class CalculatePositionHealthBehaviour(LiquidationStationBaseBehaviour):
 
     matching_round: Type[AbstractRound] = CalculatePositionHealthRound
 
-    # TODO: implement logic required to set payload content for synchronization
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
 
@@ -129,7 +131,6 @@ class CollectPositionsBehaviour(LiquidationStationBaseBehaviour):
 
     matching_round: Type[AbstractRound] = CollectPositionsRound
 
-    # TODO: implement logic required to set payload content for synchronization
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
 
@@ -149,8 +150,6 @@ class CollectPositionsBehaviour(LiquidationStationBaseBehaviour):
 
         latest_block = ledger_api_response.state.body["number"]  # 41584895
 
-        # TODO: Now simply getting accounts that opened positions
-        ## and overwrite the accounts list with the latest
         accounts = self.get_open_positions(latest_block)
         self.update_shared_state(accounts=accounts)
 
@@ -167,16 +166,19 @@ class CollectPositionsBehaviour(LiquidationStationBaseBehaviour):
         self.set_done()
 
     def get_open_positions(self, latest_block: int) -> List[str]:
+        """
+        Returns a list of accounts with open positions
+        """
 
         contract = self.unitroller_contract
         event_template = contract.events.MarketEntered
-        start_block = latest_block - 10_000  # TODO
+        start_block = latest_block - 10_000
         INFURA_API_KEY = self.context.params.config["infura_api_key"]
         provider = f"https://polygon-mainnet.infura.io/v3/{INFURA_API_KEY}"
         unitroller_address = "0x8849f1a0cB6b5D6076aB150546EddEe193754F1C"
 
-        w3 = Web3(Web3.HTTPProvider(provider))
-        events = w3.eth.get_logs(
+        web3 = Web3(Web3.HTTPProvider(provider))
+        events = web3.eth.get_logs(
             {
                 "fromBlock": start_block,
                 "toBlock": latest_block,
@@ -186,14 +188,18 @@ class CollectPositionsBehaviour(LiquidationStationBaseBehaviour):
 
         def handle_event(event, event_template):
             return get_event_data(
-                event_template.web3.codec, event_template._get_event_abi(), event
+                event_template.web3.codec,
+                event_template._get_event_abi(),
+                event,  # pylint: disable=protected-access
             )
 
         accounts = []
         for event in events:
             try:
                 get_event_data(
-                    event_template.web3.codec, event_template._get_event_abi(), event
+                    event_template.web3.codec,
+                    event_template._get_event_abi(),
+                    event,  # pylint: disable=protected-access
                 )
                 result = handle_event(event=event, event_template=event_template)
                 accounts.append(result["account"])
@@ -209,7 +215,6 @@ class PrepareLiquidationTransactionsBehaviour(LiquidationStationBaseBehaviour):
 
     matching_round: Type[AbstractRound] = PrepareLiquidationTransactionsRound
 
-    # TODO: implement logic required to set payload content for synchronization
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
         self.context.logger.info(
@@ -235,7 +240,6 @@ class RegistrationBehaviour(LiquidationStationBaseBehaviour):
 
     matching_round: Type[AbstractRound] = RegistrationRound
 
-    # TODO: implement logic required to set payload content for synchronization
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
         self.context.logger.info("RegistrationBehaviour: In the behaviour")
@@ -259,7 +263,6 @@ class ResetAndPauseBehaviour(LiquidationStationBaseBehaviour):
 
     matching_round: Type[AbstractRound] = ResetAndPauseRound
 
-    # TODO: implement logic required to set payload content for synchronization
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
         self.context.logger.info("ResetAndPauseBehaviour: In the behaviour")
@@ -283,7 +286,6 @@ class SubmitPositionLiquidationTransactionsBehaviour(LiquidationStationBaseBehav
 
     matching_round: Type[AbstractRound] = SubmitPositionLiquidationTransactionsRound
 
-    # TODO: implement logic required to set payload content for synchronization
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
         self.context.logger.info(

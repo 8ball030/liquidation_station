@@ -2,16 +2,16 @@ name: contract_subscription
 author: eightballer
 version: 0.1.0
 type: skill
-description: The scaffold skill is a simple client to subscribe to transactions using
+description: The contract subscription skill allows the agent to subscribe to websockets.
   the websocket connection.
 license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   __init__.py: bafybeihby72yquictws2b6dxskiuskjbkcojyhelkl7hs4uilmmafukvim
-  behaviours.py: bafybeibsbgnljx6ooyhxjq3ul6ojs3ltkgxkizenckaoftuzy2e6patldm
-  dialogues.py: bafybeigylmck2wy3y7sqk4eb2xnpjfizr77jzuypnpcweeex43tj6634je
-  handlers.py: bafybeiaxcxv2moimnvhqiiby45rlm4z4ni4qvbdfixv3hxve4a742wyroy
-  my_model.py: bafybeih7cchb4jubb6r45xhr5x5uodnp3pcpjuyredifdxstjlgole72xi
+  behaviours.py: bafybeibclrjvya57eavtkorqk2jccnompcr4pqckxv5elq2tfukip2nuai
+  dialogues.py: bafybeig3ztuhmqj7atppgub3jzmy4i6fb2fqnq7wtulaiv7j7dh7xg3jom
+  handlers.py: bafybeibeelhwsb7ehkofk3h2qjhcstx7o2hnu4j6slzra6hklxujzowfvu
+  my_model.py: bafybeifbmb5bhx2f46myn7mcrku25bfvzzddyzzuxc4sp5wzdk7gkhvgci
 fingerprint_ignore_patterns: []
 connections:
 - eightballer/websocket_client:0.1.0:bafybeicqkljjzvdl4v7pzbmsfd3al7uv7563x3qa5gmnzxeuoxgtmolpta

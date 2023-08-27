@@ -28,21 +28,15 @@ from packages.valory.skills.abstract_round_abci.base import BaseTxPayload
 class AnalyseDataPayload(BaseTxPayload):
     """Represent a transaction payload for the AnalyseDataRound."""
 
-    # TODO: define your attributes
-
 
 @dataclass(frozen=True)
 class CallExercisedPayload(BaseTxPayload):
     """Represent a transaction payload for the CallExercisedRound."""
 
-    # TODO: define your attributes
-
 
 @dataclass(frozen=True)
 class CallExpiredPayload(BaseTxPayload):
     """Represent a transaction payload for the CallExpiredRound."""
-
-    # TODO: define your attributes
 
 
 @dataclass(frozen=True)
@@ -65,25 +59,17 @@ class MultiplexerPayload(BaseTxPayload):
 
     strategy_decision: int
 
-    # TODO: define your attributes
-
 
 @dataclass(frozen=True)
 class PutExercisedPayload(BaseTxPayload):
     """Represent a transaction payload for the PutExercisedRound."""
-
-    # TODO: define your attributes
 
 
 @dataclass(frozen=True)
 class PutExpiredPayload(BaseTxPayload):
     """Represent a transaction payload for the PutExpiredRound."""
 
-    # TODO: define your attributes
-
 
 @dataclass(frozen=True)
 class UnderAllocatedPayload(BaseTxPayload):
     """Represent a transaction payload for the UnderAllocatedRound."""
-
-    # TODO: define your attributes

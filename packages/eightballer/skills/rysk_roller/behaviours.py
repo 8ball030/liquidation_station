@@ -20,11 +20,9 @@
 """This package contains round behaviours of FlowchartToFSMAbciApp."""
 import json
 from abc import ABC
-from dataclasses import asdict, astuple
+from dataclasses import asdict
 from datetime import datetime
 from typing import Generator, Set, Type, cast
-
-import pandas as pd
 
 from packages.eightballer.skills.rysk_roller.models import Params, StrategyAction
 from packages.eightballer.skills.rysk_roller.rounds import (
@@ -49,15 +47,8 @@ from packages.eightballer.skills.rysk_roller.rounds import (
     UnderAllocatedPayload,
     UnderAllocatedRound,
 )
-from packages.valory.connections.http_client.connection import (
-    PUBLIC_ID as HTTP_CLIENT_PUBLIC_ID,
-)
 from packages.valory.contracts.uniswap_v2_erc20.contract import UniswapV2ERC20Contract
-from packages.valory.contracts.uniswap_v2_router_02.contract import (
-    UniswapV2Router02Contract,
-)
 from packages.valory.protocols.contract_api import ContractApiMessage
-from packages.valory.protocols.http.message import HttpMessage
 from packages.valory.skills.abstract_round_abci.base import AbstractRound
 from packages.valory.skills.abstract_round_abci.behaviours import (
     AbstractRoundBehaviour,
@@ -65,7 +56,6 @@ from packages.valory.skills.abstract_round_abci.behaviours import (
 )
 from packages.zarathustra.contracts.homm_vault.contract import (
     HOMMVaultContract,
-    OperationType,
     OptionSeries,
     QuoteOptionPrice,
     RequestQuoteOptionPrice,
@@ -346,7 +336,7 @@ class CollectPriceDataBehaviour(RyskRollerBaseBehaviour):
             owner_address=self.context.agent_address,
             request_quote_option_price=asdict(request),
         )
-        if contract_api_msg.Performative == ContractApiMessage.Performative.ERROR:
+        if contract_api_msg.performative == ContractApiMessage.Performative.ERROR:
             return {}
 
         quote_option_price: QuoteOptionPrice = contract_api_msg.state.body[

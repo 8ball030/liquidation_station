@@ -61,11 +61,31 @@ are_deps_dirty: clean
 		exit 1;\
 	fi;\
 
-lock:
+lock: clean
 	autonomy hash all && autonomy packages lock
 
-run-single-agent:
-	bash scripts/start_agent.sh
+run-single-agent-rysk-roller:
+	bash scripts/start_agent.sh eightballer/rysk_roller
 
-run-mas:
-	bash scripts/start_multi_agent.sh
+run-single-agent-liquidation-station:
+	bash scripts/start_agent.sh eightballer/liquidation_station
+
+run-mas-liquidation-station:
+	bash scripts/start_multi_agent.sh eightballer/liquidation_station
+
+run-mas-rysk-roller:
+	bash scripts/start_multi_agent.sh eightballer/rysk_roller
+
+
+
+format: clean
+	poetry run adev -n 0 fmt
+
+lint: clean
+	PYTHONPATH=.	poetry run adev -n 0 -v lint && make clean && make hashes
+
+all: format lint test clean
+
+
+metadata: lock
+	poetry run python scripts/metadata.py

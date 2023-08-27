@@ -20,9 +20,8 @@
 """This package contains a scaffold of a handler."""
 
 import json
-from typing import Optional, cast
+from typing import cast
 
-from aea.configurations.base import PublicId
 from aea.protocols.base import Message
 from aea.skills.base import Handler
 

@@ -2,35 +2,36 @@ agent_name: liquidation_station
 author: eightballer
 version: 0.1.0
 license: Apache-2.0
-description: ''
+description: The liquidation station was built in EthZurich 2022. It allows for the
+  liquidation of collateralized debt positions.
 aea_version: '>=1.32.0, <2.0.0'
 fingerprint: {}
 fingerprint_ignore_patterns: []
 connections:
-- fetchai/http_server:0.22.0:bafybeidjdxratmxzvjf24smug23lv2wqkfdwt23vndkwhjylst7mfdde6a
-- valory/abci:0.1.0:bafybeigr7khpdtaad4okzu2f3zfvdxsluzewfr2tszvapmj3gyy7clabeu
-- valory/http_client:0.23.0:bafybeicxuedaogf2q4z3zekgr2yvsxt6tieo3fzv7deg3734datprtsyry
-- valory/ipfs:0.1.0:bafybeifo4tzgjtkt422ks3ooipum7p4ycr6rrdtuab246owo2r74vmseee
-- valory/ledger:0.19.0:bafybeiehwka634iicodmzolflo2le6pdlfmb4dgtnhszjcccoanyay75gm
-- valory/p2p_libp2p_client:0.1.0:bafybeidfm65eece533hfvg2xyn4icpmvz4lmvbemstrlo3iuffb7e72ycq
+- fetchai/http_server:0.22.0:bafybeihhh2myx6hcs7cqf7fssaiwtwi445bycyhgvag5gc6wwfah3pjz3u
+- valory/abci:0.1.0:bafybeigtjiag4a2h6msnlojahtc5pae7jrphjegjb3mlk2l54igc4jwnxe
+- valory/http_client:0.23.0:bafybeifmdc5nag3ca2vv5oc4yb3pioxsbykjesxeeecdhv4nrg6ecfcuey
+- valory/ipfs:0.1.0:bafybeih7xqo3w327wrqaydkwt4bbm3jsnepvkaypwh4j4gtbgpvfon7xfa
+- valory/ledger:0.19.0:bafybeig6jdopgedy5wohwtm3zsqgchcq3sbnb4x4p3vxbwlgikhui65pre
+- valory/p2p_libp2p_client:0.1.0:bafybeidykjqleqy343puirang57xjjiuqpfiu2mlhpbwedmxvvfw3r3774
 contracts:
 - valory/service_registry:0.1.0:bafybeibt3uhw7s72subuiqve2jd3mrd4vot7fh3jsdjd5d35wuiicaemv4
-- zarathustra/unitroller:0.1.0:bafybeihbfrtwjoccjaxa67dehdfzt6bi64mim6rmapvsste22elbvngvqa
+- zarathustra/unitroller:0.1.0:bafybeibxxb6pzjbx6ijmz5ntq65yb5h7qwbp3jsfkbk2tyiqw2ntpq7key
 protocols:
 - fetchai/default:1.0.0:bafybeig3w57l7laofhuyl7nco2lfzgtbqf4cto75edfccymugtixjqnm6y
-- open_aea/signing:1.0.0:bafybeigqmouus33blg3ttpbtmy2tbhzyaefeyumxhfzxobpw43mocf7sru
-- valory/abci:0.1.0:bafybeifsttranjnxstpoyswpm2dzfyzimpatdfbu5pdpu7ibmda5x24ipe
-- valory/acn:1.1.0:bafybeif2th25e4gaejgpg373wal4bkpyfxdbee7f7gbrb64vrgrwhbakxm
-- valory/contract_api:1.0.0:bafybeihzhpxgwxkapv73bc5mytc77u557e7upmmahgoyqndysjkzvxxcyy
-- valory/http:1.0.0:bafybeieshrrplt5oadws5tz3rhjo6m2spchdyhkwa2z6ze2bs4ivauusfq
-- valory/ipfs:0.1.0:bafybeidjn5fa2tjah3jif4tt67rccvtflkmkj5gnjq2jssdkxdzwrzzasy
-- valory/ledger_api:1.0.0:bafybeiachflkr2syxjzele5ie7tioozyfqpb3u4r2h7vs66jiqrzhineyy
-- valory/tendermint:0.1.0:bafybeib25ulpp3tri3ppexk4t6yttuajhr7wpgs7wajpsnbbnzo256ubem
+- open_aea/signing:1.0.0:bafybeiaiih7qno6ctkwyvmkx2m2i4vzvhwx5zbnu7c2siqx7vresuep6qm
+- valory/abci:0.1.0:bafybeih3jhbahoqi26tcqjommne2xxaxjslirbnidhhx5tit4gkvfuxaom
+- valory/acn:1.1.0:bafybeiau7lc4ey6af24jg2e2rrmrhvpqkhyaxofgr2on27htealrhptoiy
+- valory/contract_api:1.0.0:bafybeibcmlxllyrfbp244upa2ea7hhliawv64ldrrn3fb64fdx2342orsy
+- valory/http:1.0.0:bafybeibgndpi4ltohlanqkywz6zwcsfjho3ypjtoyu4h3fvkk4sk5yllku
+- valory/ipfs:0.1.0:bafybeihcqvmnyochqkkl3u7rqiewkth4onabllac72veunmddeem2ykfia
+- valory/ledger_api:1.0.0:bafybeieoq3vtqst3hrbhxqchqkqd3hhbcf6rwgkz7zhnbupa6ecpgeesdi
+- valory/tendermint:0.1.0:bafybeicavolm7gshxgdsiokj2hnhrm2m4j4ljrvm6nvvupmszp7da56gxm
 skills:
-- eightballer/liquidation_station:0.1.0:bafybeiag4yw2hrvvhaevpzuuehf4beaephy5pc3d5ndv2zgitsb54esioy
-- eightballer/metrics:0.1.0:bafybeiaf2tjwn35j2gc7smjv36vjo57em62km4vz2hzip3p6tiygoevkgy
-- valory/abstract_abci:0.1.0:bafybeihlgivyusw3d4unhupidkvtalllqfvukbkk5r7hztjzy5qm4gpxei
-- valory/abstract_round_abci:0.1.0:bafybeief2qtrja6n5p44lkh6ivoq5ias6thnut6xozwdk5ahdpt4rvjuei
+- eightballer/liquidation_station:0.1.0:bafybeie7i6hon5v3qquq2a65wvmfslawch6qxdi4qgsj6uxclmshinilhe
+- eightballer/metrics:0.1.0:bafybeibnpdfpxodua62mzn3lpi4ltdrrcakkgin6352dwgzk6dfgn4cr6e
+- valory/abstract_abci:0.1.0:bafybeia7z7grrixjkofv7z3o7wyxodquiqrlqpnhzlpbwbolcau5ht6gz4
+- valory/abstract_round_abci:0.1.0:bafybeibj5lhxkmfy33a2llmjyma52al26iijdq4epl3h2yljgrjejqswxe
 default_ledger: ethereum
 required_ledgers:
 - ethereum
@@ -42,6 +43,7 @@ logging_config:
   version: 1
 dependencies:
   open-aea-ledger-ethereum: {}
+  open-aea-ledger-ethereum-hwi: {}
 default_connection: null
 ---
 public_id: fetchai/http_server:0.22.0
@@ -80,8 +82,8 @@ type: skill
 models:
   params:
     args:
-      infura_api_key: ${SKILL_LIQUIDATION_STATION_MODELS_PARAMS_ARGS_INFURA_API_KEY:str}
-      polygonscan_api_key: ${SKILL_LIQUIDATION_STATION_MODELS_PARAMS_ARGS_POLYGONSCAN_API_KEY:str}
+      infura_api_key: ${str:000000}
+      polygonscan_api_key: ${str:000000}
       sleep_time: 1
       tendermint_check_sleep_delay: 3
       tendermint_p2p_url: ${str:localhost:26656}

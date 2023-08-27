@@ -24,17 +24,7 @@ from typing import Hashable, Type
 
 import pytest
 
-from packages.eightballer.skills.rysk_roller.payloads import (
-    AnalyseDataPayload,
-    BaseTxPayload,
-    CallExercisedPayload,
-    CallExpiredPayload,
-    CollectDataPayload,
-    MultiplexerPayload,
-    PutExercisedPayload,
-    PutExpiredPayload,
-    UnderAllocatedPayload,
-)
+from packages.eightballer.skills.rysk_roller.payloads import BaseTxPayload
 
 
 @dataclass

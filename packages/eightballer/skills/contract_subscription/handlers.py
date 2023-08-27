@@ -19,9 +19,7 @@
 
 """This package contains a scaffold of a handler."""
 
-from typing import Optional
 
-from aea.configurations.base import PublicId
 from aea.protocols.base import Message
 from aea.skills.base import Handler
 
@@ -42,7 +40,7 @@ class WebSocketHandler(Handler):
 
         :param message: the message
         """
-        self.context.logger.info("Received message: {}".format(message))
+        self.context.logger.info(f"Received message: {message}")
 
     def teardown(self) -> None:
         """Implement the handler teardown."""

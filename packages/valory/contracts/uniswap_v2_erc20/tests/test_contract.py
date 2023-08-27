@@ -25,8 +25,7 @@ from unittest import mock
 
 from aea.test_tools.test_contract import BaseContractTestCase
 
-from packages.valory.contracts.uniswap_v2_erc20.contract import \
-    UniswapV2ERC20Contract
+from packages.valory.contracts.uniswap_v2_erc20.contract import UniswapV2ERC20Contract
 
 PACKAGE_DIR = Path(__file__).parent.parent
 
@@ -37,7 +36,7 @@ ADDRESS_TWO = "0x7A1236d5195e31f1F573AD618b2b6FEFC85C5Ce6"
 ADDRESS_THREE = "0x7A1236d5195e31f1F573AD618b2b6FEFC85C5Ce6"
 NONCE = 0
 CHAIN_ID = 1
-MAX_ALLOWANCE = 2 ** 256 - 1
+MAX_ALLOWANCE = 2**256 - 1
 
 
 class TestUniswapV2ERC20Contract(BaseContractTestCase):

@@ -2,15 +2,16 @@ name: homm_vault
 author: zarathustra
 version: 0.1.0
 type: contract
-description: The scaffold contract scaffolds a contract to be implemented by the developer.
+description: The HOMM Was Developer by N0x in EthAms 2023. It allows for a Vault to
+  be created and managed by the Multi Agent Service.
 license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   __init__.py: bafybeifzs22oiwtftrlgrf5ze74x4kk5has2i46x5tpk6o3ivcce6vz44y
   build/vault.json: bafybeiccu7k4vg7kdxihkzqubrh7buxuu44vcbohdsvodnuqz6yhbf5a7i
   contract.py: bafybeicwzmc3up46my4wdgexgd5xlpmvsut7uqjic73vquofmmsvypbtu4
-  tests/__init__.py: bafybeiftu27piztiu5bfxbvhqsbppgtseykyfot6wtlrrzeuzya6zrgpky
-  tests/test_contract.py: bafybeiej5533ujtqt7mta3l5nxohatrkoex4qooekpe6znpska2sjphzay
+  tests/__init__.py: bafybeiemxmqrlmgx4k2dlhjzjjlxh2aglku2kbv43x7hkkf3ppv2er3lme
+  tests/test_contract.py: bafybeifbgseqy4fipqgeylrt3yxricaa47o3xj3fmbuvarfq2ajlfdcxgi
 fingerprint_ignore_patterns: []
 class_name: HOMMVaultContract
 contract_interface_paths:

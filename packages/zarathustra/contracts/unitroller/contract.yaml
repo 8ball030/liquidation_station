@@ -2,13 +2,14 @@ name: unitroller
 author: zarathustra
 version: 0.1.0
 type: contract
-description: The scaffold contract scaffolds a contract to be implemented by the developer.
+description: The Unitroller allows for the management of the 0vix Comptroller. It
+  is a fork of the Compound Comptroller. Built in the EthZurich 2022.
 license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   __init__.py: bafybeifzs22oiwtftrlgrf5ze74x4kk5has2i46x5tpk6o3ivcce6vz44y
   build/unitroller.json: bafybeicemvpfbbujup4egs2n4rk7dqhfdcgpw7uqylg5sopfv7u27ppifi
-  contract.py: bafybeichd2vede3ud37sicmidxbstdwbant3axlo5q5uasboeooazq4ice
+  contract.py: bafybeieu6jzhhb7vo2hwhbs5jjxr3y3ffrltrjymut6bcxgqvdbl7fprm4
 fingerprint_ignore_patterns: []
 class_name: Unitroller
 contract_interface_paths:

@@ -11,9 +11,9 @@ connections:
 contracts: []
 protocols:
 - fetchai/default:1.0.0:bafybeig3w57l7laofhuyl7nco2lfzgtbqf4cto75edfccymugtixjqnm6y
-- open_aea/signing:1.0.0:bafybeigqmouus33blg3ttpbtmy2tbhzyaefeyumxhfzxobpw43mocf7sru
+- open_aea/signing:1.0.0:bafybeiaiih7qno6ctkwyvmkx2m2i4vzvhwx5zbnu7c2siqx7vresuep6qm
 skills:
-- eightballer/contract_subscription:0.1.0:bafybeid6ywdphan4gr7o33agcyeresqsywv3boy7duiafldygtc3yjfr5q
+- eightballer/contract_subscription:0.1.0:bafybeic6o3qhu2f2pnpd3avjeco5zeyzqaxu7tuksflutettmtnqv4epl4
 default_ledger: ethereum
 required_ledgers:
 - ethereum

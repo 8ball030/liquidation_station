@@ -20,7 +20,7 @@
 """This package contains the rounds of LiquidationStationAbciApp."""
 
 from enum import Enum
-from typing import Dict, List, Optional, Set, Tuple
+from typing import Dict, Optional, Set, Tuple
 
 from packages.eightballer.skills.liquidation_station.payloads import (
     CalculatePositionHealthPayload,
@@ -36,7 +36,6 @@ from packages.valory.skills.abstract_round_abci.base import (
     AbstractRound,
     AppState,
     BaseSynchronizedData,
-    DegenerateRound,
     EventToTimeout,
 )
 
@@ -63,24 +62,22 @@ class CalculatePositionHealthRound(AbstractRound):
     """CalculatePositionHealthRound"""
 
     payload_class = CalculatePositionHealthPayload
-    payload_attribute = ""  # TODO: update
+    payload_attribute = "position_health"
     synchronized_data_class = SynchronizedData
-
-    # TODO: replace AbstractRound with one of CollectDifferentUntilAllRound,
-    # CollectSameUntilAllRound, CollectSameUntilThresholdRound,
-    # CollectDifferentUntilThresholdRound, OnlyKeeperSendsRound, VotingRound,
-    # from packages/valory/skills/abstract_round_abci/base.py
-    # or implement the methods
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
         synchronized_data = self.synchronized_data
         return synchronized_data, Event.DONE
 
-    def check_payload(self, payload: CalculatePositionHealthPayload) -> None:
+    def check_payload(
+        self, payload: CalculatePositionHealthPayload
+    ) -> None:  # pragma: nocover
         """Check payload."""
 
-    def process_payload(self, payload: CalculatePositionHealthPayload) -> None:
+    def process_payload(
+        self, payload: CalculatePositionHealthPayload
+    ) -> None:  # pragma: nocover
         """Process payload."""
 
 
@@ -88,24 +85,22 @@ class CollectPositionsRound(AbstractRound):
     """CollectPositionsRound"""
 
     payload_class = CollectPositionsPayload
-    payload_attribute = ""  # TODO: update
+    payload_attribute = "positions"
     synchronized_data_class = SynchronizedData
-
-    # TODO: replace AbstractRound with one of CollectDifferentUntilAllRound,
-    # CollectSameUntilAllRound, CollectSameUntilThresholdRound,
-    # CollectDifferentUntilThresholdRound, OnlyKeeperSendsRound, VotingRound,
-    # from packages/valory/skills/abstract_round_abci/base.py
-    # or implement the methods
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
         synchronized_data = self.synchronized_data
         return synchronized_data, Event.DONE
 
-    def check_payload(self, payload: CollectPositionsPayload) -> None:
+    def check_payload(
+        self, payload: CollectPositionsPayload
+    ) -> None:  # pragma: nocover
         """Check payload."""
 
-    def process_payload(self, payload: CollectPositionsPayload) -> None:
+    def process_payload(
+        self, payload: CollectPositionsPayload
+    ) -> None:  # pragma: nocover
         """Process payload."""
 
 
@@ -113,14 +108,8 @@ class PrepareLiquidationTransactionsRound(AbstractRound):
     """PrepareLiquidationTransactionsRound"""
 
     payload_class = PrepareLiquidationTransactionsPayload
-    payload_attribute = ""  # TODO: update
+    payload_attribute = "prepare_txs"
     synchronized_data_class = SynchronizedData
-
-    # TODO: replace AbstractRound with one of CollectDifferentUntilAllRound,
-    # CollectSameUntilAllRound, CollectSameUntilThresholdRound,
-    # CollectDifferentUntilThresholdRound, OnlyKeeperSendsRound, VotingRound,
-    # from packages/valory/skills/abstract_round_abci/base.py
-    # or implement the methods
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
@@ -138,14 +127,8 @@ class RegistrationRound(AbstractRound):
     """RegistrationRound"""
 
     payload_class = RegistrationPayload
-    payload_attribute = ""  # TODO: update
+    payload_attribute = "registration"
     synchronized_data_class = SynchronizedData
-
-    # TODO: replace AbstractRound with one of CollectDifferentUntilAllRound,
-    # CollectSameUntilAllRound, CollectSameUntilThresholdRound,
-    # CollectDifferentUntilThresholdRound, OnlyKeeperSendsRound, VotingRound,
-    # from packages/valory/skills/abstract_round_abci/base.py
-    # or implement the methods
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
@@ -163,14 +146,8 @@ class ResetAndPauseRound(AbstractRound):
     """ResetAndPauseRound"""
 
     payload_class = ResetAndPausePayload
-    payload_attribute = ""  # TODO: update
+    payload_attribute = "reset_and_pause"
     synchronized_data_class = SynchronizedData
-
-    # TODO: replace AbstractRound with one of CollectDifferentUntilAllRound,
-    # CollectSameUntilAllRound, CollectSameUntilThresholdRound,
-    # CollectDifferentUntilThresholdRound, OnlyKeeperSendsRound, VotingRound,
-    # from packages/valory/skills/abstract_round_abci/base.py
-    # or implement the methods
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
@@ -190,12 +167,6 @@ class SubmitPositionLiquidationTransactionsRound(AbstractRound):
     payload_class = SubmitPositionLiquidationTransactionsPayload
     payload_attribute = ""  # TODO: update
     synchronized_data_class = SynchronizedData
-
-    # TODO: replace AbstractRound with one of CollectDifferentUntilAllRound,
-    # CollectSameUntilAllRound, CollectSameUntilThresholdRound,
-    # CollectDifferentUntilThresholdRound, OnlyKeeperSendsRound, VotingRound,
-    # from packages/valory/skills/abstract_round_abci/base.py
-    # or implement the methods
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""

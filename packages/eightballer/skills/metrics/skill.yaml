@@ -2,19 +2,19 @@ name: metrics
 author: eightballer
 version: 0.1.0
 type: skill
-description: The scaffold skill is a scaffold for your own skill implementation.
+description: The metrics skill allows the agent to responde to health metrics requests.
 license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   __init__.py: bafybeihdinfcnkeih6vi7zczvxoqg7eb4b4uymnccyza5idjcob32r2i54
-  dialogues.py: bafybeibrd77f7hnhq6wgbxxqln4cdu3sf4lbnbb5furvinhrsdodxe5ylu
-  handlers.py: bafybeifwa2eilw6hgpw43v4lpa6gg7dfcp3psrybfpvvmc5kyz6j7cknbm
+  dialogues.py: bafybeihwbdz23tcepvkfkbclilxqwdodkztdl3k6tcoud2vgs6yig7e2zu
+  handlers.py: bafybeibv7tp4szmleed6x3pkjjgre7lzpxr2bbccvrk7bfp3nkiyly4qae
 fingerprint_ignore_patterns: []
 connections: []
 contracts: []
 protocols:
 - fetchai/default:1.0.0:bafybeig3w57l7laofhuyl7nco2lfzgtbqf4cto75edfccymugtixjqnm6y
-- valory/http:1.0.0:bafybeieshrrplt5oadws5tz3rhjo6m2spchdyhkwa2z6ze2bs4ivauusfq
+- valory/http:1.0.0:bafybeibgndpi4ltohlanqkywz6zwcsfjho3ypjtoyu4h3fvkk4sk5yllku
 skills: []
 behaviours: {}
 handlers:

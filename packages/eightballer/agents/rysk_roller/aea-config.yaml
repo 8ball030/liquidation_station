@@ -2,34 +2,33 @@ agent_name: rysk_roller
 author: eightballer
 version: 0.1.0
 license: Apache-2.0
-description: ''
+description: The rysk roller is a trading agent designed to run on the Rysk network.
 aea_version: '>=1.32.0, <2.0.0'
 fingerprint: {}
 fingerprint_ignore_patterns: []
 connections:
-- valory/abci:0.1.0:bafybeigr7khpdtaad4okzu2f3zfvdxsluzewfr2tszvapmj3gyy7clabeu
-- valory/http_client:0.23.0:bafybeicxuedaogf2q4z3zekgr2yvsxt6tieo3fzv7deg3734datprtsyry
-- valory/ipfs:0.1.0:bafybeifo4tzgjtkt422ks3ooipum7p4ycr6rrdtuab246owo2r74vmseee
-- valory/ledger:0.19.0:bafybeiehwka634iicodmzolflo2le6pdlfmb4dgtnhszjcccoanyay75gm
-- valory/p2p_libp2p_client:0.1.0:bafybeidfm65eece533hfvg2xyn4icpmvz4lmvbemstrlo3iuffb7e72ycq
+- valory/abci:0.1.0:bafybeigtjiag4a2h6msnlojahtc5pae7jrphjegjb3mlk2l54igc4jwnxe
+- valory/http_client:0.23.0:bafybeifmdc5nag3ca2vv5oc4yb3pioxsbykjesxeeecdhv4nrg6ecfcuey
+- valory/ipfs:0.1.0:bafybeih7xqo3w327wrqaydkwt4bbm3jsnepvkaypwh4j4gtbgpvfon7xfa
+- valory/ledger:0.19.0:bafybeig6jdopgedy5wohwtm3zsqgchcq3sbnb4x4p3vxbwlgikhui65pre
+- valory/p2p_libp2p_client:0.1.0:bafybeidykjqleqy343puirang57xjjiuqpfiu2mlhpbwedmxvvfw3r3774
 contracts:
 - valory/service_registry:0.1.0:bafybeibt3uhw7s72subuiqve2jd3mrd4vot7fh3jsdjd5d35wuiicaemv4
-- valory/uniswap_v2_erc20:0.1.0:bafybeieh4h5pedo3otnxq4h43fyg6f6t7bbn7vncqv2hhj5z5wvwo72bsm
-- valory/uniswap_v2_router_02:0.1.0:bafybeie6dabrmod674i2nvotde2rodjlslh5ngxmm5pd7u632oi32tf6om
-- zarathustra/homm_vault:0.1.0:bafybeigkietdimlhzwnjdifdthy6uzna36zdj5cthqhh5q5erfddtucnpm
+- valory/uniswap_v2_erc20:0.1.0:bafybeifewyykjldtaaece4xhguveuj54zqrhf3cw35i6zhjaaubjluerj4
+- zarathustra/homm_vault:0.1.0:bafybeid5fwit4ypxaqvknrefmfe6vq3psdzfue6oc2oqftfzcw3islvjnq
 protocols:
-- open_aea/signing:1.0.0:bafybeigqmouus33blg3ttpbtmy2tbhzyaefeyumxhfzxobpw43mocf7sru
-- valory/abci:0.1.0:bafybeifsttranjnxstpoyswpm2dzfyzimpatdfbu5pdpu7ibmda5x24ipe
-- valory/acn:1.1.0:bafybeif2th25e4gaejgpg373wal4bkpyfxdbee7f7gbrb64vrgrwhbakxm
-- valory/contract_api:1.0.0:bafybeihzhpxgwxkapv73bc5mytc77u557e7upmmahgoyqndysjkzvxxcyy
-- valory/http:1.0.0:bafybeieshrrplt5oadws5tz3rhjo6m2spchdyhkwa2z6ze2bs4ivauusfq
-- valory/ipfs:0.1.0:bafybeidjn5fa2tjah3jif4tt67rccvtflkmkj5gnjq2jssdkxdzwrzzasy
-- valory/ledger_api:1.0.0:bafybeiachflkr2syxjzele5ie7tioozyfqpb3u4r2h7vs66jiqrzhineyy
-- valory/tendermint:0.1.0:bafybeib25ulpp3tri3ppexk4t6yttuajhr7wpgs7wajpsnbbnzo256ubem
+- open_aea/signing:1.0.0:bafybeiaiih7qno6ctkwyvmkx2m2i4vzvhwx5zbnu7c2siqx7vresuep6qm
+- valory/abci:0.1.0:bafybeih3jhbahoqi26tcqjommne2xxaxjslirbnidhhx5tit4gkvfuxaom
+- valory/acn:1.1.0:bafybeiau7lc4ey6af24jg2e2rrmrhvpqkhyaxofgr2on27htealrhptoiy
+- valory/contract_api:1.0.0:bafybeibcmlxllyrfbp244upa2ea7hhliawv64ldrrn3fb64fdx2342orsy
+- valory/http:1.0.0:bafybeibgndpi4ltohlanqkywz6zwcsfjho3ypjtoyu4h3fvkk4sk5yllku
+- valory/ipfs:0.1.0:bafybeihcqvmnyochqkkl3u7rqiewkth4onabllac72veunmddeem2ykfia
+- valory/ledger_api:1.0.0:bafybeieoq3vtqst3hrbhxqchqkqd3hhbcf6rwgkz7zhnbupa6ecpgeesdi
+- valory/tendermint:0.1.0:bafybeicavolm7gshxgdsiokj2hnhrm2m4j4ljrvm6nvvupmszp7da56gxm
 skills:
-- eightballer/rysk_roller:0.1.0:bafybeiazd5f56gdlx6co4bhxy25nm4cpzpnhjf4zsx4uzh6ew2ejw3onhi
-- valory/abstract_abci:0.1.0:bafybeihlgivyusw3d4unhupidkvtalllqfvukbkk5r7hztjzy5qm4gpxei
-- valory/abstract_round_abci:0.1.0:bafybeief2qtrja6n5p44lkh6ivoq5ias6thnut6xozwdk5ahdpt4rvjuei
+- eightballer/rysk_roller:0.1.0:bafybeigldjkkdkgh7gw5m5fs73jvf7ruquxts5idfzpqkrkmuntpkgopxe
+- valory/abstract_abci:0.1.0:bafybeia7z7grrixjkofv7z3o7wyxodquiqrlqpnhzlpbwbolcau5ht6gz4
+- valory/abstract_round_abci:0.1.0:bafybeibj5lhxkmfy33a2llmjyma52al26iijdq4epl3h2yljgrjejqswxe
 default_ledger: ethereum
 required_ledgers:
 - ethereum
@@ -50,7 +49,8 @@ logging_config:
       level: INFO
       propagate: false
 dependencies:
-  open-aea-ledger-ethereum: {}
+  open-aea-ledger-ethereum-hwi: {}
+  rich: {}
 default_connection: null
 ---
 public_id: valory/abci:0.1.0
@@ -82,10 +82,10 @@ type: connection
 config:
   ledger_apis:
     ethereum:
-      address: https://arbitrum-goerli.rpc.thirdweb.com
-      chain_id: 421613
-      poa_chain: false
-      default_gas_price_strategy: eip1559
+      address: ${str:https://arbitrum-goerli.rpc.thirdweb.com}
+      chain_id: ${int:421613}
+      poa_chain: ${bool:false}
+      default_gas_price_strategy: ${str:eip1559}
 ---
 public_id: eightballer/rysk_roller:0.1.0
 type: skill
