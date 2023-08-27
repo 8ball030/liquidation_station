@@ -3,7 +3,7 @@ author: zarathustra
 version: 0.1.0
 type: contract
 description: The Unitroller allows for the management of the 0vix Comptroller. It
-  is a fork of the Compound Comptroller. Built in the EthAms 2023.
+  is a fork of the Compound Comptroller. Built in the EthZurich 2022.
 license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:

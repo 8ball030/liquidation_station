@@ -2,7 +2,7 @@ agent_name: liquidation_station
 author: eightballer
 version: 0.1.0
 license: Apache-2.0
-description: The liquidation station was built in Eth Prague 2021. It allows for the
+description: The liquidation station was built in EthZurich 2022. It allows for the
   liquidation of collateralized debt positions.
 aea_version: '>=1.32.0, <2.0.0'
 fingerprint: {}
@@ -16,7 +16,7 @@ connections:
 - valory/p2p_libp2p_client:0.1.0:bafybeidykjqleqy343puirang57xjjiuqpfiu2mlhpbwedmxvvfw3r3774
 contracts:
 - valory/service_registry:0.1.0:bafybeibt3uhw7s72subuiqve2jd3mrd4vot7fh3jsdjd5d35wuiicaemv4
-- zarathustra/unitroller:0.1.0:bafybeidjtfjfjz5s7wg37nadrjv2jdgshuzdrbrts6qwtvsqft7zrtz6x4
+- zarathustra/unitroller:0.1.0:bafybeibxxb6pzjbx6ijmz5ntq65yb5h7qwbp3jsfkbk2tyiqw2ntpq7key
 protocols:
 - fetchai/default:1.0.0:bafybeig3w57l7laofhuyl7nco2lfzgtbqf4cto75edfccymugtixjqnm6y
 - open_aea/signing:1.0.0:bafybeiaiih7qno6ctkwyvmkx2m2i4vzvhwx5zbnu7c2siqx7vresuep6qm
@@ -28,8 +28,8 @@ protocols:
 - valory/ledger_api:1.0.0:bafybeieoq3vtqst3hrbhxqchqkqd3hhbcf6rwgkz7zhnbupa6ecpgeesdi
 - valory/tendermint:0.1.0:bafybeicavolm7gshxgdsiokj2hnhrm2m4j4ljrvm6nvvupmszp7da56gxm
 skills:
-- eightballer/liquidation_station:0.1.0:bafybeia2576mm3kevyypdgso5da42qcjt6n74h5c2klqh3g4notks7hlfy
-- eightballer/metrics:0.1.0:bafybeifr3xzd35ukdrpatpy26lk7wdocqgsggpcbmzzvwubmvb3ajkxxwm
+- eightballer/liquidation_station:0.1.0:bafybeie7i6hon5v3qquq2a65wvmfslawch6qxdi4qgsj6uxclmshinilhe
+- eightballer/metrics:0.1.0:bafybeibnpdfpxodua62mzn3lpi4ltdrrcakkgin6352dwgzk6dfgn4cr6e
 - valory/abstract_abci:0.1.0:bafybeia7z7grrixjkofv7z3o7wyxodquiqrlqpnhzlpbwbolcau5ht6gz4
 - valory/abstract_round_abci:0.1.0:bafybeibj5lhxkmfy33a2llmjyma52al26iijdq4epl3h2yljgrjejqswxe
 default_ledger: ethereum

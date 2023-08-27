@@ -13,7 +13,7 @@ protocols:
 - fetchai/default:1.0.0:bafybeig3w57l7laofhuyl7nco2lfzgtbqf4cto75edfccymugtixjqnm6y
 - open_aea/signing:1.0.0:bafybeiaiih7qno6ctkwyvmkx2m2i4vzvhwx5zbnu7c2siqx7vresuep6qm
 skills:
-- eightballer/contract_subscription:0.1.0:bafybeiharq7ux25toa2x4lvql3su567x3olf6axklo6xylo4itlrm2uw6i
+- eightballer/contract_subscription:0.1.0:bafybeic6o3qhu2f2pnpd3avjeco5zeyzqaxu7tuksflutettmtnqv4epl4
 default_ledger: ethereum
 required_ledgers:
 - ethereum

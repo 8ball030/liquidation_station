@@ -2,7 +2,8 @@ name: liquidation_station
 author: eightballer
 version: 0.1.0
 type: skill
-description: The scaffold skill is a scaffold for your own skill implementation.
+description: The liquidation station skill was built in Eth Prague 2022. It allows
+  for the liquidation of collateralized debt positions.
 license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:

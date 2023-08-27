@@ -2,7 +2,7 @@ name: contract_subscription
 author: eightballer
 version: 0.1.0
 type: skill
-description: The scaffold skill is a simple client to subscribe to transactions using
+description: The contract subscription skill allows the agent to subscribe to websockets.
   the websocket connection.
 license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
