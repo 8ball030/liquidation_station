@@ -42,6 +42,7 @@ logging_config:
   version: 1
 dependencies:
   open-aea-ledger-ethereum: {}
+  open-aea-ledger-ethereum-hwi: {}
 default_connection: null
 ---
 public_id: fetchai/http_server:0.22.0

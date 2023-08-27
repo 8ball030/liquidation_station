@@ -1,10 +1,10 @@
 {
     "dev": {
-        "service/eightballer/liquidation_station/0.1.0": "bafybeifbknwsuekltvr3fbpb3h3o4wleekbvnfpywdwoyprssetvgbi2aa",
+        "service/eightballer/liquidation_station/0.1.0": "bafybeid6mvtj67unzjl4fp5gkhwbnr6jy7itnlvs56sge7ereij6m2xb6i",
         "service/eightballer/rysk_roller/0.1.0": "bafybeicsmbq2jnn7yxfih5ajbshd74gfnhhngvw6xfsq7wcgimi3cmkh5q",
         "skill/eightballer/liquidation_station/0.1.0": "bafybeiageqwiw44bmh6rdwivhxdigj2oiuikrs4njypxnhpec5egiie2hu",
         "skill/eightballer/metrics/0.1.0": "bafybeidcdvlh4jayu533uy4mqhkcagc2lyb6yh6qumynvktzppf4dnfvtq",
-        "agent/eightballer/liquidation_station/0.1.0": "bafybeidxx2upcw2psdy6gtdopwfe7a2kk5gstgqiei3rjrencfjrw5jgo4",
+        "agent/eightballer/liquidation_station/0.1.0": "bafybeigfm5s47cjp7zcdrmvulkcqwrqwby7xgpcutgwflnzidl7khghr7i",
         "connection/eightballer/websocket_client/0.1.0": "bafybeicf2z7s2edn3nbiqxoadcmzc735lcxervz3ncbplma2fzpitaod2q",
         "skill/eightballer/contract_subscription/0.1.0": "bafybeidfsch7cahvlba6ygnnonfz2j5o2hz2fdcpgebwpwrpixnhp7rftm",
         "skill/eightballer/rysk_roller/0.1.0": "bafybeia2v2qumlhyxbl4zpz7omzau7rapggqzouokvofecwluiyb7wqyie",
