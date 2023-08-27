@@ -2,8 +2,8 @@ name: homm_vault
 author: zarathustra
 version: 0.1.0
 type: contract
-description: The HOMMM Was Developer by N0x in EthAms 2023. It allows for a Vault
-  to be created and managed by the Multi Agent Service.
+description: The HOMM Was Developer by N0x in EthAms 2023. It allows for a Vault to
+  be created and managed by the Multi Agent Service.
 license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:

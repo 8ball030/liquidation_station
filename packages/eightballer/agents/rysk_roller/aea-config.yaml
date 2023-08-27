@@ -15,7 +15,7 @@ connections:
 contracts:
 - valory/service_registry:0.1.0:bafybeibt3uhw7s72subuiqve2jd3mrd4vot7fh3jsdjd5d35wuiicaemv4
 - valory/uniswap_v2_erc20:0.1.0:bafybeic5dtudo4dulkmj6fqvv4fj3dmzam2pf3xsajlip5pafgbje3cone
-- zarathustra/homm_vault:0.1.0:bafybeia76v74egh3sxcrvwfwnl2xhnh3xydzmuljninvbn4htsw5ytjbei
+- zarathustra/homm_vault:0.1.0:bafybeid5fwit4ypxaqvknrefmfe6vq3psdzfue6oc2oqftfzcw3islvjnq
 protocols:
 - open_aea/signing:1.0.0:bafybeigqmouus33blg3ttpbtmy2tbhzyaefeyumxhfzxobpw43mocf7sru
 - valory/abci:0.1.0:bafybeih3jhbahoqi26tcqjommne2xxaxjslirbnidhhx5tit4gkvfuxaom
@@ -26,7 +26,7 @@ protocols:
 - valory/ledger_api:1.0.0:bafybeieoq3vtqst3hrbhxqchqkqd3hhbcf6rwgkz7zhnbupa6ecpgeesdi
 - valory/tendermint:0.1.0:bafybeib25ulpp3tri3ppexk4t6yttuajhr7wpgs7wajpsnbbnzo256ubem
 skills:
-- eightballer/rysk_roller:0.1.0:bafybeiavbrbkcectivp3r4ogq6vnlrc7l6njxktgohxelzaxonxpoelje4
+- eightballer/rysk_roller:0.1.0:bafybeidl6o7tdbud7mezxnp7ohgglp7onyjuriiw2tgd3ck34e45dx4ecq
 - valory/abstract_abci:0.1.0:bafybeia7z7grrixjkofv7z3o7wyxodquiqrlqpnhzlpbwbolcau5ht6gz4
 - valory/abstract_round_abci:0.1.0:bafybeidlv4z63bxni26jmlxffc6scjxhkx3tlasv22fkbcsyvqpcgsyxz4
 default_ledger: ethereum
