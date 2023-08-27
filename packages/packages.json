@@ -1,6 +1,10 @@
 {
     "dev": {
-        "service/eightballer/liquidation_station/0.1.0": "bafybeiam4re6nedereawwfzu7jjuwws4mzgaslxseicm7cq4vcrnh74gry",
+        "service/eightballer/liquidation_station/0.1.0": "bafybeieubqxppj54rny7hiursduheybv5lweot26c3fpeze7sjc64lqxsa",
+        "skill/eightballer/liquidation_station/0.1.0": "bafybeidmjd54f5jergaimwyypuko4qrv7mobb2l7wr6qiywmmj33ikwxtm",
+        "skill/eightballer/metrics/0.1.0": "bafybeifsnluscoi7u7czwgvpwg6qxqtehw63ilevgalboqducta47x3ymy",
+        "agent/eightballer/liquidation_station/0.1.0": "bafybeid5zi7ry62m2otrsthhhyubzgxjxlisutp7v5knkzjst4vk3c26ly",
+        "service/eightballer/liquidation_station/0.1.0": "bafybeig3nitzhpjcklxozkh4kdh7hnf57ecoppax6d4inxmna7qgt6ctcq",
         "connection/eightballer/websocket_client/0.1.0": "bafybeicqkljjzvdl4v7pzbmsfd3al7uv7563x3qa5gmnzxeuoxgtmolpta",
         "skill/eightballer/liquidation_station/0.1.0": "bafybeiag4yw2hrvvhaevpzuuehf4beaephy5pc3d5ndv2zgitsb54esioy",
         "skill/eightballer/contract_subscription/0.1.0": "bafybeid6ywdphan4gr7o33agcyeresqsywv3boy7duiafldygtc3yjfr5q",
@@ -29,14 +33,24 @@
         "contract/valory/uniswap_v2_router_02/0.1.0": "bafybeie6dabrmod674i2nvotde2rodjlslh5ngxmm5pd7u632oi32tf6om",
         "contract/valory/uniswap_v2_erc20/0.1.0": "bafybeieh4h5pedo3otnxq4h43fyg6f6t7bbn7vncqv2hhj5z5wvwo72bsm",
         "contract/zarathustra/homm_vault/0.1.0": "bafybeigkietdimlhzwnjdifdthy6uzna36zdj5cthqhh5q5erfddtucnpm"
-    },
-    "third_party": {
         "protocol/valory/abci/0.1.0": "bafybeifsttranjnxstpoyswpm2dzfyzimpatdfbu5pdpu7ibmda5x24ipe",
         "protocol/valory/ledger_api/1.0.0": "bafybeiachflkr2syxjzele5ie7tioozyfqpb3u4r2h7vs66jiqrzhineyy",
         "connection/valory/ledger/0.19.0": "bafybeiehwka634iicodmzolflo2le6pdlfmb4dgtnhszjcccoanyay75gm",
         "connection/valory/abci/0.1.0": "bafybeigr7khpdtaad4okzu2f3zfvdxsluzewfr2tszvapmj3gyy7clabeu",
         "protocol/valory/contract_api/1.0.0": "bafybeihzhpxgwxkapv73bc5mytc77u557e7upmmahgoyqndysjkzvxxcyy",
         "protocol/valory/http/1.0.0": "bafybeieshrrplt5oadws5tz3rhjo6m2spchdyhkwa2z6ze2bs4ivauusfq",
+        "contract/zarathustra/unitroller/0.1.0": "bafybeiep5cexticlaav7nubrawpmyzyrn3uqzqcosjowevjp2qmhe27srq",
+        "contract/zarathustra/homm_vault/0.1.0": "bafybeiayvznp6nxv3cex6kcnfwqxg7fpqfa2u4zozuvusqw4bkbyc4rbji"
+    },
+    "third_party": {
+        "contract/valory/uniswap_v2_router_02/0.1.0": "bafybeihjfeemghfrbqwxdfos5zulzi3fzvq3wjxpwmdu3di4rklljp3sry",
+        "contract/valory/uniswap_v2_erc20/0.1.0": "bafybeigjlrw6gfzpap4pt57ibu26ebzk6grwfsbxp53i35f3kywau5hezi",
+        "protocol/valory/abci/0.1.0": "bafybeig3dj5jhsowlvg3t73kgobf6xn4nka7rkttakdb2gwsg5bp7rt7q4",
+        "protocol/valory/ledger_api/1.0.0": "bafybeibo4bdtcrxi2suyzldwoetjar6pqfzm6vt5xal22ravkkcvdmtksi",
+        "connection/valory/ledger/0.19.0": "bafybeicgfupeudtmvehbwziqfxiz6ztsxr5rxzvalzvsdsspzz73o5fzfi",
+        "connection/valory/abci/0.1.0": "bafybeihkjtzuv3oaq5olerjwnhf5qg5gsmgdsvg27aaeqeg46ch7mjvggi",
+        "protocol/valory/contract_api/1.0.0": "bafybeidv6wxpjyb2sdyibnmmum45et4zcla6tl63bnol6ztyoqvpl4spmy",
+        "protocol/valory/http/1.0.0": "bafybeifyoio7nlh5zzyn5yz7krkou56l22to3cwg7gw5v5o3vxwklibhty",
         "protocol/fetchai/default/1.0.0": "bafybeig3w57l7laofhuyl7nco2lfzgtbqf4cto75edfccymugtixjqnm6y",
         "connection/valory/http_client/0.23.0": "bafybeicxuedaogf2q4z3zekgr2yvsxt6tieo3fzv7deg3734datprtsyry",
         "connection/fetchai/http_server/0.22.0": "bafybeidjdxratmxzvjf24smug23lv2wqkfdwt23vndkwhjylst7mfdde6a",
