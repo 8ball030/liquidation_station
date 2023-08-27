@@ -61,7 +61,7 @@ are_deps_dirty: clean
 		exit 1;\
 	fi;\
 
-lock:
+lock: clean
 	autonomy hash all && autonomy packages lock
 
 run-single-agent-rysk-roller:
@@ -85,3 +85,7 @@ lint: clean
 	PYTHONPATH=.	poetry run adev -n 0 -v lint && make clean && make hashes
 
 all: format lint test clean
+
+
+metadata: lock
+	poetry run python scripts/metadata.py
