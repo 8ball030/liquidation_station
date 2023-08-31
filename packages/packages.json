@@ -12,6 +12,7 @@
         "skill/eightballer/liquidation_station/0.1.0": "bafybeie7i6hon5v3qquq2a65wvmfslawch6qxdi4qgsj6uxclmshinilhe",
         "skill/eightballer/metrics/0.1.0": "bafybeibnpdfpxodua62mzn3lpi4ltdrrcakkgin6352dwgzk6dfgn4cr6e",
         "agent/eightballer/liquidation_station/0.1.0": "bafybeiezuxxjdrk64b27fogoaotjjr47twgpmryyyhlg7bsczqnriq4gce",
+        "skill/eightballer/contract_subscription/0.1.0": "bafybeic6o3qhu2f2pnpd3avjeco5zeyzqaxu7tuksflutettmtnqv4epl4",
         "service/eightballer/liquidation_station/0.1.0": "bafybeiam32tlr2zpcqs4hq4k3mv6nlka3nasihii5gfzqkkhem3oiav32u"
     },
     "third_party": {
@@ -35,7 +36,6 @@
         "contract/valory/uniswap_v2_router_02/0.1.0": "bafybeie6dabrmod674i2nvotde2rodjlslh5ngxmm5pd7u632oi32tf6om",
         "skill/valory/abstract_abci/0.1.0": "bafybeia7z7grrixjkofv7z3o7wyxodquiqrlqpnhzlpbwbolcau5ht6gz4",
         "skill/valory/abstract_round_abci/0.1.0": "bafybeibj5lhxkmfy33a2llmjyma52al26iijdq4epl3h2yljgrjejqswxe",
-        "agent/eightballer/websocket_subscriber/0.1.0": "bafybeidlfe6kxij3jflfcntw5gcagnlrc33oxitfnvhhj3n6w4msbyvbne",
-        "skill/eightballer/contract_subscription/0.1.0": "bafybeic6o3qhu2f2pnpd3avjeco5zeyzqaxu7tuksflutettmtnqv4epl4"
+        "agent/eightballer/websocket_subscriber/0.1.0": "bafybeidlfe6kxij3jflfcntw5gcagnlrc33oxitfnvhhj3n6w4msbyvbne"
     }
 }
