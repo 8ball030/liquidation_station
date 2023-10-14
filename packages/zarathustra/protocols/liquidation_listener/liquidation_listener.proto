@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+package aea.zarathustra.liquidation_listener.v0_1_0;
+
+message LiquidationListenerMessage{
+
+  // Custom Types
+  message ErrorCode{
+    enum ErrorCodeEnum {
+      FAILED_TO_SUBSCRIBE = 0;
+      FAILED_TO_UNSUBSCRIBE = 1;
+    }
+    ErrorCodeEnum error_code = 1;
+  }
+
+  message Protocol{
+    enum ProtocolEnum {
+      UNISWAP_V2 = 0;
+      UNISWAP_V3 = 1;
+      SUSHISWAP = 2;
+      AAVE = 3;
+      WETH = 4;
+      CURVE = 5;
+      ZERO_EX = 6;
+      BALANCER_V1 = 7;
+      COMPOUND_V2 = 8;
+      CREAM = 9;
+    }
+    ProtocolEnum protocol = 1;
+  }
+
+
+  // Performatives and contents
+  message Subscribe_To_Liquidation_Events_Performative{
+  }
+
+  message Unsubscribe_From_Liquidation_Events_Performative{
+  }
+
+  message Liquidation_Event_Performative{
+    string liquidated_user = 1;
+    string liquidator_user = 2;
+    string collateral_token_address = 3;
+    string debt_token_address = 4;
+    int32 debt_purchase_amount = 5;
+    int32 received_amount = 6;
+    string received_token_address = 7;
+    bool received_token_address_is_set = 8;
+    Protocol protocol = 9;
+    string transaction_hash = 10;
+    repeated int32 trace_address = 11;
+    string block_number = 12;
+  }
+
+  message Unsubscribed_Performative{
+  }
+
+  message Error_Performative{
+    ErrorCode error_code = 1;
+    string error_msg = 2;
+    map<string, string> error_data = 3;
+  }
+
+
+  oneof performative{
+    Error_Performative error = 5;
+    Liquidation_Event_Performative liquidation_event = 6;
+    Subscribe_To_Liquidation_Events_Performative subscribe_to_liquidation_events = 7;
+    Unsubscribe_From_Liquidation_Events_Performative unsubscribe_from_liquidation_events = 8;
+    Unsubscribed_Performative unsubscribed = 9;
+  }
+}

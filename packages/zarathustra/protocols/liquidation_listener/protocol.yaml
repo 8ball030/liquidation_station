@@ -1,0 +1,21 @@
+name: liquidation_listener
+author: zarathustra
+version: 0.1.0
+protocol_specification_id: zarathustra/liquidation_listener:0.1.0
+type: protocol
+description: A protocol for obtaining information on liquidation events.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  __init__.py: bafybeiafw5qeockv754potdub5uqyobkagr5gug5bw4by3f4eobcpmgzmu
+  custom_types.py: bafybeihakqhiu4fvb43xin6wtlmk3ynzgum2luyeudiogiuenud7msdhue
+  dialogues.py: bafybeidnhdfxtisf436vxoeuaegtpj6inucd3hpjr2dzgba6duubzigyhm
+  liquidation_listener.proto: bafybeibnjzgewedh7ksskxi44bk56vky6z2etayyfhhn2a732m2ppg7hve
+  liquidation_listener_pb2.py: bafybeigllaawf7tkppb7uomgwdqqrubantlnifzeahyzu3ejfu2lqckumm
+  message.py: bafybeievpzozchevbf33itmn4gqqqhil2mzcadoecafrs5er4c77y5scyu
+  serialization.py: bafybeiggfcckbyo3cqats5ezn5xuio2ms5kguczx2uto72i4pbjzttys2i
+  tests/test_liquidation_listener_dialogues.py: bafybeigvzlmzuq7jih3s5pa6y6jmflh4hqp7qikajsrnbygagafncsxpu4
+  tests/test_liquidation_listener_messages.py: bafybeigsdznqj6nxlyi5z2cvlmfxrh3shdgbkb5gkw4n6ycsamaa7sem3a
+fingerprint_ignore_patterns: []
+dependencies:
+  protobuf: {}
